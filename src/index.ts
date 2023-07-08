@@ -2,6 +2,7 @@ import { Telegraf, Context } from 'telegraf'
 import dotenv from 'dotenv'
 import * as Text from './text'
 import Controller from './controller/control'
+import { IMessage } from './types'
 dotenv.config()
 
 const token: string | undefined = process.env.TOKEN
@@ -24,11 +25,17 @@ bot.on('message', (ctx: Context) => {
 function handleMessage(ctx: Context) {
     if (!ctx) throw new Error('ctx is not defined!')
     if (ctx.message == undefined) throw new Error('message isn\'t defined')
-    const messageText: string | undefined = ctx.message.text
+    // const userId = ctx.from?.id as number
+    const message = ctx.message as IMessage
+    const messageText = message.text
+    console.log(messageText)
     if (messageText == undefined) return
     const command = messageText.split(' ')[0]
     console.log(command)
     switch (command) {
+        case '/room':
+            controller.createRoom(ctx, messageText.split(' ')[1])
+            break
         default: controller.sendDefaultMessage(ctx, command)
             break;
     }
