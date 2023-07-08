@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "scripts": {
     "build": "webpack",
     "start": "node ./dist/bundle",
@@ -7,8 +6,12 @@
     "lint": "eslint . --ext js --fix"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
     "eslint": "^8.44.0",
+    "eslint-webpack-plugin": "^4.0.1",
     "nodemon": "^2.0.22",
+    "ts-loader": "^9.4.4",
     "webpack": "^5.88.1",
     "webpack-cli": "^5.1.4"
   },
