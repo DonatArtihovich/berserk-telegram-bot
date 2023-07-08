@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "build": "webpack",
+    "start": "node ./dist/bundle",
+    "start:prod": "nodemon ./src/index",
+    "lint": "eslint . --ext js --fix"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "nodemon": "^2.0.22",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "telegraf": "^4.12.2"
+  }
+}
