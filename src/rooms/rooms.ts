@@ -2,7 +2,7 @@ import { Rooms, IRoom, IUser } from './rooms.types'
 import { Context } from 'telegraf'
 
 export const rooms: Rooms = [{
-    players: [{ id: 1368480274, name: 'Саша' }],
+    players: [],
     name: 'roomTest',
     status: false,
     watchers: [],
