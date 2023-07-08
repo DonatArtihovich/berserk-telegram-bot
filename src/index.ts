@@ -34,8 +34,20 @@ function handleMessage(ctx: Context) {
     console.log(command)
     switch (command) {
         case '/room':
-            controller.createRoom(ctx, messageText.split(' ')[1])
-            break
+            controller.createRoom(ctx)
+            break;
+        case '/join':
+            controller.joinRoom(ctx, messageText.split(' ')[1])
+            break;
+        case '/watch':
+            controller.joinRoom(ctx, messageText.split(' ')[1], true)
+            break;
+        case '/exit':
+            controller.leaveRoom(ctx)
+            break;
+        case '/roominfo':
+            controller.showRoom(ctx)
+            break;
         default: controller.sendDefaultMessage(ctx, command)
             break;
     }
