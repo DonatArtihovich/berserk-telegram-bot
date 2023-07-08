@@ -2,7 +2,7 @@
   "scripts": {
     "build": "webpack",
     "start": "node ./dist/bundle",
-    "start:prod": "nodemon ./src/index",
+    "start:dev": "nodemon ./src/index",
     "lint": "eslint . --ext js --fix"
   },
   "devDependencies": {
