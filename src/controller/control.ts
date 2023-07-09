@@ -89,9 +89,23 @@ export default class Controller implements IController {
         }
     }
 
-    public sendDefaultMessage(ctx: Context, command: string): void {
-        const defaultMessage = command[0] === '/' ? 'Пока не добавлено' : 'Команда не распознана'
-        ctx.reply(defaultMessage)
+    public showAllRooms(ctx: Context): void {
+        const roomNames = rooms.map(room => `<code>${room.name}</code>`)
+        const message = `📰<b>Список доступных комнат:</b>\n\n🗞${roomNames.join('\n🗞')}`
+        ctx.replyWithHTML(message)
+    }
+
+    public sendMessage(ctx: Context, command: string): void {
+        if (command[0] === '/') {
+            ctx.reply('Команда не распознана')
+            return
+        }
+        const userId = ctx.from?.id as number
+        const userName = ctx.from?.first_name as string
+        const curRoom: IRoom | undefined = findRoomForUser(userId)
+        if (curRoom !== undefined) {
+            curRoom.informRoom(ctx, 'msg', new User(userId, userName))
+        }
     }
 }
 

@@ -48,7 +48,10 @@ function handleMessage(ctx: Context) {
         case '/roominfo':
             controller.showRoom(ctx)
             break;
-        default: controller.sendDefaultMessage(ctx, command)
+        case '/rooms':
+            controller.showAllRooms(ctx)
+            break;
+        default: controller.sendMessage(ctx, command)
             break;
     }
 }

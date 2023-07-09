@@ -5,5 +5,6 @@ export interface IController {
     joinRoom: (ctx: Context, roomName: string, watcher?: boolean) => void
     leaveRoom: (ctx: Context) => void
     showRoom: (ctx: Context) => void
-    sendDefaultMessage: (ctx: Context, command: string) => void
+    showAllRooms: (ctx: Context) => void
+    sendMessage: (ctx: Context, command: string) => void
 }

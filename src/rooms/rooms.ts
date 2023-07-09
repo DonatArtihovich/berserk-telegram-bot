@@ -1,5 +1,6 @@
 import { Rooms, IRoom, IUser } from './rooms.types'
 import { Context } from 'telegraf'
+import { IMessage } from '../types'
 
 export const rooms: Rooms = [{
     players: [],
@@ -43,6 +44,7 @@ export class Room implements IRoom {
 
     public informRoom(ctx: Context, key: string, user: IUser): void {
         const informedUsers = this.players.concat(this.watchers).filter(u => u.id !== user.id)
+        const message = ctx.message as IMessage
         let alert: string;
         switch (key) {
             case 'pjoin':
@@ -54,6 +56,8 @@ export class Room implements IRoom {
             case 'exit':
                 alert = `😢 Пользователь ${user.name} покинул комнату.`
                 break;
+            case 'msg':
+                alert = `${user.name}: ${message.text}`
         }
 
         informedUsers.forEach(user => {
