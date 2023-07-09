@@ -57,7 +57,7 @@ export class Room implements IRoom {
                 alert = `😢 Пользователь ${user.name} покинул комнату.`
                 break;
             case 'msg':
-                alert = `${user.name}: ${message.text}`
+                alert = `🗣${user.name}: ${message.text}`
         }
 
         informedUsers.forEach(user => {
