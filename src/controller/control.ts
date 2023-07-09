@@ -7,6 +7,13 @@ export default class Controller implements IController {
     public createRoom(ctx: Context): void {
         if (!ctx) throw new Error('ctx is not defined!')
         const userId = ctx.from?.id as number
+
+        const curRoom: IRoom | undefined = findRoomForUser(userId)
+        if (curRoom !== undefined) {
+            ctx.replyWithHTML(`🚫Вы уже находитесь в комнате <b>${curRoom.name}</b>!`)
+            return
+        }
+
         const userName = ctx.from?.first_name as string
         const roomName: string = generateRandomRoomName()
         const player: IUser = new User(userId, userName)
@@ -20,9 +27,16 @@ export default class Controller implements IController {
     public joinRoom(ctx: Context, roomName: string, watcher = false): void {
         const room = rooms.find(r => r.name === roomName.trim())
         const userId = ctx.from?.id as number
+
+        const curRoom: IRoom | undefined = findRoomForUser(userId)
+        if (curRoom !== undefined) {
+            ctx.replyWithHTML(`🚫Вы уже находитесь в комнате <b>${curRoom.name}</b>!`)
+            return
+        }
+
         const userName = ctx.from?.first_name as string
         if (room?.players.findIndex(p => p.id === userId) !== -1) {
-            ctx.reply(`Комнаты ${roomName} не существует!`)
+            ctx.reply(`🚫Комнаты ${roomName} не существует!`)
             return
         }
 
@@ -42,31 +56,27 @@ export default class Controller implements IController {
 
     public leaveRoom(ctx: Context): void {
         const userId = ctx.from?.id as number
-        const curRoom: IRoom | undefined = rooms.find(r =>
-            r.players.find(p => p.id === userId) !== undefined
-            || r.watchers?.find(w => w.id === userId) !== undefined)
+        const curRoom: IRoom | undefined = findRoomForUser(userId)
 
         if (curRoom === undefined) {
-            ctx.reply('Вы не находитесь в комнате.😐')
+            ctx.reply('🚫Вы не находитесь в комнате.😐')
         } else {
             const userStatusArr = curRoom.players.findIndex(u => u.id === userId) !== -1 ? curRoom.players : curRoom.watchers as IUser[]
             const userIndex = userStatusArr.findIndex(u => u.id === userId)
 
             curRoom.informRoom(ctx, 'exit', userStatusArr[userIndex])
             userStatusArr.splice(userIndex)
-            ctx.replyWithHTML(`вы покинули комнату <b>${curRoom.name}</b>😢`)
+            ctx.replyWithHTML(`✅вы покинули комнату <b>${curRoom.name}</b>😢`)
             console.log(userStatusArr, userIndex, userStatusArr[userIndex])
         }
     }
 
     public showRoom(ctx: Context): void {
         const userId = ctx.from?.id as number
-        const curRoom: IRoom | undefined = rooms.find(r =>
-            r.players.find(p => p.id === userId) !== undefined
-            || r.watchers?.find(w => w.id === userId) !== undefined)
+        const curRoom: IRoom | undefined = findRoomForUser(userId)
 
         if (curRoom === undefined) {
-            ctx.reply('Вы не находитесь в комнате.😐')
+            ctx.reply('🚫Вы не находитесь в комнате.😐')
         } else {
             const playersInRoom = curRoom.players.map(p => p.name)
             const watchersInRoom = curRoom.watchers.map(w => w.name)
@@ -74,7 +84,7 @@ export default class Controller implements IController {
             const watchers = watchersInRoom.length ? `🥸${watchersInRoom.join('\n🥸')}` : '🚫<i>Наблюдателей нет</i>🚫'
             const isOnGame = curRoom.status ? '✅Игра идет✅' : '🚫Игра еще не началась / уже закончилась🚫'
 
-            const message = `📰<b>Информация о комнате</b> <code>${curRoom.name}</code>\n🗞<b>Создатель</b> - ${playersInRoom[0]}\n\n<b>Игроки:</b>\n${players}\n\n<b>Наблюдатели:</b>\n${watchers}\n\n<b>Статус игры:</b> ${isOnGame}`
+            const message = `📰<b>Информация о комнате</b> <code>${curRoom.name}</code>\n🗞<b>Владелец</b> - ${playersInRoom[0]}\n\n<b>Игроки:</b>\n${players}\n\n<b>Наблюдатели:</b>\n${watchers}\n\n<b>Статус игры:</b> ${isOnGame}`
             ctx.replyWithHTML(message)
         }
     }
@@ -96,4 +106,12 @@ function generateRandomRoomName(): string {
         subStr += letter
     }
     return `room${subStr}`
+}
+
+function findRoomForUser(userId: number): IRoom | undefined {
+    const curRoom: IRoom | undefined = rooms.find(r =>
+        r.players.find(p => p.id === userId) !== undefined
+        || r.watchers?.find(w => w.id === userId) !== undefined)
+
+    return curRoom
 }
