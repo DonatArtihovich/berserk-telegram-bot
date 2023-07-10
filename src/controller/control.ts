@@ -66,8 +66,9 @@ export default class Controller implements IController {
             const userIndex = userStatusArr.findIndex(u => u.id === userId)
 
             curRoom.informRoom(ctx, 'exit', userStatusArr[userIndex])
-            userStatusArr.splice(userIndex)
+            userStatusArr.splice(userIndex, 1)
             ctx.replyWithHTML(`✅вы покинули комнату <b>${curRoom.name}</b>😢`)
+            if (curRoom.players.length === 0 && curRoom.watchers.length === 0) rooms.splice(rooms.indexOf(curRoom), 1)
             console.log(userStatusArr, userIndex, userStatusArr[userIndex])
         }
     }
