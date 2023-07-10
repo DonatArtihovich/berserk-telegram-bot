@@ -1,5 +1,7 @@
-import { Telegraf, Context } from 'telegraf'
+import { Telegraf, Context, Markup } from 'telegraf'
 import { message } from 'telegraf/filters'
+import { findRoomForUser } from './controller/control'
+
 import dotenv from 'dotenv'
 import * as Text from './text'
 import Controller from './controller/control'
@@ -8,21 +10,27 @@ dotenv.config()
 
 const token: string | undefined = process.env.TOKEN
 if (token == null) throw new Error('Bot isn\'t founded')
-const bot: Telegraf<any> = new Telegraf(token)
+const bot: Telegraf<Context> = new Telegraf(token)
 const controller: Controller = new Controller()
 
 bot.start((ctx: Context) => {
-    ctx.reply(Text.startMessage)
+    const room = findRoomForUser(ctx.from?.id as number)
+    const roomBtn: [string, string] = room == undefined ? ['Создать комнату', 'room'] : ['Покинуть комнату', 'exit']
+    const menu = Markup.inlineKeyboard([
+        [Markup.button.callback(...roomBtn)],
+        [Markup.button.callback('Доступные комнаты', 'rooms')],
+        [Markup.button.callback('Помощь', 'help')]]
+    );
+
+    ctx.reply(Text.startMessage, menu)
 })
 
-bot.help((ctx: Context) => {
-    ctx.reply(Text.helpMessage)
-})
+bot.help((ctx: Context) => ctx.reply(Text.helpMessage, Markup.inlineKeyboard([Markup.button.callback('Закрыть', 'close')])))
 
-bot.command('room', (ctx) => controller.createRoom(ctx))
-bot.command('exit', (ctx) => controller.leaveRoom(ctx))
-bot.command('roominfo', (ctx) => controller.showRoom(ctx))
-bot.command('rooms', (ctx) => controller.showAllRooms(ctx))
+bot.command('room', controller.createRoom)
+bot.command('exit', controller.leaveRoom)
+bot.command('roominfo', controller.showRoom)
+bot.command('rooms', controller.showAllRooms)
 bot.command('join', (ctx) => {
     const message = ctx.message as IMessage
     const messageText = message.text
@@ -40,6 +48,30 @@ bot.on(message('text'), (ctx: Context) => {
     const message = ctx.message as IMessage
     const messageText = message.text
     if (!messageText.startsWith('/')) controller.sendMessage(ctx)
+})
+
+bot.action('help', (ctx: Context) => {
+    ctx.answerCbQuery()
+    ctx.reply(Text.helpMessage, Markup.inlineKeyboard([Markup.button.callback('Закрыть', 'close')]))
+})
+bot.action('room', (ctx) => {
+    ctx.answerCbQuery()
+    controller.createRoom(ctx)
+})
+bot.action('exit', (ctx) => {
+    ctx.deleteMessage()
+    controller.leaveRoom(ctx)
+})
+bot.action('roominfo', (ctx) => {
+    ctx.editMessageReplyMarkup({ inline_keyboard: [[Markup.button.callback('Выйти', 'exit')]] });
+    controller.showRoom(ctx)
+})
+bot.action('rooms', (ctx) => {
+    ctx.answerCbQuery()
+    controller.showAllRooms(ctx)
+})
+bot.action('close', (ctx) => {
+    ctx.deleteMessage()
 })
 
 bot.launch()

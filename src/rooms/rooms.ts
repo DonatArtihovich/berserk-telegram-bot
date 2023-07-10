@@ -7,7 +7,6 @@ export const rooms: Rooms = [
         name: 'roomquGs6hXLoqZ',
         status: false,
         players: [
-            { id: 1562903450, name: '𝕯𝖔𝖓𝖆𝖙' },
             { id: 1368480274, name: 'Александр' }
         ],
         watchers: [],
@@ -56,10 +55,11 @@ export class Room implements IRoom {
     public informRoom(ctx: Context, key: string, user: IUser): void {
         const informedUsers = this.players.concat(this.watchers).filter(u => u.id !== user.id)
         const message = ctx.message as IMessage
-        if (message.text.length > 2392) {
+        if (key === 'msg' && message.text.length > 2392) {
             ctx.reply('🚫Слишком длинное сообщение!')
             return
         }
+
         let alert: string;
         switch (key) {
             case 'pjoin':

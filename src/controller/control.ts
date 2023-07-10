@@ -1,4 +1,4 @@
-import { Context } from 'telegraf'
+import { Context, Markup } from 'telegraf'
 import { IController } from './control.types'
 import { rooms, Room, User } from '../rooms/rooms'
 import { IRoom, IUser } from '../rooms/rooms.types'
@@ -20,12 +20,20 @@ export default class Controller implements IController {
         const newRoom: IRoom = new Room(roomName, player)
 
         rooms.push(newRoom)
-        ctx.replyWithHTML(`✅Комната под названием <code>${roomName}</code> создана! Пригласите сюда оппонента и зрителей!\n\n😀<i>Оппонент должен ввести <code>/join ${roomName}</code>, чтобы присоединиться как игрок,\n🥸зритель должен ввести <code>/watch ${roomName}</code>, чтобы присоединиться как зритель</i>`)
+        const replyText = `✅Комната под названием <code>${roomName}</code> создана! Пригласите сюда оппонента и зрителей!\n\n😀<i>Оппонент должен ввести <code>/join ${roomName}</code>, чтобы присоединиться как игрок,\n🥸зритель должен ввести <code>/watch ${roomName}</code>, чтобы присоединиться как зритель</i>`
+        const menu = Markup.inlineKeyboard([
+            [Markup.button.callback('Подробности', 'roominfo')],
+            [Markup.button.callback('Удалить и выйти', 'exit')]
+        ])
+        ctx.replyWithHTML(replyText, menu)
         console.log(rooms, rooms[0].players)
     }
 
     public joinRoom(ctx: Context, roomName: string, watcher = false): void {
-        if (roomName == undefined) ctx.reply('🚫Комната не найдена')
+        if (roomName == undefined) {
+            ctx.reply('🚫Комната не найдена')
+            return
+        }
         const room = rooms.find(r => r.name === roomName.trim())
         const userId = ctx.from?.id as number
 
@@ -42,14 +50,18 @@ export default class Controller implements IController {
         }
 
         const user: IUser = new User(userId, userName)
+        const menu = Markup.inlineKeyboard([
+            [Markup.button.callback('Подробности', 'roominfo')],
+            [Markup.button.callback('Выйти', 'exit')]
+        ])
         if (room.players.length < 2 && !watcher) {
             room.players.push(user)
-            ctx.replyWithHTML(`😀Вы добавлены в комнату <b>${room.name}</b> как игрок! Приятной игры!`)
+            ctx.replyWithHTML(`😀Вы добавлены в комнату <b>${room.name}</b> как игрок! Приятной игры!`, menu)
             room.informRoom(ctx, 'pjoin', user)
             console.log(room)
         } else {
             room.watchers.push(user)
-            ctx.replyWithHTML(`🥸Вы добавлены в комнату <b>${room.name}</b> как наблюдатель.`)
+            ctx.replyWithHTML(`🥸Вы добавлены в комнату <b>${room.name}</b> как зритель.`, menu)
             room.informRoom(ctx, 'wjoin', user)
             console.log(room)
         }
@@ -80,6 +92,7 @@ export default class Controller implements IController {
         if (curRoom === undefined) {
             ctx.reply('🚫Вы не находитесь в комнате.😐')
         } else {
+            const menu = Markup.inlineKeyboard([[Markup.button.callback('Выйти', 'exit')], [Markup.button.callback('Закрыть', 'close')]])
             const playersInRoom = curRoom.players.map(p => p.name)
             const watchersInRoom = curRoom.watchers.map(w => w.name)
             const players = playersInRoom.length ? `😀${playersInRoom.join('\n😀')}` : '🚫<i>Игроков нет</i>🚫'
@@ -87,7 +100,7 @@ export default class Controller implements IController {
             const isOnGame = curRoom.status ? '✅Игра идет✅' : '🚫Игра еще не началась / уже закончилась🚫'
 
             const message = `📰<b>Информация о комнате</b> <code>${curRoom.name}</code>\n🗞<b>Владелец</b> - ${playersInRoom[0]}\n\n<b>Игроки:</b>\n${players}\n\n<b>Наблюдатели:</b>\n${watchers}\n\n<b>Статус игры:</b> ${isOnGame}`
-            ctx.replyWithHTML(message)
+            ctx.replyWithHTML(message, menu)
         }
     }
 
@@ -95,7 +108,7 @@ export default class Controller implements IController {
         const roomNames = rooms.map(room => `<code>${room.name}</code>`)
         const list = roomNames.length === 0 ? '<i>🚫Доступных комнат нет🚫</i>' : `🗞${roomNames.join('\n🗞')}`
         const message = `📰<b>Список доступных комнат:</b>\n\n${list}`
-        ctx.replyWithHTML(message)
+        ctx.replyWithHTML(message, Markup.inlineKeyboard([Markup.button.callback('Закрыть', 'close')]))
     }
 
     public sendMessage(ctx: Context): void {
@@ -121,7 +134,7 @@ function generateRandomRoomName(): string {
     return `room${subStr}`
 }
 
-function findRoomForUser(userId: number): IRoom | undefined {
+export function findRoomForUser(userId: number): IRoom | undefined {
     const curRoom: IRoom | undefined = rooms.find(r =>
         r.players.find(p => p.id === userId) !== undefined
         || r.watchers?.find(w => w.id === userId) !== undefined)
