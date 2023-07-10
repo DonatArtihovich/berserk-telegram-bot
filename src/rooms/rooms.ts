@@ -4,16 +4,17 @@ import { IMessage } from '../types'
 
 export const rooms: Rooms = [
     {
-        name: 'roomquGs6hXLoqZ',
+        name: 'roomTest',
         status: false,
         players: [
+            { id: 1562903450, name: '𝕯𝖔𝖓𝖆𝖙' },
             { id: 1368480274, name: 'Александр' }
         ],
         watchers: [],
         informRoom(ctx: Context, key: string, user: IUser): void {
             const informedUsers = this.players.concat(this.watchers).filter(u => u.id !== user.id)
             const message = ctx.message as IMessage
-            if (message.text.length > 2392) {
+            if (key === 'msg' && message.text.length > 2392) {
                 ctx.reply('🚫Слишком длинное сообщение!')
                 return
             }
@@ -26,7 +27,7 @@ export const rooms: Rooms = [
                     alert = `🥸 Пользователь ${user.name} присоединился к комнате как наблюдатель.`
                     break;
                 case 'exit':
-                    alert = `😢 Пользователь ${user.name} покинул комнату.`
+                    alert = `🚪 Пользователь ${user.name} покинул комнату.`
                     break;
                 case 'msg':
                     alert = `🗣${user.name}: ${message.text}`

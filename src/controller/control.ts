@@ -79,7 +79,7 @@ export default class Controller implements IController {
 
             curRoom.informRoom(ctx, 'exit', userStatusArr[userIndex])
             userStatusArr.splice(userIndex, 1)
-            ctx.replyWithHTML(`✅вы покинули комнату <b>${curRoom.name}</b>😢`)
+            ctx.replyWithHTML(`✅Вы покинули комнату <b>${curRoom.name}</b>😢`)
             if (curRoom.players.length === 0 && curRoom.watchers.length === 0) rooms.splice(rooms.indexOf(curRoom), 1)
             console.log(userStatusArr, userIndex, userStatusArr[userIndex])
         }
@@ -96,10 +96,10 @@ export default class Controller implements IController {
             const playersInRoom = curRoom.players.map(p => p.name)
             const watchersInRoom = curRoom.watchers.map(w => w.name)
             const players = playersInRoom.length ? `😀${playersInRoom.join('\n😀')}` : '🚫<i>Игроков нет</i>🚫'
-            const watchers = watchersInRoom.length ? `🥸${watchersInRoom.join('\n🥸')}` : '🚫<i>Наблюдателей нет</i>🚫'
+            const watchers = watchersInRoom.length ? `🥸${watchersInRoom.join('\n🥸')}` : '🚫<i>Зрителей нет</i>🚫'
             const isOnGame = curRoom.status ? '✅Игра идет✅' : '🚫Игра еще не началась / уже закончилась🚫'
 
-            const message = `📰<b>Информация о комнате</b> <code>${curRoom.name}</code>\n🗞<b>Владелец</b> - ${playersInRoom[0]}\n\n<b>Игроки:</b>\n${players}\n\n<b>Наблюдатели:</b>\n${watchers}\n\n<b>Статус игры:</b> ${isOnGame}`
+            const message = `📰<b>Информация о комнате</b> <code>${curRoom.name}</code>\n🗞<b>Владелец</b> - ${playersInRoom[0]}\n\n<b>Игроки:</b>\n${players}\n\n<b>Зрители:</b>\n${watchers}\n\n<b>Статус игры:</b> ${isOnGame}`
             ctx.replyWithHTML(message, menu)
         }
     }
