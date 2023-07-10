@@ -25,6 +25,7 @@ export default class Controller implements IController {
     }
 
     public joinRoom(ctx: Context, roomName: string, watcher = false): void {
+        if (roomName == undefined) ctx.reply('🚫Комната не найдена')
         const room = rooms.find(r => r.name === roomName.trim())
         const userId = ctx.from?.id as number
 
@@ -91,15 +92,12 @@ export default class Controller implements IController {
 
     public showAllRooms(ctx: Context): void {
         const roomNames = rooms.map(room => `<code>${room.name}</code>`)
-        const message = `📰<b>Список доступных комнат:</b>\n\n🗞${roomNames.join('\n🗞')}`
+        const list = roomNames.length === 0 ? '<i>🚫Доступных комнат нет🚫</i>' : `🗞${roomNames.join('\n🗞')}`
+        const message = `📰<b>Список доступных комнат:</b>\n\n${list}`
         ctx.replyWithHTML(message)
     }
 
-    public sendMessage(ctx: Context, command: string): void {
-        if (command[0] === '/') {
-            ctx.reply('Команда не распознана')
-            return
-        }
+    public sendMessage(ctx: Context): void {
         const userId = ctx.from?.id as number
         const userName = ctx.from?.first_name as string
         const curRoom: IRoom | undefined = findRoomForUser(userId)

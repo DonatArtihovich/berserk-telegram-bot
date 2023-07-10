@@ -20,6 +20,10 @@ export class Room implements IRoom {
     public informRoom(ctx: Context, key: string, user: IUser): void {
         const informedUsers = this.players.concat(this.watchers).filter(u => u.id !== user.id)
         const message = ctx.message as IMessage
+        if (message.text.length > 2392) {
+            ctx.reply('🚫Слишком длинное сообщение!')
+            return
+        }
         let alert: string;
         switch (key) {
             case 'pjoin':
