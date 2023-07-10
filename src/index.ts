@@ -1,11 +1,11 @@
 import { Telegraf, Context, Markup } from 'telegraf'
 import { message } from 'telegraf/filters'
 import { findRoomForUser } from './controller/control'
-
 import dotenv from 'dotenv'
 import * as Text from './text'
 import Controller from './controller/control'
 import { IMessage } from './types'
+import { requireDecklist } from './game/game'
 dotenv.config()
 
 const token: string | undefined = process.env.TOKEN
@@ -31,6 +31,7 @@ bot.command('room', controller.createRoom)
 bot.command('exit', controller.leaveRoom)
 bot.command('roominfo', controller.showRoom)
 bot.command('rooms', controller.showAllRooms)
+bot.command('play', controller.startGame)
 bot.command('join', (ctx) => {
     const message = ctx.message as IMessage
     const messageText = message.text
@@ -63,7 +64,7 @@ bot.action('exit', (ctx) => {
     controller.leaveRoom(ctx)
 })
 bot.action('roominfo', (ctx) => {
-    ctx.editMessageReplyMarkup({ inline_keyboard: [[Markup.button.callback('Выйти', 'exit')]] });
+    ctx.editMessageReplyMarkup({ inline_keyboard: [[Markup.button.callback('Выйти', 'exit')], [Markup.button.callback('Начать игру', 'play')]] });
     controller.showRoom(ctx)
 })
 bot.action('rooms', (ctx) => {
@@ -72,6 +73,14 @@ bot.action('rooms', (ctx) => {
 })
 bot.action('close', (ctx) => {
     ctx.deleteMessage()
+})
+bot.action('play', (ctx) => {
+    ctx.answerCbQuery()
+    controller.startGame(ctx)
+})
+bot.action('add_deck', (ctx) => {
+    ctx.deleteMessage()
+    requireDecklist(ctx)
 })
 
 bot.launch()

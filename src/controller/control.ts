@@ -2,6 +2,7 @@ import { Context, Markup } from 'telegraf'
 import { IController } from './control.types'
 import { rooms, Room, User } from '../rooms/rooms'
 import { IRoom, IUser } from '../rooms/rooms.types'
+import { requireDecks } from '../game/game'
 
 export default class Controller implements IController {
     public createRoom(ctx: Context): void {
@@ -22,6 +23,7 @@ export default class Controller implements IController {
         rooms.push(newRoom)
         const replyText = `✅Комната под названием <code>${roomName}</code> создана! Пригласите сюда оппонента и зрителей!\n\n😀<i>Оппонент должен ввести <code>/join ${roomName}</code>, чтобы присоединиться как игрок,\n🥸зритель должен ввести <code>/watch ${roomName}</code>, чтобы присоединиться как зритель</i>`
         const menu = Markup.inlineKeyboard([
+            [Markup.button.callback('Начать игру', 'play')],
             [Markup.button.callback('Подробности', 'roominfo')],
             [Markup.button.callback('Удалить и выйти', 'exit')]
         ])
@@ -79,7 +81,7 @@ export default class Controller implements IController {
 
             curRoom.informRoom(ctx, 'exit', userStatusArr[userIndex])
             userStatusArr.splice(userIndex, 1)
-            ctx.replyWithHTML(`✅Вы покинули комнату <b>${curRoom.name}</b>😢`)
+            ctx.replyWithHTML(`🚪Вы покинули комнату <b>${curRoom.name}</b>`)
             if (curRoom.players.length === 0 && curRoom.watchers.length === 0) rooms.splice(rooms.indexOf(curRoom), 1)
             console.log(userStatusArr, userIndex, userStatusArr[userIndex])
         }
@@ -92,7 +94,10 @@ export default class Controller implements IController {
         if (curRoom === undefined) {
             ctx.reply('🚫Вы не находитесь в комнате.😐')
         } else {
-            const menu = Markup.inlineKeyboard([[Markup.button.callback('Выйти', 'exit')], [Markup.button.callback('Закрыть', 'close')]])
+            const playerMenu = Markup.inlineKeyboard([[Markup.button.callback('Начать игру', 'play')], [Markup.button.callback('Выйти', 'exit')], [Markup.button.callback('Закрыть', 'close')]])
+            const watcherMenu = Markup.inlineKeyboard([[Markup.button.callback('Выйти', 'exit')], [Markup.button.callback('Закрыть', 'close')]])
+            const menu = isPlayer(userId, curRoom) ? playerMenu : watcherMenu
+
             const playersInRoom = curRoom.players.map(p => p.name)
             const watchersInRoom = curRoom.watchers.map(w => w.name)
             const players = playersInRoom.length ? `😀${playersInRoom.join('\n😀')}` : '🚫<i>Игроков нет</i>🚫'
@@ -109,6 +114,24 @@ export default class Controller implements IController {
         const list = roomNames.length === 0 ? '<i>🚫Доступных комнат нет🚫</i>' : `🗞${roomNames.join('\n🗞')}`
         const message = `📰<b>Список доступных комнат:</b>\n\n${list}`
         ctx.replyWithHTML(message, Markup.inlineKeyboard([Markup.button.callback('Закрыть', 'close')]))
+    }
+
+    public startGame(ctx: Context): void {
+        const userId = ctx.from?.id as number
+        const curRoom: IRoom | undefined = findRoomForUser(userId)
+        if (curRoom == undefined) {
+            ctx.reply('🚫Вы не в комнате.')
+            return
+        } else if (!isPlayer(userId, curRoom)) {
+            ctx.reply('🚫Вы не игрок.')
+            return
+        }
+        if (curRoom.isOnGame) return
+        curRoom.isOnGame = true
+        curRoom.watchers.forEach(async (u) => {
+            ctx.telegram.sendMessage(u.id, '🗡Игра запущена!🛡')
+        })
+        requireDecks(ctx, curRoom)
     }
 
     public sendMessage(ctx: Context): void {
@@ -140,4 +163,8 @@ export function findRoomForUser(userId: number): IRoom | undefined {
         || r.watchers?.find(w => w.id === userId) !== undefined)
 
     return curRoom
+}
+
+function isPlayer(userId: number, room: IRoom): boolean {
+    return room.players.findIndex(p => p.id === userId) !== -1
 }
