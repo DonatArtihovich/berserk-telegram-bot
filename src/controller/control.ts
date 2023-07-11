@@ -32,6 +32,7 @@ export default class Controller implements IController {
     }
 
     public joinRoom(ctx: Context, roomName: string, watcher = false): void {
+        if (ctx.message != undefined) ctx.deleteMessage()
         if (roomName == undefined) {
             ctx.reply('🚫Комната не найдена')
             return
@@ -70,6 +71,7 @@ export default class Controller implements IController {
     }
 
     public leaveRoom(ctx: Context): void {
+        if (ctx.message != undefined) ctx.deleteMessage()
         const userId = ctx.from?.id as number
         const curRoom: IRoom | undefined = findRoomForUser(userId)
 
@@ -88,6 +90,7 @@ export default class Controller implements IController {
     }
 
     public showRoom(ctx: Context): void {
+        if (ctx.message != undefined) ctx.deleteMessage()
         const userId = ctx.from?.id as number
         const curRoom: IRoom | undefined = findRoomForUser(userId)
 
@@ -110,6 +113,7 @@ export default class Controller implements IController {
     }
 
     public showAllRooms(ctx: Context): void {
+        if (ctx.message != undefined) ctx.deleteMessage()
         const roomNames = rooms.map(room => `<code>${room.name}</code>`)
         const list = roomNames.length === 0 ? '<i>🚫Доступных комнат нет🚫</i>' : `🗞${roomNames.join('\n🗞')}`
         const message = `📰<b>Список доступных комнат:</b>\n\n${list}`
@@ -117,6 +121,7 @@ export default class Controller implements IController {
     }
 
     public startGame(ctx: Context): void {
+        if (ctx.message != undefined) ctx.deleteMessage()
         const userId = ctx.from?.id as number
         const curRoom: IRoom | undefined = findRoomForUser(userId)
         if (curRoom == undefined) {

@@ -64,7 +64,7 @@ bot.action('exit', (ctx) => {
     controller.leaveRoom(ctx)
 })
 bot.action('roominfo', (ctx) => {
-    ctx.editMessageReplyMarkup({ inline_keyboard: [[Markup.button.callback('Выйти', 'exit')], [Markup.button.callback('Начать игру', 'play')]] });
+    ctx.editMessageReplyMarkup({ inline_keyboard: [[Markup.button.callback('Начать игру', 'play')], [Markup.button.callback('Выйти', 'exit')]] });
     controller.showRoom(ctx)
 })
 bot.action('rooms', (ctx) => {
