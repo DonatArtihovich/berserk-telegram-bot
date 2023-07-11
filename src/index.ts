@@ -84,7 +84,7 @@ bot.action('add_deck', (ctx) => {
 bot.action('cancel_add', (ctx) => {
     const userId = ctx.from?.id as number
     const { message, menu } = printDecksList(userId)
-    ctx.editMessageText(message, { reply_markup: { inline_keyboard: menu } })
+    ctx.editMessageText(message, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 })
 
 bot.launch()

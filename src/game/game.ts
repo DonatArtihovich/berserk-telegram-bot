@@ -2,7 +2,6 @@ import { Context, Markup } from "telegraf";
 import { IRoom } from "../rooms/rooms.types";
 import { IPlayer } from "../players/players.types";
 import { players } from "../players/players";
-import { InlineKeyboardMarkup } from "telegraf/typings/core/types/typegram";
 import * as Text from '../text'
 
 export function requireDecks(ctx: Context, room: IRoom): void {
@@ -14,7 +13,7 @@ export function requireDecks(ctx: Context, room: IRoom): void {
 
 export function requireDecklist(ctx: Context) {
     const menu = [[Markup.button.callback('Отмена', 'cancel_add')]]
-    ctx.editMessageText(Text.requireDecklistMessage, { reply_markup: { inline_keyboard: menu } })
+    ctx.editMessageText(Text.requireDecklistMessage, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 }
 
 export function printDecksList(id: number) {
