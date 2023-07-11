@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 import * as Text from './text'
 import Controller from './controller/control'
 import { IMessage } from './types'
-import { requireDecklist } from './game/game'
+import { printDecksList, requireDecklist } from './game/game'
 dotenv.config()
 
 const token: string | undefined = process.env.TOKEN
@@ -79,8 +79,12 @@ bot.action('play', (ctx) => {
     controller.startGame(ctx)
 })
 bot.action('add_deck', (ctx) => {
-    ctx.deleteMessage()
     requireDecklist(ctx)
+})
+bot.action('cancel_add', (ctx) => {
+    const userId = ctx.from?.id as number
+    const { message, menu } = printDecksList(userId)
+    ctx.editMessageText(message, { reply_markup: { inline_keyboard: menu } })
 })
 
 bot.launch()
