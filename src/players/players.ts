@@ -1,9 +1,10 @@
-import { Players, IPlayer, Deck } from './players.types'
+import { IDeck } from '../game/game.types'
+import { Players, IPlayer } from './players.types'
 
 export const players: Players = []
 
 export class Player implements IPlayer {
-    public decks: Deck[]
+    public decks: IDeck[]
     public winsCount: number
     public losesCount: number
     public drawsCount: number

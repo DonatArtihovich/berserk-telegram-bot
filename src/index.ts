@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 import * as Text from './text'
 import Controller from './controller/control'
 import { IMessage } from './types'
-import { printDecksList, requireDecklist } from './game/game'
+import { addDeck, chooseDeck, printDecksList, requireDecklist } from './game/deck'
 dotenv.config()
 
 const token: string | undefined = process.env.TOKEN
@@ -31,7 +31,7 @@ bot.command('room', controller.createRoom)
 bot.command('exit', controller.leaveRoom)
 bot.command('roominfo', controller.showRoom)
 bot.command('rooms', controller.showAllRooms)
-bot.command('play', controller.startGame)
+bot.command('play', controller.prepareGame)
 bot.command('join', (ctx) => {
     const message = ctx.message as IMessage
     const messageText = message.text
@@ -45,9 +45,14 @@ bot.command('watch', (ctx) => {
     controller.joinRoom(ctx, messageText.split(' ')[1], true)
 })
 
+bot.command('deck', chooseDeck)
+
+bot.hears(/^(.|\n)+$\n(^\d+\s[а-яА-Яa-zA-Z]+)+/gm, addDeck)
+
 bot.on(message('text'), (ctx: Context) => {
     const message = ctx.message as IMessage
     const messageText = message.text
+
     if (!messageText.startsWith('/')) controller.sendMessage(ctx)
 })
 
@@ -76,7 +81,7 @@ bot.action('close', (ctx) => {
 })
 bot.action('play', (ctx) => {
     ctx.answerCbQuery()
-    controller.startGame(ctx)
+    controller.prepareGame(ctx)
 })
 bot.action('add_deck', (ctx) => {
     requireDecklist(ctx)

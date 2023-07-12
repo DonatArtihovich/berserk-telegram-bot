@@ -1,15 +1,13 @@
+import { IDeck } from "../game/game.types"
+
 type Players = IPlayer[]
 
 interface IPlayer {
     id: number
-    decks: Deck[]
+    decks: IDeck[]
     winsCount: number
     losesCount: number
     drawsCount: number
 }
 
-interface Deck {
-    name: string
-    list: Record<string, number>
-}
-export { Players, IPlayer, Deck }
+export { Players, IPlayer }

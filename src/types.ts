@@ -1,3 +1,5 @@
+import { KeyboardButton } from "telegraf/typings/core/types/typegram"
+
 export interface IMessage {
     message_id: number
     from: {
@@ -16,6 +18,7 @@ export interface IMessage {
     date: number
     text: string
     entities: IEntity[]
+    reply_markup: Omit<any, any>
 }
 
 interface IEntity { offset: number, length: number, type: string }

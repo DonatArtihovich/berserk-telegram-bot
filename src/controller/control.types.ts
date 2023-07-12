@@ -7,5 +7,5 @@ export interface IController {
     showRoom: (ctx: Context) => void
     showAllRooms: (ctx: Context) => void
     sendMessage: (ctx: Context) => void
-    startGame: (ctx: Context) => void
+    prepareGame: (ctx: Context) => void
 }

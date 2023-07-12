@@ -2,7 +2,9 @@ import { Context, Markup } from 'telegraf'
 import { IController } from './control.types'
 import { rooms, Room, User } from '../rooms/rooms'
 import { IRoom, IUser } from '../rooms/rooms.types'
-import { requireDecks } from '../game/game'
+import { requireDecks } from '../game/deck'
+import { Game } from '../game/game'
+import { IGame } from '../game/game.types'
 
 export default class Controller implements IController {
     public createRoom(ctx: Context): void {
@@ -120,7 +122,7 @@ export default class Controller implements IController {
         ctx.replyWithHTML(message, Markup.inlineKeyboard([Markup.button.callback('Закрыть', 'close')]))
     }
 
-    public startGame(ctx: Context): void {
+    public prepareGame(ctx: Context): void {
         if (ctx.message != undefined) ctx.deleteMessage()
         const userId = ctx.from?.id as number
         const curRoom: IRoom | undefined = findRoomForUser(userId)
@@ -136,6 +138,10 @@ export default class Controller implements IController {
         curRoom.watchers.forEach(async (u) => {
             ctx.telegram.sendMessage(u.id, '🗡Игра запущена!🛡')
         })
+
+        const game: IGame = new Game(curRoom)
+        curRoom.game = game
+        game.changeStatus('lobby')
         requireDecks(ctx, curRoom)
     }
 

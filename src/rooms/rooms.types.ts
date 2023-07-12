@@ -1,4 +1,5 @@
 import { Context } from "telegraf"
+import { IGame } from "../game/game.types"
 
 export type Rooms = IRoom[]
 
@@ -8,7 +9,7 @@ export interface IRoom {
     players: IUser[]
     watchers: IUser[]
     isOnGame: boolean
-    field?: string[][]
+    game?: IGame
     informRoom: (ctx: Context, key: string, user: IUser) => void
 }
 

@@ -3,6 +3,7 @@
     "build": "webpack",
     "start": "node ./dist/bundle",
     "start:dev": "nodemon ./src/index",
+    "dev": "webpack-dev-server --config webpack.config.js | nodemon ./src/index",
     "lint": "eslint . --ext js --fix"
   },
   "devDependencies": {
@@ -13,7 +14,8 @@
     "nodemon": "^2.0.22",
     "ts-loader": "^9.4.4",
     "webpack": "^5.88.1",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
     "@types/nodemon": "^1.19.2",
