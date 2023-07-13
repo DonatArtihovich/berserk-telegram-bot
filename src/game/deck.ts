@@ -54,7 +54,7 @@ export function addDeck(ctx: Context) {
         const menu = Markup.inlineKeyboard([
             [Markup.button.callback('🔙Назад', 'cancel_add')]
         ])
-        ctx.replyWithHTML(`🃏Колода <b>${deck.name}</b> добавлена!\n\n<b>Деклист:</b>\n<code>${decklist}</code>\n\n<b>Всего карт:</b> ${deck.count}\n\nЧтобы выбррать колоду для игры введите <code>/deck ${deck.name}</code>`, menu)
+        ctx.replyWithHTML(`🃏Колода <b>${deck.name}</b> добавлена!\n\n<b>Деклист:</b>\n<code>${decklist}</code>\n\n<b>Всего карт:</b> ${deck.count}\n\nЧтобы выбрать колоду для игры введите <code>/deck ${deck.name}</code>`, menu)
     }
 
     player.decks.push(deck)
@@ -66,7 +66,7 @@ export function printDecksList(id: number) {
         [Markup.button.callback('➕Добавить колоду', 'add_deck')]
     ]
     const decksList = p !== undefined ? `${p.decks.map(d => `🃏<code>/deck ${d.name}</code>`).join('\n')}` : '🚫<i>Колод нет</i>🚫'
-
+    console.log(decksList)
     const message = `Выберите колоду:\n\n${decksList}`
     return { message, menu }
 }
@@ -93,8 +93,12 @@ export function chooseDeck(ctx: Context): void {
     const message = ctx.message as IMessage
     const deckName = message.text.split(' ')[1].trim()
 
-    const player = players.find(p => p.id === userId)
-    if (player == undefined || userId == undefined || userName == undefined) throw new Error('user not founded')
+    if (userId == undefined || userName == undefined) throw new Error('user not founded')
+    let player = players.find(p => p.id === userId)
+    if (player == undefined) {
+        player = new Player(userId)
+        players.push(player)
+    }
     const room = findRoomForUser(userId)
     if (room == undefined) {
         ctx.reply('🚫Вы не находитесь в комнате')
