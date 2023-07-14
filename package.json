@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --config webpack.config.js",
     "start": "node ./dist/bundle",
     "start:dev": "nodemon ./src/index",
     "dev": "webpack-dev-server --config webpack.config.js | nodemon ./src/index",
@@ -19,6 +19,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "@types/node": "^20.4.2",
     "@types/nodemon": "^1.19.2",
     "dotenv": "^16.3.1",
     "telegraf": "^4.12.2"

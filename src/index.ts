@@ -47,7 +47,7 @@ bot.command('watch', (ctx) => {
 
 bot.command('deck', chooseDeck)
 
-bot.hears(/^(.|\n)+$\n(^\d+\s[а-яА-Яa-zA-Z]+)+/gm, addDeck)
+bot.hears(/^(.|\n)+$\n(^\d+\s[а-яА-Яa-zA-Z]+)+/gm, async (ctx) => await addDeck(ctx))
 
 bot.on(message('text'), (ctx: Context) => {
     const message = ctx.message as IMessage

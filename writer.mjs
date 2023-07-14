@@ -4,7 +4,7 @@ import * as readline from 'node:readline'
 import { fileURLToPath } from 'node:url'
 const { stdout, stdin } = process
 const __dirname = fileURLToPath(path.dirname(import.meta.url))
-const PATH_TO_FILE = path.join(__dirname, '../berserk-telegram-bot/data.json')
+const PATH_TO_FILE = path.join(__dirname, './src/game/data.json')
 
 const rl = readline.createInterface({ input: stdin, output: stdout })
 

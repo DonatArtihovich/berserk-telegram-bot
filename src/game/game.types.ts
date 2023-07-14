@@ -24,3 +24,21 @@ export interface IGamePlayer {
     id: number
     deck: IDeck
 }
+
+export interface Card {
+    name: string
+    cost: number
+    elite: boolean
+    uniqueness: boolean
+    element: string
+    stats: {
+        lifeCount: number
+        walkCount: string
+        simpleHit: string
+    }
+    abilities: string
+    rarity: string
+    index: number
+    description: string
+    set: string
+}

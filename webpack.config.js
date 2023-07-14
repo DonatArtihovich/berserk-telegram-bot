@@ -15,7 +15,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.ts', '.js'],
+        extensions: ['.ts', '.js', '.json'],
     },
     plugins: [
         new EslingPlugin({ extensions: 'ts' })

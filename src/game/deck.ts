@@ -4,9 +4,12 @@ import { IPlayer } from "../players/players.types";
 import { Player, players } from "../players/players";
 import * as Text from '../text'
 import { IMessage } from "../types";
-import { IDeck, ICard } from "./game.types";
+import { IDeck, ICard, Card } from "./game.types";
 import { findRoomForUser } from "../controller/control";
 import { User } from "../rooms/rooms";
+import cards from './data.json'
+
+// const getCards = async () => await (await fetch('./src/game/data.json')).json()
 
 export function requireDecks(ctx: Context, room: IRoom): void {
     room.players.forEach(user => {
@@ -20,7 +23,7 @@ export function requireDecklist(ctx: Context) {
     ctx.editMessageText(Text.requireDecklistMessage, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 }
 
-export function addDeck(ctx: Context) {
+export async function addDeck(ctx: Context) {
     const message = ctx.message as IMessage
     const messageText = message.text
     let deck: IDeck
@@ -44,6 +47,18 @@ export function addDeck(ctx: Context) {
     if (player == undefined) {
         player = new Player(userId)
         players.push(player)
+    }
+
+    if (player.decks.findIndex(d => d.name === deck.name) !== -1) {
+        ctx.replyWithHTML(`🚫<i>Колода с именем <b>${deck.name}</b> уже существует!</i>`)
+        return
+    }
+
+    for (const card of deck.list) {
+        if (cards.findIndex((c: Card) => c.name === card.name) === -1) {
+            ctx.replyWithHTML(`🚫<i>Карта <b>${card.name}</b> не найдена!</i>`)
+            return
+        }
     }
 
     const decklist = deck.list.map((card: ICard) => `${card.count} ${card.name}`).join(',\n')
@@ -101,17 +116,17 @@ export function chooseDeck(ctx: Context): void {
     }
     const room = findRoomForUser(userId)
     if (room == undefined) {
-        ctx.reply('🚫Вы не находитесь в комнате')
+        ctx.replyWithHTML('🚫<i>Вы не находитесь в комнате</i>')
         return
     }
     const game = room.game
     if (game == undefined) {
-        ctx.reply('🚫Игра не запущена')
+        ctx.replyWithHTML('🚫<i>Игра не запущена</i>')
         return
     }
     const deck = player.decks.find(deck => deck.name === deckName)
     if (deck == undefined) {
-        ctx.reply('🚫Колода не найдена')
+        ctx.replyWithHTML('🚫<i>Колода не найдена</i>')
         return
     }
     game.players.push({ id: userId, deck: deck })
