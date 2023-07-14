@@ -15,7 +15,7 @@ async function manageInputs() {
     const cost = await askData('стоимость карты')
     const elite = await askData('элитность карты')
     const uniqueness = await askData('уникальность карты')
-    const element = await askData('стихию карты')
+    const element = 'Степи'//await askData('стихию карты')
     const className = await askData('класс карты')
     const lifeCount = await askData('количество жизней карты')
     const walkCount = await askData('количество клеток хода карты')
@@ -70,7 +70,7 @@ async function writeToFile(data) {
         })
     }).then(json => {
         const arr = JSON.parse(json)
-        const out = arr.concat(data).map(o => `{ "name": "${o.name}", "cost": ${o.cost}, "elite": ${o.elite},"uniqueness": ${o.uniqueness}, "element": "${o.element}", "stats": {"lifeCount":${o.stats.lifeCount},"walkCount":"${o.stats.walkCount}","simpleHit":"${o.stats.simpleHit}"},"abilities": "${o.abilities}", "rarity": "${o.rarity}", "index": ${o.index}, "description": "${o.description}", "set": "Война стихий" }`)
+        const out = arr.concat(data).map(o => `{ "name": "${o.name}", "cost": ${o.cost}, "elite": ${o.elite},"uniqueness": ${o.uniqueness}, "element": "${o.element}","class":"${o.class == undefined ? '' : o.class}", "stats": {"lifeCount":${o.stats.lifeCount},"walkCount":"${o.stats.walkCount}","simpleHit":"${o.stats.simpleHit}"},"abilities": "${o.abilities}", "rarity": "${o.rarity}", "index": ${o.index}, "description": "${o.description}", "set": "Война стихий" }`)
 
         writeJSONFile(out)
     })
@@ -96,6 +96,7 @@ async function writeJSONFile(data) {
 
     writableStream.write(`[${data.join(', ')}]`)
     console.log('Карт добавлено: ', data.length)
+    writableStream.on('close', () => process.exit())
 }
 
 manageInputs()

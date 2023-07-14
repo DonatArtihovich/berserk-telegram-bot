@@ -55,7 +55,7 @@ export async function addDeck(ctx: Context) {
     }
 
     for (const card of deck.list) {
-        if (cards.findIndex((c: Card) => c.name === card.name) === -1) {
+        if (cards.findIndex((c) => c.name === card.name) === -1) {
             ctx.replyWithHTML(`🚫<i>Карта <b>${card.name}</b> не найдена!</i>`)
             return
         }
