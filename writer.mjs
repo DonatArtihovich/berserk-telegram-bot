@@ -70,7 +70,7 @@ async function writeToFile(data) {
         })
     }).then(json => {
         const arr = JSON.parse(json)
-        const out = arr.concat(data).map(o => `{ "name": "${o.name}", "cost": ${o.cost}, "elite": ${o.elite},"uniqueness": ${o.uniqueness}, "element": "${o.element}","class":"${o.class == undefined ? '' : o.class}", "stats": {"lifeCount":${o.stats.lifeCount},"walkCount":"${o.stats.walkCount}","simpleHit":"${o.stats.simpleHit}"},"abilities": "${o.abilities.replaceAll('Защита от отравления', '🩸')}", "rarity": "${o.rarity}", "index": ${o.index}, "description": "${o.description}", "set": "Война стихий" }`)
+        const out = arr.concat(data).map(o => `{ "name": "${o.name}", "cost": ${o.cost}, "elite": ${o.elite},"uniqueness": ${o.uniqueness}, "element": "${o.element}","class": ${o.class ? '"' + o.class + '"' : null}, "stats": {"lifeCount":${o.stats.lifeCount},"walkCount":"${o.stats.walkCount}","simpleHit":"${o.stats.simpleHit}"},"abilities": ${o.abilities ? '"' + o.abilities + '"' : null}, "rarity": "${o.rarity}", "index": ${o.index}, "description": ${o.description ? '"' + o.description + '"' : null}, "set": "Война стихий" }`)
 
         writeJSONFile(out)
     })
