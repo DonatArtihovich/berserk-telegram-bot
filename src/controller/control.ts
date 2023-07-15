@@ -50,7 +50,7 @@ export default class Controller implements IController {
 
         const userName = ctx.from?.first_name as string
         if (room?.players.findIndex(p => p.id === userId) !== -1) {
-            ctx.reply(`🚫<i>Комнаты <b>${roomName}</b> не существует.</i>`)
+            ctx.replyWithHTML(`🚫<i>Комнаты <b>${roomName}</b> не существует.</i>`)
             return
         }
 
@@ -78,7 +78,7 @@ export default class Controller implements IController {
         const curRoom: IRoom | undefined = findRoomForUser(userId)
 
         if (curRoom === undefined) {
-            ctx.reply('🚫<i>Вы не находитесь в комнате.</i>')
+            ctx.replyWithHTML('🚫<i>Вы не находитесь в комнате.</i>')
         } else {
             const userStatusArr = curRoom.players.findIndex(u => u.id === userId) !== -1 ? curRoom.players : curRoom.watchers as IUser[]
             const userIndex = userStatusArr.findIndex(u => u.id === userId)
@@ -97,7 +97,7 @@ export default class Controller implements IController {
         const curRoom: IRoom | undefined = findRoomForUser(userId)
 
         if (curRoom === undefined) {
-            ctx.reply('🚫<i>Вы не находитесь в комнате.</i>')
+            ctx.replyWithHTML('🚫<i>Вы не находитесь в комнате.</i>')
         } else {
             const playerMenu = Markup.inlineKeyboard([[Markup.button.callback('Начать игру', 'play')], [Markup.button.callback('Выйти', 'exit')], [Markup.button.callback('Закрыть', 'close')]])
             const watcherMenu = Markup.inlineKeyboard([[Markup.button.callback('Выйти', 'exit')], [Markup.button.callback('Закрыть', 'close')]])
@@ -127,10 +127,10 @@ export default class Controller implements IController {
         const userId = ctx.from?.id as number
         const curRoom: IRoom | undefined = findRoomForUser(userId)
         if (curRoom == undefined) {
-            ctx.reply('🚫<i>Вы не находитесь в комнате.</i>')
+            ctx.replyWithHTML('🚫<i>Вы не находитесь в комнате.</i>')
             return
         } else if (!isPlayer(userId, curRoom)) {
-            ctx.reply('🚫<i>Вы не игрок.</i>')
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
             return
         }
         if (curRoom.isOnGame) return
