@@ -106,6 +106,10 @@ export function chooseDeck(ctx: Context): void {
     const userId = ctx.from?.id
     const userName = ctx.from?.first_name
     const message = ctx.message as IMessage
+    if (!message.text.split(' ')[1]) {
+        ctx.replyWithHTML('🚫<i>Колода не найдена.</i>')
+        return
+    }
     const deckName = message.text.split(' ')[1].trim()
 
     if (userId == undefined || userName == undefined) throw new Error('user not founded')
