@@ -25,11 +25,15 @@ export interface IGamePlayer {
     deck: IDeck
     squad: ISquad
     grave: Card[]
+    handMessages: number[]
 }
 
 export interface ISquad {
     fliers: Card[]
     field: Card[]
+    startArrangement: Card[][]
+    arrangingArr?: { name: string, index: number }[]
+    arrangingIndex?: number
 }
 
 export interface Card {

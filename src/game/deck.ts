@@ -25,7 +25,7 @@ export default class Deck {
     }
 
     public static requireDecklist(ctx: Context) {
-        const menu = [[Markup.button.callback('Отмена', 'cancel_add')]]
+        const menu = [[Markup.button.callback('Отмена', 'cancel_add-deck')]]
         ctx.editMessageText(Text.requireDecklistMessage, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
     }
 
@@ -77,42 +77,36 @@ export default class Deck {
         } else {
 
             const menu = Markup.inlineKeyboard([
-                [Markup.button.callback('🔙Назад', 'cancel_add')]
+                [
+                    Markup.button.callback('🔙Назад', 'cancel_add-deck'),
+                    Markup.button.callback('🎮Играть', `choose-deck_${deck.name}`)
+                ]
             ])
 
-            ctx.replyWithHTML(`🃏Колода <b>${deck.name}</b> добавлена!\n\n<b>Деклист:</b>\n<code>${decklist}</code>\n\n<b>Всего карт:</b> ${deck.count}\n\nЧтобы выбрать колоду для игры введите <code>/deck ${deck.name}</code>`, menu)
+            ctx.replyWithHTML(`🃏Колода <b>${deck.name}</b> добавлена!\n\n<b>Деклист:</b>\n<code>${decklist}</code>\n\n<b>Всего карт:</b> ${deck.count}`, menu)
         }
 
         player.decks.push(deck)
     }
 
     public static printDecks(id: number) {
-        const p = findPlayerById(id)
+        const player = findPlayerById(id)
 
-        const menu = [
-            [Markup.button.callback('➕Добавить колоду', 'add_deck')]
-        ]
+        const deckButtonsArr = player == undefined ? [] : player.decks.map((deck) => [Markup.button.callback(`🃏${deck.name}`, `choose-deck_${deck.name}`)])
 
-        const decksList = p !== undefined ? `${p.decks.map(d => `🃏<code>/deck ${d.name}</code>`).join('\n')}` : '🚫<i>Колод нет</i>🚫'
-        const message = `Выберите колоду:\n\n${decksList}`
+        const menu = deckButtonsArr.concat([
+            [Markup.button.callback('➕Добавить колоду', 'add_deck')],
+        ])
+        // const decksList = p !== undefined ? `${p.decks.map(d => `🃏<code>/deck ${d.name}</code>`).join('\n')}` : '🚫<i>Колод нет</i>🚫'
+        const message = 'Выберите колоду:'
 
         return { message, menu }
     }
 
-    public static async chooseDeck(ctx: Context) {
-
+    public static async chooseDeck(ctx: Context, deckName: string) {
         const userId = ctx.from?.id
         const userName = ctx.from?.first_name
         if (userId == undefined || userName == undefined) throw new Error('user not founded')
-
-        const message = ctx.message as IMessage
-
-        if (!message.text.split(' ')[1]) {
-            ctx.replyWithHTML('🚫<i>Колода не найдена.</i>')
-            return
-        }
-
-        const deckName = message.text.split(' ')[1].trim()
 
         let player = players.find(p => p.id === userId)
 
@@ -158,7 +152,13 @@ export default class Deck {
         return hand
     }
 
-    public static validateCard(card: Card): string {
+    public static parseCard(cardObj: Card | string, isFull = false): string {
+        let card = cardObj
+
+        if (typeof card === 'string') {
+            card = this.findCardByName(cardObj as string) as Card
+        }
+
         const cardCost = card.elite ? '🔶' + card.cost : '🔷' + card.cost
         const cardName = `<b>${card.name}</b>`
 
@@ -166,25 +166,27 @@ export default class Deck {
 
         switch (card.element.toLowerCase().trim()) {
             case 'степи':
-                cardElement = '☀️' + card.element
+                cardElement = isFull ? '☀️' + card.element : '☀️'
                 break;
             case 'леса':
-                cardElement = '🌳' + card.element
+                cardElement = isFull ? '🌳' + card.element : '🌳'
                 break;
             case 'горы':
-                cardElement = '🗻' + card.element
+                cardElement = isFull ? '🗻' + card.element : '🗻'
                 break;
             case 'болото':
-                cardElement = '🌾' + card.element
+                cardElement = isFull ? '🌾' + card.element : '🌾'
                 break;
             case 'тьма':
-                cardElement = '💀' + card.element
+                cardElement = isFull ? '💀' + card.element : '💀'
                 break;
             default:
-                cardElement = '⚔' + card.element
+                cardElement = isFull ? '⚔' + card.element : '⚔'
         }
 
         const cardHead = [cardCost, cardName, cardElement].join('  ')
+
+        if (!isFull) return cardHead
 
         const cardClass = `———————${card.class ? card.class : '————'}———————`
 
@@ -217,6 +219,149 @@ export default class Deck {
         const cardString = [cardHead, cardClass, cardStats, cardAbilities, cardDescription, `${card.index} <b>${card.set}</b> ${cardRarity}`].join('\n')
 
         return cardString
+    }
+
+    public static addCardToSquad(ctx: Context, name: string) {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            return
+        }
+
+        const card = this.findCardByName(name)
+        if (card == undefined) throw new Error('Card not found')
+
+        if (card.stats.walkCount.toLowerCase().trim() === 'полет') {
+            player.squad.fliers.push(card)
+        } else {
+            player.squad.field.push(card)
+        }
+    }
+
+    public static async mulliganHand(ctx: Context) {
+        this.deleteLastSquad(ctx)
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            return
+        }
+
+        const hand: Card[] = Deck.generateHand(player)
+
+        await ctx.reply('🤚Новая рука сгенерирована!')
+        new Promise((resolve) => {
+            hand.forEach(async (card, index) => {
+
+                const menu = [
+                    [
+                        Markup.button.callback('➕', `squad_${card.name}`),
+                        Markup.button.callback('❔', `info_${card.name}`)
+                    ]
+                ]
+
+                await ctx.reply(Deck.parseCard(card), { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                if (index === hand.length - 1) resolve(1)
+            })
+        })
+            .then(() => {
+
+                const menu = [
+                    [
+                        Markup.button.callback('🗺Расставить', `arrange-squad`),
+                        Markup.button.callback('🤚Пересдать', `mulligan`)
+                    ]
+                ]
+
+                ctx.reply('Расставить отряд: ', { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+            })
+    }
+
+    private static async deleteLastSquad(ctx: Context) {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const squadMessagesIds = player.handMessages
+        squadMessagesIds.forEach(id => {
+            ctx.deleteMessage(id).catch((e) => { console.log(e) })
+        })
+    }
+
+    public static deleteCardFromSquad(ctx: Context, name: string) {
+        const userId = ctx.chat?.id
+        if (userId == undefined) throw new Error('User not found')
+
+        const room = findRoomForUser(userId)
+        if (room == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не находитесь в комнате.</i>')
+            return
+        }
+
+        const game = room.game
+        if (game === undefined) {
+            ctx.replyWithHTML('🚫<i>Игра не начата.</i>')
+            return
+        }
+
+        const player = game.players.find(player => player.id === userId)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const card = this.findCardByName(name)
+        if (card == undefined) throw new Error('Card not found')
+
+        const squadArr = card.stats.walkCount.toLowerCase().trim() === 'полет' ? player.squad.fliers : player.squad.field
+
+        const cardIndex = squadArr.findIndex(card => card.name === name)
+
+        if (cardIndex !== -1) {
+            squadArr.splice(cardIndex, 1)
+        }
+    }
+
+    public static startArranging(ctx: Context) {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            return
+        }
+
+        const playerSquad = player.squad.field.concat(player.squad.fliers).map(({ name }, index) => { return { name, index } })
+        player.squad.arrangingArr = playerSquad
+
+        this.arrange(ctx, 0)
+    }
+
+    private static arrange(ctx: Context, currentIndex: number) {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            return
+        }
+        const arrangingArr = player.squad.arrangingArr
+        if (arrangingArr == undefined) {
+            throw new Error('Arranging arr not found')
+        }
+
+        player.squad.arrangingIndex = currentIndex
+
+        const playerSquad = player.squad.field.concat(player.squad.fliers).map(({ name }, index) => { return { name, index } })
+
+        const playerSquadStr = playerSquad.map((card, index) => index !== currentIndex ? (arrangingArr.findIndex(c => c.index === card.index) === -1 ? `✅${card.name}` : `✔️${card.name}`) : `➡️<b>${card.name}</b>`).join('\n')
+        const message = `Расставьте свой отряд:\n${playerSquadStr}`
+
+        const menu = Markup.inlineKeyboard([
+            [Markup.button.callback(' ', 'ar-card-place_1'), Markup.button.callback(' ', 'ar-card-place_2'), Markup.button.callback(' ', 'ar-card-place_3'), Markup.button.callback(' ', 'ar-card-place_4'), Markup.button.callback(' ', 'ar-card-place_ 5')],
+            [Markup.button.callback(' ', 'ar-card-place_7'), Markup.button.callback(' ', 'ar-card-place_8'), Markup.button.callback(' ', 'ar-card-place_9'), Markup.button.callback(' ', 'ar-card-place_10'), Markup.button.callback(' ', 'ar-card-place_11')],
+            [Markup.button.callback(' ', 'ar-card-place_12'), Markup.button.callback(' ', 'ar-card-place_12'), Markup.button.callback(' ', 'ar-card-place_13'), Markup.button.callback(' ', 'ar-card-place_14'), Markup.button.callback(' ', 'ar-card-place_15')],
+            [Markup.button.callback('🔙Назад', ' '), Markup.button.callback('Дальше🔜', ' ')]
+        ])
+
+        ctx.replyWithHTML(message, menu)
     }
 
     private static parseDecklist(decklist: string): IDeck {
@@ -284,8 +429,31 @@ export default class Deck {
     }
 
     private static parseHand(set: string[]): Card[] {
-        const hand: Card[] = set.map(cardName => cards.find(c => c.name.toLowerCase().trim() === cardName.toLowerCase().trim())) as Card[]
+        const hand: Card[] = set.map(cardName => this.findCardByName(cardName)) as Card[]
         return hand
+    }
+
+    private static findCardByName(name: string): Card | void {
+        return cards.find(card => card.name.toLowerCase().trim() === name.toLowerCase().trim()) as Card | undefined
+    }
+
+    private static findGamePlayerByCtx(ctx: Context): IGamePlayer | undefined {
+        const userId = ctx.chat?.id
+        if (userId == undefined) throw new Error('User not found')
+
+        const room = findRoomForUser(userId)
+        if (room == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не находитесь в комнате.</i>')
+            return
+        }
+
+        const game = room.game
+        if (game === undefined) {
+            ctx.replyWithHTML('🚫<i>Игра не начата.</i>')
+            return
+        }
+
+        return game.players.find(player => player.id === userId)
     }
 }
 

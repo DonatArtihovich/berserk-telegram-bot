@@ -1,5 +1,6 @@
 import { Context } from "telegraf"
 import { IGame } from "../game/game.types"
+import { Message } from "telegraf/typings/core/types/typegram"
 
 export type Rooms = IRoom[]
 
@@ -10,7 +11,7 @@ export interface IRoom {
     watchers: IUser[]
     isOnGame: boolean
     game?: IGame
-    informRoom: (ctx: Context, key: string, user: IUser) => void
+    informRoom: (ctx: Context, key: string, user: IUser) => Promise<Message>
 }
 
 export interface IUser {
