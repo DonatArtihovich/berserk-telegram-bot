@@ -4,7 +4,7 @@ import { IRoom } from "../rooms/rooms.types"
 export interface IDeck {
     name: string
     list: ICard[]
-    count?: number
+    count: number
 }
 
 export interface ICard {

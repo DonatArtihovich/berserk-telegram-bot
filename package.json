@@ -1,8 +1,8 @@
 {
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "node ./dist/bundle",
     "start:dev": "nodemon ./src/index",
+    "start": "node ./dist/bundle",
     "dev": "webpack-dev-server --config webpack.config.js | nodemon ./src/index",
     "lint": "eslint . --ext js --fix",
     "write": "node writer.mjs"

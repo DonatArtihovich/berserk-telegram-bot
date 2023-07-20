@@ -1,5 +1,3 @@
-import { KeyboardButton } from "telegraf/typings/core/types/typegram"
-
 export interface IMessage {
     message_id: number
     from: {
