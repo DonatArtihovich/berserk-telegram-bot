@@ -2,7 +2,7 @@ import { Context, Markup } from 'telegraf'
 import { IController } from './control.types'
 import { rooms, Room, User } from '../rooms/rooms'
 import { IRoom, IUser } from '../rooms/rooms.types'
-import { requireDecks } from '../game/deck'
+import Deck from '../game/deck'
 import { Game } from '../game/game'
 import { IGame } from '../game/game.types'
 
@@ -168,7 +168,7 @@ export default class Controller implements IController {
         curRoom.game = game
 
         game.changeStatus('lobby')
-        requireDecks(ctx, curRoom)
+        Deck.requireDecks(ctx, curRoom)
     }
 
     public sendMessage(ctx: Context): void {

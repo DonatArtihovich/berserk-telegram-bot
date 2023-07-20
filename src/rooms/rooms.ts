@@ -20,9 +20,10 @@ export class Room implements IRoom {
         this.isOnGame = false
     }
 
-    public informRoom(ctx: Context, key: string, user: IUser): void {
+    public async informRoom(ctx: Context, key: string, user: IUser) {
         const informedUsers = !key.startsWith('gen_') ? this.players.concat(this.watchers).filter(u => u.id !== user.id) : this.players.concat(this.watchers)
         const message = ctx.message as IMessage
+
         if (key === 'msg' && message.text.length > 2392) {
             ctx.reply('🚫Слишком длинное сообщение!')
             return
@@ -31,26 +32,32 @@ export class Room implements IRoom {
         let alert: string;
         switch (key) {
             case 'pjoin':
+
                 alert = `😀 Пользователь <b>${user.name}</b> присоединился к комнате как игрок.`
                 break;
             case 'wjoin':
+
                 alert = `🥸 Пользователь <b>${user.name}</b> присоединился к комнате как наблюдатель.`
                 break;
             case 'exit':
+
                 alert = `😢 Пользователь <b>${user.name}</b> покинул комнату.`
                 break;
             case 'deck':
+
                 alert = `🃏 Пользователь <b>${user.name}</b> выбрал колоду для игры.`
                 break;
             case 'gen_start':
+
                 alert = '✅Колоды выбраны! Набирайте отряды.'
                 break;
             case 'msg':
+
                 alert = `🗣<b>${user.name}</b>: ${message.text}`
         }
 
-        informedUsers.forEach(user => {
-            ctx.telegram.sendMessage(user.id, alert, { parse_mode: 'HTML' })
+        informedUsers.forEach(async user => {
+            await ctx.telegram.sendMessage(user.id, alert, { parse_mode: 'HTML' })
         })
     }
 }

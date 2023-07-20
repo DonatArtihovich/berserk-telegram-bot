@@ -5,7 +5,7 @@ import dotenv from 'dotenv'
 import * as Text from './text'
 import Controller from './controller/control'
 import { IMessage } from './types'
-import { addDeck, chooseDeck, printDecks, requireDecklist } from './game/deck'
+import Deck from './game/deck'
 dotenv.config()
 
 const token: string | undefined = process.env.TOKEN
@@ -54,9 +54,9 @@ bot.command('watch', (ctx) => {
     app.joinRoom(ctx, messageText.split(' ')[1], true)
 })
 
-bot.command('deck', chooseDeck)
+bot.command('deck', Deck.chooseDeck)
 
-bot.hears(/^(.|\n)+$\n(^\d+\s[а-яА-Яa-zA-Z]+)+/gm, async (ctx) => await addDeck(ctx))
+bot.hears(/^(.|\n)+$\n(^\d+\s[а-яА-Яa-zA-Z]+)+/gm, (ctx) => Deck.addDeck(ctx))
 
 bot.on(message('text'), (ctx: Context) => {
     const message = ctx.message as IMessage
@@ -103,12 +103,12 @@ bot.action('play', (ctx) => {
 })
 
 bot.action('add_deck', (ctx) => {
-    requireDecklist(ctx)
+    Deck.requireDecklist(ctx)
 })
 
 bot.action('cancel_add', (ctx) => {
     const userId = ctx.from?.id as number
-    const { message, menu } = printDecks(userId)
+    const { message, menu } = Deck.printDecks(userId)
 
     ctx.editMessageText(message, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 })

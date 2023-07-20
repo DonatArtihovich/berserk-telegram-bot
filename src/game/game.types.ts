@@ -23,12 +23,20 @@ export interface IGame {
 export interface IGamePlayer {
     id: number
     deck: IDeck
+    squad: ISquad
+    grave: Card[]
+}
+
+export interface ISquad {
+    fliers: Card[]
+    field: Card[]
 }
 
 export interface Card {
     name: string
     cost: number
     elite: boolean
+    class: string
     uniqueness: boolean
     element: string
     stats: {
