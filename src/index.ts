@@ -180,4 +180,9 @@ bot.action('arrange-squad', (ctx) => {
     Deck.startArranging(ctx)
 })
 
+bot.action(/^ar-card-place_/, (ctx) => {
+    ctx.answerCbQuery()
+    ctx.reply(ctx.match.input)
+})
+
 bot.launch()

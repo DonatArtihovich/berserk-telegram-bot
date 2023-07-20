@@ -9,6 +9,7 @@ import { findRoomForUser } from "../controller/control";
 import { User } from "../rooms/rooms";
 import cards from './data.json'
 import { GamePlayer } from "./game-player";
+import { InlineKeyboardMarkup } from "telegraf/typings/core/types/typegram";
 
 // const getCards = async () => await (await fetch('./src/game/data.json')).json()
 
@@ -333,14 +334,20 @@ export default class Deck {
         const playerSquad = player.squad.field.concat(player.squad.fliers).map(({ name }, index) => { return { name, index } })
         player.squad.arrangingArr = playerSquad
 
-        this.arrange(ctx, 0)
+        const { message, menu } = this.arrange(ctx, 0)
+        if (message == undefined || menu == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            return
+        }
+
+        ctx.replyWithHTML(message, menu)
     }
 
-    private static arrange(ctx: Context, currentIndex: number) {
+    private static arrange(ctx: Context, currentIndex: number): { message: string | undefined, menu: Markup.Markup<InlineKeyboardMarkup> | undefined } {
         const player = this.findGamePlayerByCtx(ctx)
         if (player == undefined) {
             ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
-            return
+            return { message: undefined, menu: undefined }
         }
         const arrangingArr = player.squad.arrangingArr
         if (arrangingArr == undefined) {
@@ -354,14 +361,45 @@ export default class Deck {
         const playerSquadStr = playerSquad.map((card, index) => index !== currentIndex ? (arrangingArr.findIndex(c => c.index === card.index) === -1 ? `✅${card.name}` : `✔️${card.name}`) : `➡️<b>${card.name}</b>`).join('\n')
         const message = `Расставьте свой отряд:\n${playerSquadStr}`
 
-        const menu = Markup.inlineKeyboard([
-            [Markup.button.callback(' ', 'ar-card-place_1'), Markup.button.callback(' ', 'ar-card-place_2'), Markup.button.callback(' ', 'ar-card-place_3'), Markup.button.callback(' ', 'ar-card-place_4'), Markup.button.callback(' ', 'ar-card-place_ 5')],
-            [Markup.button.callback(' ', 'ar-card-place_7'), Markup.button.callback(' ', 'ar-card-place_8'), Markup.button.callback(' ', 'ar-card-place_9'), Markup.button.callback(' ', 'ar-card-place_10'), Markup.button.callback(' ', 'ar-card-place_11')],
-            [Markup.button.callback(' ', 'ar-card-place_12'), Markup.button.callback(' ', 'ar-card-place_12'), Markup.button.callback(' ', 'ar-card-place_13'), Markup.button.callback(' ', 'ar-card-place_14'), Markup.button.callback(' ', 'ar-card-place_15')],
-            [Markup.button.callback('🔙Назад', ' '), Markup.button.callback('Дальше🔜', ' ')]
-        ])
+        // Markup.inlineKeyboard([
+        //     [Markup.button.callback(' ', 'ar-card-place_1'), Markup.button.callback(' ', 'ar-card-place_2'), Markup.button.callback(' ', 'ar-card-place_3'), Markup.button.callback(' ', 'ar-card-place_4'), Markup.button.callback(' ', 'ar-card-place_ 5')],
+        //     [Markup.button.callback(' ', 'ar-card-place_6'), Markup.button.callback(' ', 'ar-card-place_7'), Markup.button.callback(' ', 'ar-card-place_8'), Markup.button.callback(' ', 'ar-card-place_10'), Markup.button.callback(' ', 'ar-card-place_11')],
+        //     [Markup.button.callback(' ', 'ar-card-place_12'), Markup.button.callback(' ', 'ar-card-place_12'), Markup.button.callback(' ', 'ar-card-place_13'), Markup.button.callback(' ', 'ar-card-place_14'), Markup.button.callback(' ', 'ar-card-place_15')],
+        //     [Markup.button.callback('🔙Назад', ' '), Markup.button.callback('Дальше🔜', ' ')]
+        // ])
+        let idx = 0
+        const menu = Markup.inlineKeyboard(player.squad.startArrangement.map((array, i) => {
 
-        ctx.replyWithHTML(message, menu)
+            if (i) idx += array.length
+
+            const row = array.map((item, i) => {
+                let itemElement
+                if (item) {
+                    switch (item.element.trim().toLowerCase()) {
+                        case 'степи':
+                            itemElement = '☀️'
+                            break;
+                        case 'леса':
+                            itemElement = '🌳'
+                            break;
+                        case 'горы':
+                            itemElement = '🗻'
+                            break;
+                        case 'болото':
+                            itemElement = '🌾'
+                            break;
+                        case 'тьма':
+                            itemElement = '💀'
+                            break;
+                        default:
+                            itemElement = '⚔️'
+                    }
+                }
+                return Markup.button.callback(itemElement || '⬜️', `ar-card-place_${idx + i}`)
+            })
+            return row
+        }).concat([[Markup.button.callback('🔙Назад', ' '), Markup.button.callback('Дальше🔜', ' ')]]))
+        return { message, menu }
     }
 
     private static parseDecklist(decklist: string): IDeck {
