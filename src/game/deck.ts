@@ -9,7 +9,7 @@ import { findRoomForUser } from "../controller/control";
 import { User } from "../rooms/rooms";
 import cards from './data.json'
 import { GamePlayer } from "./game-player";
-import { InlineKeyboardMarkup } from "telegraf/typings/core/types/typegram";
+import { InlineKeyboardButton } from "telegraf/typings/core/types/typegram";
 
 // const getCards = async () => await (await fetch('./src/game/data.json')).json()
 
@@ -225,7 +225,7 @@ export default class Deck {
     public static addCardToSquad(ctx: Context, name: string) {
         const player = this.findGamePlayerByCtx(ctx)
         if (player == undefined) {
-            ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
             return
         }
 
@@ -340,10 +340,53 @@ export default class Deck {
             return
         }
 
-        ctx.replyWithHTML(message, menu)
+        ctx.replyWithHTML(message, Markup.inlineKeyboard(menu))
     }
 
-    private static arrange(ctx: Context, currentIndex: number): { message: string | undefined, menu: Markup.Markup<InlineKeyboardMarkup> | undefined } {
+    public static arrangeCard(ctx: Context, cellId: string) {
+        if (ctx.callbackQuery == undefined) {
+            throw new Error('Message not found')
+        }
+
+        const messageObj: IMessage = ctx.callbackQuery.message as IMessage
+        const text = messageObj.text
+        // const messageId = messageObj.message_id
+
+        const cardName = text.split('\n').find(str => str.startsWith('➡️'))?.slice(2).toLowerCase().trim()
+        if (cardName == undefined) {
+            return
+        }
+
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const cellNumber = Number(cellId.split('_')[1])
+        const row = Math.floor(cellNumber / 5)
+        const cell = cellNumber % 5
+
+        console.log(cardName, this.findCardByName(cardName))
+        player.squad.startArrangement[row][cell] = this.findCardByName(cardName) as Card
+
+        const arrangingArr = player.squad.arrangingArr
+        if (arrangingArr == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        arrangingArr.splice(arrangingArr.findIndex(c => c.name.toLowerCase().trim() === cardName), 1)
+        const { message, menu } = this.arrange(ctx, player.squad.arrangingIndex !== undefined ? player.squad.arrangingIndex + 1 : 0)
+
+        if (message == undefined || menu == undefined) {
+            throw new Error('Message is undefined')
+        }
+
+        ctx.editMessageText(message, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+    }
+
+    private static arrange(ctx: Context, currentIndex: number): { message: string | undefined, menu: InlineKeyboardButton[][] | undefined } {
         const player = this.findGamePlayerByCtx(ctx)
         if (player == undefined) {
             ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
@@ -368,10 +411,10 @@ export default class Deck {
         //     [Markup.button.callback('🔙Назад', ' '), Markup.button.callback('Дальше🔜', ' ')]
         // ])
         let idx = 0
-        const menu = Markup.inlineKeyboard(player.squad.startArrangement.map((array, i) => {
+        const menu = player.squad.startArrangement.map((array, i) => {
 
             if (i) idx += array.length
-
+            console.log(array)
             const row = array.map((item, i) => {
                 let itemElement
                 if (item) {
@@ -398,7 +441,7 @@ export default class Deck {
                 return Markup.button.callback(itemElement || '⬜️', `ar-card-place_${idx + i}`)
             })
             return row
-        }).concat([[Markup.button.callback('🔙Назад', ' '), Markup.button.callback('Дальше🔜', ' ')]]))
+        }).concat([[Markup.button.callback('🔙Назад', ' '), Markup.button.callback('Дальше🔜', ' ')]])
         return { message, menu }
     }
 
@@ -472,6 +515,7 @@ export default class Deck {
     }
 
     private static findCardByName(name: string): Card | void {
+        console.log(name.toLowerCase().trim())
         return cards.find(card => card.name.toLowerCase().trim() === name.toLowerCase().trim()) as Card | undefined
     }
 

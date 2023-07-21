@@ -183,6 +183,7 @@ bot.action('arrange-squad', (ctx) => {
 bot.action(/^ar-card-place_/, (ctx) => {
     ctx.answerCbQuery()
     ctx.reply(ctx.match.input)
+    Deck.arrangeCard(ctx, ctx.match.input)
 })
 
 bot.launch()
