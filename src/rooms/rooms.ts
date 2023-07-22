@@ -53,6 +53,9 @@ export class Room implements IRoom {
 
                     alert = '✅Колоды выбраны! Набирайте отряды.'
                     break;
+                case 'finish-arranging':
+                    alert = `🗺 Пользователь <b>${user.name}</b> расставил свой отряд.`;
+                    break;
                 case 'msg':
 
                     alert = `🗣<b>${user.name}</b>: ${message.text}`

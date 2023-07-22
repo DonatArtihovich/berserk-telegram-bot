@@ -18,10 +18,13 @@ export interface IGame {
     readonly room: IRoom
     changeStatus: (status: 'on' | 'off' | 'lobby') => void
     startGame: (ctx: Context) => void
+    finishArranging: (ctx: Context) => void
 }
 
 export interface IGamePlayer {
     id: number
+    name: string
+    game?: IGame
     deck: IDeck
     squad: ISquad
     grave: Card[]
@@ -31,9 +34,10 @@ export interface IGamePlayer {
 export interface ISquad {
     fliers: Card[]
     field: Card[]
-    startArrangement: Card[][]
+    startArrangement: (Card | null)[][]
     arrangingArr?: { name: string, index: number }[]
     arrangingIndex?: number
+    prevArrangingIndex?: number
 }
 
 export interface Card {
@@ -53,4 +57,5 @@ export interface Card {
     index: number
     description: string
     set: string
+    arrIndex?: number
 }

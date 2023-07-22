@@ -182,8 +182,17 @@ bot.action('arrange-squad', (ctx) => {
 
 bot.action(/^ar-card-place_/, (ctx) => {
     ctx.answerCbQuery()
-    ctx.reply(ctx.match.input)
     Deck.arrangeCard(ctx, ctx.match.input)
+})
+
+bot.action('arrange-next', (ctx) => {
+    ctx.answerCbQuery()
+    Deck.arrangeNext(ctx)
+})
+
+bot.action('arrange-prev', (ctx) => {
+    ctx.answerCbQuery()
+    Deck.arrangePrev(ctx)
 })
 
 bot.launch()

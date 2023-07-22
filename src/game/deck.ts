@@ -134,12 +134,12 @@ export default class Deck {
             return
         }
 
-        game.players.push(new GamePlayer(userId, deck))
+        game.players.push(new GamePlayer(userId, userName, deck))
 
         await ctx.replyWithHTML(`✅Колода <b>${deck.name}</b> выбрана для игры!`)
         room.informRoom(ctx, 'deck', new User(userId, userName))
 
-        //if (game.players.length === 2)
+        // if (game.players.length === 2)
         game.startGame(ctx)
     }
 
@@ -247,6 +247,14 @@ export default class Deck {
             return
         }
 
+        player.handMessages = []
+        player.squad.field = []
+        player.squad.fliers = []
+        player.squad.arrangingIndex = 0
+        player.squad.prevArrangingIndex = -1
+        player.squad.arrangingArr = []
+        player.squad.startArrangement = [new Array(5).fill(null), new Array(5).fill(null), new Array(5).fill(null)]
+
         const hand: Card[] = Deck.generateHand(player)
 
         await ctx.reply('🤚Новая рука сгенерирована!')
@@ -261,6 +269,9 @@ export default class Deck {
                 ]
 
                 await ctx.reply(Deck.parseCard(card), { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                    .then((res) => {
+                        player.handMessages.push(res.message_id)
+                    })
                 if (index === hand.length - 1) resolve(1)
             })
         })
@@ -273,7 +284,10 @@ export default class Deck {
                     ]
                 ]
 
-                ctx.reply('Расставить отряд: ', { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                ctx.reply('🃏Завершить набор/пересдать: ', { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                    .then((res) => {
+                        player.handMessages.push(res.message_id)
+                    })
             })
     }
 
@@ -286,7 +300,7 @@ export default class Deck {
 
         const squadMessagesIds = player.handMessages
         squadMessagesIds.forEach(id => {
-            ctx.deleteMessage(id).catch((e) => { console.log(e) })
+            ctx.deleteMessage(id).catch((e) => { return e })
         })
     }
 
@@ -331,6 +345,8 @@ export default class Deck {
             return
         }
 
+        this.deleteLastSquad(ctx)
+
         const playerSquad = player.squad.field.concat(player.squad.fliers).map(({ name }, index) => { return { name, index } })
         player.squad.arrangingArr = playerSquad
 
@@ -340,7 +356,9 @@ export default class Deck {
             return
         }
 
-        ctx.replyWithHTML(message, Markup.inlineKeyboard(menu))
+        ctx.replyWithHTML(message, Markup.inlineKeyboard(menu)).then(m => {
+            player.handMessages.push(m.message_id)
+        })
     }
 
     public static arrangeCard(ctx: Context, cellId: string) {
@@ -363,21 +381,90 @@ export default class Deck {
             return
         }
 
-        const cellNumber = Number(cellId.split('_')[1])
-        const row = Math.floor(cellNumber / 5)
-        const cell = cellNumber % 5
-
-        console.log(cardName, this.findCardByName(cardName))
-        player.squad.startArrangement[row][cell] = this.findCardByName(cardName) as Card
-
         const arrangingArr = player.squad.arrangingArr
         if (arrangingArr == undefined) {
             ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
             return
         }
 
-        arrangingArr.splice(arrangingArr.findIndex(c => c.name.toLowerCase().trim() === cardName), 1)
-        const { message, menu } = this.arrange(ctx, player.squad.arrangingIndex !== undefined ? player.squad.arrangingIndex + 1 : 0)
+        const cellNumber = Number(cellId.split('_')[1])
+        const row = Math.floor(cellNumber / 5)
+        const cell = cellNumber % 5
+
+        if (player.squad.startArrangement[row][cell] != null) {
+            return
+        }
+
+        let indicator = false;
+        player.squad.startArrangement.forEach(arr => arr.forEach(card => { if (Number(card?.arrIndex) === player.squad.arrangingIndex) indicator = true }))
+
+        if (indicator) {
+            const rowIndex = player.squad.startArrangement.findIndex(arr => arr.findIndex(c => c ? c.arrIndex === player.squad.arrangingIndex : false) !== -1)
+            const cellIndex = player.squad.startArrangement[rowIndex].findIndex(c => c ? c.arrIndex === player.squad.arrangingIndex : false)
+            console.log(player.squad.arrangingIndex, 'row:', rowIndex, 'cell:', cellIndex, player.squad.startArrangement[rowIndex][cellIndex]?.arrIndex)
+            player.squad.startArrangement[rowIndex][cellIndex] = null
+        } else {
+            arrangingArr.splice(arrangingArr.findIndex(c => c.index === player.squad.arrangingIndex), 1)
+        }
+
+        const card = this.findCardByName(cardName) as Card
+        card.arrIndex = player.squad.arrangingIndex
+
+        // console.log(player.squad.startArrangement[row][cell], 'arrangement: ', player.squad.startArrangement)
+        player.squad.startArrangement[row][cell] = card
+
+        // console.log(card.name, ': ', arrangingArr, player.squad.arrangingIndex)
+
+        const { message, menu } = this.arrange(ctx, player.squad.arrangingIndex !== undefined ? player.squad.arrangingIndex : 0)
+
+        player.squad.prevArrangingIndex = player.squad.arrangingIndex
+
+        if (message == undefined || menu == undefined) {
+            throw new Error('Message is undefined')
+        }
+
+        ctx.editMessageText(message, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+    }
+
+    public static arrangeNext(ctx: Context) {
+        const messageObj: IMessage = ctx.callbackQuery?.message as IMessage
+        const text = messageObj.text
+        const cardNameIndex = text.split('\n').findIndex(str => str.startsWith('➡️'))
+
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            return
+        }
+
+        if (cardNameIndex === text.split('\n').length - 1) {
+
+            player.game?.finishArranging(ctx)
+            return
+        }
+
+        player.squad.arrangingIndex = player.squad.arrangingIndex as number + 1
+
+        const { message, menu } = this.arrange(ctx, player.squad.arrangingIndex)
+
+        if (message == undefined || menu == undefined) {
+            throw new Error('Message is undefined')
+        }
+
+        ctx.editMessageText(message, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+    }
+
+    public static arrangePrev(ctx: Context) {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            return
+        }
+
+        player.squad.arrangingIndex = player.squad.arrangingIndex as number - 1
+        player.squad.prevArrangingIndex = player.squad.arrangingIndex as number - 1
+
+        const { message, menu } = this.arrange(ctx, player.squad.arrangingIndex)
 
         if (message == undefined || menu == undefined) {
             throw new Error('Message is undefined')
@@ -392,6 +479,7 @@ export default class Deck {
             ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
             return { message: undefined, menu: undefined }
         }
+
         const arrangingArr = player.squad.arrangingArr
         if (arrangingArr == undefined) {
             throw new Error('Arranging arr not found')
@@ -414,7 +502,7 @@ export default class Deck {
         const menu = player.squad.startArrangement.map((array, i) => {
 
             if (i) idx += array.length
-            console.log(array)
+
             const row = array.map((item, i) => {
                 let itemElement
                 if (item) {
@@ -441,7 +529,7 @@ export default class Deck {
                 return Markup.button.callback(itemElement || '⬜️', `ar-card-place_${idx + i}`)
             })
             return row
-        }).concat([[Markup.button.callback('🔙Назад', ' '), Markup.button.callback('Дальше🔜', ' ')]])
+        }).concat([[Markup.button.callback('🔙Назад', 'arrange-prev'), Markup.button.callback('Дальше🔜', 'arrange-next')]])
         return { message, menu }
     }
 
@@ -515,11 +603,10 @@ export default class Deck {
     }
 
     private static findCardByName(name: string): Card | void {
-        console.log(name.toLowerCase().trim())
         return cards.find(card => card.name.toLowerCase().trim() === name.toLowerCase().trim()) as Card | undefined
     }
 
-    private static findGamePlayerByCtx(ctx: Context): IGamePlayer | undefined {
+    public static findGamePlayerByCtx(ctx: Context): IGamePlayer | undefined {
         const userId = ctx.chat?.id
         if (userId == undefined) throw new Error('User not found')
 
@@ -539,4 +626,4 @@ export default class Deck {
     }
 }
 
-const findPlayerById = (playerId: number): IPlayer | undefined => players.find(u => u.id === playerId)
+export const findPlayerById = (playerId: number): IPlayer | undefined => players.find(u => u.id === playerId)

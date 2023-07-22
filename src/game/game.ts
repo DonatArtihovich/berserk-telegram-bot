@@ -2,6 +2,7 @@ import { Context, Markup } from "telegraf";
 import { IRoom } from "../rooms/rooms.types";
 import { Card, IGame, IGamePlayer } from "./game.types";
 import Deck from './deck'
+import { User } from "../rooms/rooms";
 
 
 export class Game implements IGame {
@@ -20,11 +21,27 @@ export class Game implements IGame {
     }
 
     startGame(ctx: Context) {
+        this.players.forEach(player => player.game = this)
         this.room.informRoom(ctx, 'gen_start', { id: 0, name: '' })
             .then(() => this.generateHands(ctx))
     }
 
+    public finishArranging(ctx: Context): void {
+        const player = Deck.findGamePlayerByCtx(ctx) as IGamePlayer
+
+        const playerField = player.squad.startArrangement.map(arr => {
+            return arr.map(cell => {
+                return cell ? cell.name.slice(0, 6) : '⬜️'
+            }).join('|')
+        }).join('\n')
+
+        ctx.editMessageText(`✅Вы закончили расстановку отряда\nВаша расстановка:\n${playerField}`)
+
+        this.room.informRoom(ctx, 'finish-arranging', new User(player.id, player.name))
+    }
+
     private generateHands(ctx: Context): void {
+        console.log(this.players)
 
         const hands: Card[][] = this.players.map(player => Deck.generateHand(player)) as Card[][]
 
@@ -60,7 +77,9 @@ export class Game implements IGame {
                         ]
                     ]
 
-                    ctx.telegram.sendMessage(player.id, 'Расставить отряд: ', { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                    ctx.telegram.sendMessage(player.id, '🃏Завершить набор/пересдать: ', { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } }).then(m => {
+                        player.handMessages.push(m.message_id)
+                    })
                 })
         })
     }

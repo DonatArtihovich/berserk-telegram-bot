@@ -159,6 +159,11 @@ export default class Controller implements IController {
 
         if (curRoom.isOnGame) return
 
+        // if (curRoom.players.length !== 2) {
+        //     ctx.replyWithHTML('🚫<i>Игроков должно быть двое.</i>')
+        //     return
+        // }
+
         curRoom.isOnGame = true
         curRoom.watchers.forEach(async (u) => {
             ctx.telegram.sendMessage(u.id, '🗡Игра запущена!🛡')
