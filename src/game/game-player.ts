@@ -24,13 +24,11 @@ class Squad implements ISquad {
     public field: Card[]
     public startArrangement: Card[][]
     public arrangingIndex: number
-    public prevArrangingIndex: number
 
     constructor() {
         this.fliers = []
         this.field = []
         this.startArrangement = [new Array(5).fill(null), new Array(5).fill(null), new Array(5).fill(null)]
-        this.prevArrangingIndex = -1
         this.arrangingIndex = 0
     }
 }

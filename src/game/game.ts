@@ -26,7 +26,7 @@ export class Game implements IGame {
             .then(() => this.generateHands(ctx))
     }
 
-    public finishArranging(ctx: Context): void {
+    public async finishArranging(ctx: Context) {
         const player = Deck.findGamePlayerByCtx(ctx) as IGamePlayer
 
         const playerField = player.squad.startArrangement.map(arr => {
@@ -36,13 +36,17 @@ export class Game implements IGame {
         }).join('\n')
 
         ctx.editMessageText(`✅Вы закончили расстановку отряда\nВаша расстановка:\n${playerField}`)
+        delete player.squad.arrangingIndex
+        delete player.squad.arrangingArr
 
-        this.room.informRoom(ctx, 'finish-arranging', new User(player.id, player.name))
+        await this.room.informRoom(ctx, 'finish-arranging', new User(player.id, player.name))
+        const indicator = this.players.reduce((res, cur) => res ? res : cur.squad.arrangingIndex == undefined, false)
+        if (indicator) {
+            this.startBattle(ctx)
+        }
     }
 
     private generateHands(ctx: Context): void {
-        console.log(this.players)
-
         const hands: Card[][] = this.players.map(player => Deck.generateHand(player)) as Card[][]
 
         this.players.forEach(async (player, index) => {
@@ -82,5 +86,11 @@ export class Game implements IGame {
                     })
                 })
         })
+    }
+
+    private async startBattle(ctx: Context) {
+        await this.room.informRoom(ctx, 'gen_start-battle', new User(Number(ctx.from?.id), String(ctx.from?.first_name)))
+
+
     }
 } 

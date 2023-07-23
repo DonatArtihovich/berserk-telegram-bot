@@ -346,10 +346,10 @@ export default class Deck {
 
         this.deleteLastSquad(ctx)
 
-        const playerSquad = player.squad.field.concat(player.squad.fliers).map(({ name }, index) => { return { name, index } })
+        const playerSquad = player.squad.field.concat(player.squad.fliers).map(({ name }, index) => { return { name, index: index + 1 } })
         player.squad.arrangingArr = playerSquad
 
-        const { message, menu } = this.arrange(ctx, 0)
+        const { message, menu } = this.arrange(ctx, 1)
         if (message == undefined || menu == undefined) {
             ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
             return
@@ -367,9 +367,8 @@ export default class Deck {
 
         const messageObj: IMessage = ctx.callbackQuery.message as IMessage
         const text = messageObj.text
-        // const messageId = messageObj.message_id
 
-        const cardName = text.split('\n').find(str => str.startsWith('➡️'))?.slice(2).toLowerCase().trim()
+        const cardName = text.split('\n').find(str => str.startsWith('➡️'))?.split(')').slice(1).join('').toLowerCase().trim()
         if (cardName == undefined) {
             return
         }
@@ -401,11 +400,9 @@ export default class Deck {
             const rowIndex = player.squad.startArrangement.findIndex(arr => arr.findIndex(c => c ? c.arrIndex === player.squad.arrangingIndex : false) !== -1)
             const cellIndex = player.squad.startArrangement[rowIndex].findIndex(c => c ? c.arrIndex === player.squad.arrangingIndex : false)
 
-            // console.log(player.squad.arrangingIndex, 'row:', rowIndex, 'cell:', cellIndex, 'arrIndex:', player.squad.startArrangement[rowIndex][cellIndex]?.arrIndex, indicator)
             player.squad.startArrangement[rowIndex][cellIndex] = null
         } else {
-            // ctx.reply(JSON.stringify(player.squad.arrangingArr))
-            ctx.replyWithHTML(`<code>До:</code>${JSON.stringify(player.squad.startArrangement.map(arr => arr.map(c => c ? `${c.name}(${c.arrIndex})` : '⬜️')))}`)
+            // ctx.replyWithHTML(`<code>До:</code>${JSON.stringify(player.squad.startArrangement.map(arr => arr.map(c => c ? `${c.name}(${c.arrIndex})` : '⬜️')))}`)
 
             arrangingArr.splice(arrangingArr.findIndex(c => c.index === player.squad.arrangingIndex), 1)
         }
@@ -413,17 +410,14 @@ export default class Deck {
         const card = this.findCardByName(cardName) as Card
         card.arrIndex = player.squad.arrangingIndex
 
-        // console.log(player.squad.startArrangement[row][cell], 'arrangement: ', player.squad.startArrangement)
         player.squad.startArrangement[row][cell] = card
-
-        // console.log(card.name, ': ', arrangingArr, player.squad.arrangingIndex)
 
         const { message, menu } = this.arrange(ctx, player.squad.arrangingIndex !== undefined ? player.squad.arrangingIndex : 0)
 
         if (message == undefined || menu == undefined) {
             throw new Error('Message is undefined')
         }
-        ctx.replyWithHTML(`<code>После:</code>${JSON.stringify(player.squad.startArrangement.map(arr => arr.map(c => c ? `${c.name}(${c.arrIndex})` : '⬜️')))}`)
+        // ctx.replyWithHTML(`<code>После:</code>${JSON.stringify(player.squad.startArrangement.map(arr => arr.map(c => c ? `${c.name}(${c.arrIndex})` : '⬜️')))}`)
 
         ctx.editMessageText(message, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
     }
@@ -488,17 +482,11 @@ export default class Deck {
 
         player.squad.arrangingIndex = currentIndex
 
-        const playerSquad = player.squad.field.concat(player.squad.fliers).map(({ name }, index) => { return { name, index } })
+        const playerSquad = player.squad.field.concat(player.squad.fliers).map(({ name }, index) => { return { name, index: index + 1 } })
 
-        const playerSquadStr = playerSquad.map((card, index) => index !== currentIndex ? (arrangingArr.findIndex(c => c.index === card.index) === -1 ? `✅${card.name}` : `✔️${card.name}`) : `➡️<b>${card.name}</b>`).join('\n')
+        const playerSquadStr = playerSquad.map((card, index) => index !== currentIndex - 1 ? (arrangingArr.findIndex(c => c.index === card.index) === -1 ? `✅(${card.index})${card.name}` : `✔️(${card.index})${card.name}`) : `➡️<b>(${card.index})${card.name}</b>`).join('\n')
         const message = `Расставьте свой отряд:\n${playerSquadStr}`
 
-        // Markup.inlineKeyboard([
-        //     [Markup.button.callback(' ', 'ar-card-place_1'), Markup.button.callback(' ', 'ar-card-place_2'), Markup.button.callback(' ', 'ar-card-place_3'), Markup.button.callback(' ', 'ar-card-place_4'), Markup.button.callback(' ', 'ar-card-place_ 5')],
-        //     [Markup.button.callback(' ', 'ar-card-place_6'), Markup.button.callback(' ', 'ar-card-place_7'), Markup.button.callback(' ', 'ar-card-place_8'), Markup.button.callback(' ', 'ar-card-place_10'), Markup.button.callback(' ', 'ar-card-place_11')],
-        //     [Markup.button.callback(' ', 'ar-card-place_12'), Markup.button.callback(' ', 'ar-card-place_12'), Markup.button.callback(' ', 'ar-card-place_13'), Markup.button.callback(' ', 'ar-card-place_14'), Markup.button.callback(' ', 'ar-card-place_15')],
-        //     [Markup.button.callback('🔙Назад', ' '), Markup.button.callback('Дальше🔜', ' ')]
-        // ])
         let idx = 0
         const menu = player.squad.startArrangement.map((array, i) => {
 
@@ -527,7 +515,7 @@ export default class Deck {
                             itemElement = '⚔️'
                     }
                 }
-                return Markup.button.callback(itemElement || '⬜️', `ar-card-place_${idx + i}`)
+                return Markup.button.callback(!item ? '⬜️' : `${itemElement}(${item.arrIndex})`, `ar-card-place_${idx + i}`)
             })
             return row
         }).concat([[Markup.button.callback('🔙Назад', 'arrange-prev'), Markup.button.callback('Дальше🔜', 'arrange-next')]])
@@ -605,7 +593,7 @@ export default class Deck {
 
     private static findCardByName(name: string): Card | void {
         const result = cards.find(card => card.name.toLowerCase().trim() === name.toLowerCase().trim())
-        return JSON.parse(JSON.stringify(result)) || result
+        return result !== undefined ? JSON.parse(JSON.stringify(result)) : result
     }
 
     public static findGamePlayerByCtx(ctx: Context): IGamePlayer | undefined {

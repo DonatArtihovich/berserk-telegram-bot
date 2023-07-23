@@ -56,6 +56,10 @@ export class Room implements IRoom {
                 case 'finish-arranging':
                     alert = `🗺 Пользователь <b>${user.name}</b> расставил свой отряд.`;
                     break;
+                case 'gen_start-battle':
+
+                    alert = '🎮Начинаем игру!'
+                    break;
                 case 'msg':
 
                     alert = `🗣<b>${user.name}</b>: ${message.text}`
