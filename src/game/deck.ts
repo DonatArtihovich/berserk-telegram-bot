@@ -391,7 +391,7 @@ export default class Deck {
         const row = Math.floor(cellNumber / 5)
         const cell = cellNumber % 5
 
-        if (player.squad.startArrangement[row][cell] != null) {
+        if (player.squad.startArrangement[row][cell]) {
             return
         }
 
@@ -401,9 +401,13 @@ export default class Deck {
         if (indicator) {
             const rowIndex = player.squad.startArrangement.findIndex(arr => arr.findIndex(c => c ? c.arrIndex === player.squad.arrangingIndex : false) !== -1)
             const cellIndex = player.squad.startArrangement[rowIndex].findIndex(c => c ? c.arrIndex === player.squad.arrangingIndex : false)
-            console.log(player.squad.arrangingIndex, 'row:', rowIndex, 'cell:', cellIndex, player.squad.startArrangement[rowIndex][cellIndex]?.arrIndex)
+
+            // console.log(player.squad.arrangingIndex, 'row:', rowIndex, 'cell:', cellIndex, 'arrIndex:', player.squad.startArrangement[rowIndex][cellIndex]?.arrIndex, indicator)
             player.squad.startArrangement[rowIndex][cellIndex] = null
         } else {
+            // ctx.reply(JSON.stringify(player.squad.arrangingArr))
+            ctx.replyWithHTML(`<code>До:</code>${JSON.stringify(player.squad.startArrangement.map(arr => arr.map(c => c ? `${c.name}(${c.arrIndex})` : '⬜️')))}`)
+
             arrangingArr.splice(arrangingArr.findIndex(c => c.index === player.squad.arrangingIndex), 1)
         }
 
@@ -422,6 +426,7 @@ export default class Deck {
         if (message == undefined || menu == undefined) {
             throw new Error('Message is undefined')
         }
+        ctx.replyWithHTML(`<code>После:</code>${JSON.stringify(player.squad.startArrangement.map(arr => arr.map(c => c ? `${c.name}(${c.arrIndex})` : '⬜️')))}`)
 
         ctx.editMessageText(message, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
     }
@@ -603,7 +608,8 @@ export default class Deck {
     }
 
     private static findCardByName(name: string): Card | void {
-        return cards.find(card => card.name.toLowerCase().trim() === name.toLowerCase().trim()) as Card | undefined
+        const result = cards.find(card => card.name.toLowerCase().trim() === name.toLowerCase().trim())
+        return JSON.parse(JSON.stringify(result)) || result
     }
 
     public static findGamePlayerByCtx(ctx: Context): IGamePlayer | undefined {
