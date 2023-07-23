@@ -251,7 +251,6 @@ export default class Deck {
         player.squad.field = []
         player.squad.fliers = []
         player.squad.arrangingIndex = 0
-        player.squad.prevArrangingIndex = -1
         player.squad.arrangingArr = []
         player.squad.startArrangement = [new Array(5).fill(null), new Array(5).fill(null), new Array(5).fill(null)]
 
@@ -421,8 +420,6 @@ export default class Deck {
 
         const { message, menu } = this.arrange(ctx, player.squad.arrangingIndex !== undefined ? player.squad.arrangingIndex : 0)
 
-        player.squad.prevArrangingIndex = player.squad.arrangingIndex
-
         if (message == undefined || menu == undefined) {
             throw new Error('Message is undefined')
         }
@@ -467,7 +464,6 @@ export default class Deck {
         }
 
         player.squad.arrangingIndex = player.squad.arrangingIndex as number - 1
-        player.squad.prevArrangingIndex = player.squad.arrangingIndex as number - 1
 
         const { message, menu } = this.arrange(ctx, player.squad.arrangingIndex)
 

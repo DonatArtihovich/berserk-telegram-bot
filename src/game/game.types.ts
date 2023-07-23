@@ -37,7 +37,6 @@ export interface ISquad {
     startArrangement: (Card | null)[][]
     arrangingArr?: { name: string, index: number }[]
     arrangingIndex?: number
-    prevArrangingIndex?: number
 }
 
 export interface Card {
