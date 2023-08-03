@@ -56,5 +56,6 @@ export interface Card {
     index: number
     description: string
     set: string
+    image: string
     arrIndex?: number
 }

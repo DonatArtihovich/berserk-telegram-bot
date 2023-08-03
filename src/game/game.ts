@@ -31,7 +31,7 @@ export class Game implements IGame {
 
         const playerField = player.squad.startArrangement.map(arr => {
             return arr.map(cell => {
-                return cell ? cell.name.slice(0, 6) : '⬜️'
+                return cell ? cell.name : '⬜️'
             }).join('|')
         }).join('\n')
 
@@ -54,21 +54,21 @@ export class Game implements IGame {
 
             await ctx.telegram.sendMessage(player.id, '🃏Ваша рука сгенерирована!')
             new Promise((resolve) => {
-                hand.forEach(async (card, index) => {
+                hand.forEach(async (card) => {
 
                     const menu = [
                         [
                             Markup.button.callback('➕', `squad_${card.name}`),
-                            Markup.button.callback('❔', `info_${card.name}`)
+                            // Markup.button.callback('❔', `info_${card.name}`)
                         ]
                     ]
 
-                    ctx.telegram.sendMessage(player.id, Deck.parseCard(card), { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                    ctx.telegram.sendPhoto(player.id, card.image, { parse_mode: 'HTML', caption: Deck.parseCard(card), reply_markup: { inline_keyboard: menu } })
                         .then((res) => {
                             player.handMessages.push(res.message_id)
                         })
                         .then(() => {
-                            if (index === hand.length - 1) resolve(1)
+                            if (player.handMessages.length === hand.length) resolve(1)
                         })
                 })
             })

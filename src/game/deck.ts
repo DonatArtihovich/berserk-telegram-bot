@@ -15,7 +15,6 @@ import { InlineKeyboardButton } from "telegraf/typings/core/types/typegram";
 
 export default class Deck {
 
-
     public static requireDecks(ctx: Context, room: IRoom): void {
 
         room.players.forEach(user => {
@@ -237,6 +236,8 @@ export default class Deck {
         } else {
             player.squad.field.push(card)
         }
+
+        this.showCurrentSquad(ctx, player)
     }
 
     public static async mulliganHand(ctx: Context) {
@@ -258,20 +259,19 @@ export default class Deck {
 
         await ctx.reply('🤚Новая рука сгенерирована!')
         new Promise((resolve) => {
-            hand.forEach(async (card, index) => {
+            hand.forEach(async (card) => {
 
                 const menu = [
                     [
-                        Markup.button.callback('➕', `squad_${card.name}`),
-                        Markup.button.callback('❔', `info_${card.name}`)
+                        Markup.button.callback('➕', `squad_${card.name}`)
                     ]
                 ]
 
-                await ctx.reply(Deck.parseCard(card), { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                await ctx.replyWithPhoto(card.image, { caption: this.parseCard(card), parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
                     .then((res) => {
                         player.handMessages.push(res.message_id)
                     })
-                if (index === hand.length - 1) resolve(1)
+                if (player.handMessages.length === hand.length) resolve(1)
             })
         })
             .then(() => {
@@ -335,7 +335,58 @@ export default class Deck {
         if (cardIndex !== -1) {
             squadArr.splice(cardIndex, 1)
         }
+
+        this.showCurrentSquad(ctx, player)
     }
+
+    private static showCurrentSquad(ctx: Context, player: IGamePlayer) {
+        if (player.handMessages.length < 16) return
+
+        const playerCurrentSquad = player.squad.field.concat(player.squad.fliers).map(({ name }) => {
+            const card = this.findCardByName(name)
+
+            if (card == undefined) {
+                throw new Error('Card not found')
+            }
+
+            const cardCost = card.elite ? '🔶' + card.cost : '🔷' + card.cost
+
+            let cardElement
+            switch (card.element.toLowerCase().trim()) {
+                case 'степи':
+                    cardElement = '☀️'
+                    break;
+                case 'леса':
+                    cardElement = '🌳'
+                    break;
+                case 'горы':
+                    cardElement = '🗻'
+                    break;
+                case 'болото':
+                    cardElement = '🌾'
+                    break;
+                case 'тьма':
+                    cardElement = '💀'
+                    break;
+                default:
+                    cardElement = '⚔'
+            }
+
+            return `${cardCost} ${card.name} ${cardElement}`
+        }).join('\n')
+
+
+        const menu = [
+            [
+                Markup.button.callback('🗺Расставить', `arrange-squad`),
+                Markup.button.callback('🤚Пересдать', `mulligan`)
+            ]
+        ]
+
+        ctx.telegram.editMessageText(ctx.from?.id, player.handMessages[player.handMessages.length - 1], undefined, `${playerCurrentSquad.trim() ? 'Ваш текущий отряд:\n' + playerCurrentSquad : ''}\n\n🃏Завершить набор/пересдать:`, { reply_markup: { inline_keyboard: menu } })
+    }
+
+
 
     public static startArranging(ctx: Context) {
         const player = this.findGamePlayerByCtx(ctx)

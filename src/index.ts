@@ -138,7 +138,7 @@ bot.action(/^squad_/, (ctx) => {
     const cardInfoArr = Deck.parseCard(cardName).split(' ')
     const cardElement = cardInfoArr[cardInfoArr.length - 1]
     const cardCost = cardInfoArr[0]
-    ctx.editMessageText(`Карта ${cardElement}<b>${cardName}</b>(${cardCost}) взята в отряд!`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+    ctx.editMessageCaption(`Карта ${cardElement}<b>${cardName}</b>(${cardCost}) взята в отряд!`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 })
 
 bot.action(/^info_/, (ctx) => {
@@ -167,12 +167,11 @@ bot.action(/^(cancel_info|cancel_squad)-/, (ctx) => {
 
     const menu = [
         [
-            Markup.button.callback('➕', `squad_${cardName}`),
-            Markup.button.callback('❔', `info_${cardName}`)
+            Markup.button.callback('➕', `squad_${cardName}`)
         ]
     ]
 
-    ctx.editMessageText(Deck.parseCard(cardName), { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+    ctx.editMessageCaption(Deck.parseCard(cardName), { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 })
 
 bot.action('arrange-squad', (ctx) => {

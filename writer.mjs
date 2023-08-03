@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url'
 const { stdout, stdin } = process
 const __dirname = fileURLToPath(path.dirname(import.meta.url))
 const PATH_TO_FILE = path.join(__dirname, './src/game/data.json')
+import valikCards from '../hazzzzker/valik.json' assert {type: 'json'};
 
 const rl = readline.createInterface({ input: stdin, output: stdout })
 
@@ -70,7 +71,7 @@ async function writeToFile(data) {
         })
     }).then(json => {
         const arr = JSON.parse(json)
-        const out = arr.concat(data).map(o => `{ "name": "${o.name}", "cost": ${o.cost}, "elite": ${o.elite},"uniqueness": ${o.uniqueness}, "element": "${o.element}","class": ${o.class ? '"' + o.class + '"' : null}, "stats": {"lifeCount":${o.stats.lifeCount},"walkCount":"${o.stats.walkCount}","simpleHit":"${o.stats.simpleHit}"},"abilities": ${o.abilities ? '"' + o.abilities.replaceAll('Защита от заклинаний', '📜').replaceAll('Защита от метаний', '🪓').replaceAll('Защита от разрядов', '⚡️').replaceAll('Защита от магии', '🔮') + '"' : null}, "rarity": "${o.rarity}", "index": ${o.index}, "description": ${o.description ? '"' + o.description + '"' : null}, "set": "Война стихий" }`)
+        const out = arr.concat(data).map(o => `{ "name": "${o.name}", "cost": ${o.cost}, "elite": ${o.elite},"uniqueness": ${o.uniqueness}, "element": "${o.element}","class": ${o.class ? '"' + o.class + '"' : null}, "stats": {"lifeCount":${o.stats.lifeCount},"walkCount":"${o.stats.walkCount}","simpleHit":"${o.stats.simpleHit}"},"abilities": ${o.abilities ? '"' + o.abilities + '"' : null}, "rarity": "${o.rarity}", "index": ${o.index}, "description": ${o.description ? '"' + o.description + '"' : null}, "set": "Война стихий", "image": ${valikCards.find(card => card.title === o.name) == undefined ? null : '"' + valikCards.find(card => card.title === o.name).image + '"'} }`)
 
         writeJSONFile(out)
     })
