@@ -23,7 +23,36 @@ export class Game implements IGame {
     startGame(ctx: Context) {
         this.players.forEach(player => player.game = this)
         this.room.informRoom(ctx, 'gen_start', { id: 0, name: '' })
-            .then(() => this.generateHands(ctx))
+            .then(() => this.determineFirstPlayer(ctx))
+        // this.generateHands(ctx)
+    }
+
+    private determineFirstPlayer(ctx: Context) {
+        const playerDices: any[] = []
+
+        this.players.forEach((player) => {
+
+            function rollTurnDice(): number {
+                const roll = rollDice()
+                return playerDices.findIndex(player => player.roll === roll) !== -1 ? rollTurnDice() : roll
+            }
+
+            const roll = rollTurnDice()
+
+            playerDices.push({ ...player, roll })
+        })
+
+        const firstPlayer = playerDices.reduce((prev, curr) => curr.roll > prev.roll ? curr : prev)
+        const message = `Броски игроков:\n${playerDices.map(({ name, roll }) => `<b>${name}</b>: ${roll}🎲`).join('\n')}\n\n <b>${firstPlayer.name}</b> выбирает каким ходить!`
+
+        this.room.informRoom(ctx, 'gen_def', firstPlayer, message).then(() => {
+
+            const menu = [
+                [Markup.button.callback('Ходить первым', 'first-turn'), Markup.button.callback('Ходить вторым', 'second-turn')]
+            ]
+
+            ctx.telegram.sendMessage(firstPlayer.id, 'Выберите каким ходить:', { reply_markup: { inline_keyboard: menu } })
+        })
     }
 
     public async finishArranging(ctx: Context) {
@@ -40,13 +69,13 @@ export class Game implements IGame {
         delete player.squad.arrangingArr
 
         await this.room.informRoom(ctx, 'finish-arranging', new User(player.id, player.name))
-        const indicator = this.players.reduce((res, cur) => res ? res : cur.squad.arrangingIndex == undefined, false)
+        const indicator = this.players.reduce((res, cur) => !res ? res : cur.squad.arrangingIndex == undefined, true)
         if (indicator) {
             this.startBattle(ctx)
         }
     }
 
-    private generateHands(ctx: Context): void {
+    public generateHands(ctx: Context): void {
         const hands: Card[][] = this.players.map(player => Deck.generateHand(player)) as Card[][]
 
         this.players.forEach(async (player, index) => {
@@ -93,4 +122,8 @@ export class Game implements IGame {
 
 
     }
-} 
+}
+
+function rollDice(): number {
+    return Math.ceil(Math.random() * 6)
+}

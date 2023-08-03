@@ -194,4 +194,8 @@ bot.action('arrange-prev', (ctx) => {
     Deck.arrangePrev(ctx)
 })
 
+bot.action('first-turn', (ctx) => Deck.defineTurnOrder(ctx, true))
+
+bot.action('second-turn', (ctx) => Deck.defineTurnOrder(ctx, false))
+
 bot.launch()

@@ -11,7 +11,7 @@ export interface IRoom {
     watchers: IUser[]
     isOnGame: boolean
     game?: IGame
-    informRoom: (ctx: Context, key: string, user: IUser) => Promise<Message>
+    informRoom: (ctx: Context, key: string, user: IUser, message?: string) => Promise<Message>
 }
 
 export interface IUser {

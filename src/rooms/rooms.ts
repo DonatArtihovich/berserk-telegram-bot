@@ -21,7 +21,7 @@ export class Room implements IRoom {
         this.isOnGame = false
     }
 
-    public informRoom(ctx: Context, key: string, user: IUser): Promise<Message> {
+    public informRoom(ctx: Context, key: string, user: IUser, msg?: string): Promise<Message> {
         return new Promise(resolve => {
             const informedUsers = !key.startsWith('gen_') ? this.players.concat(this.watchers).filter(u => u.id !== user.id) : this.players.concat(this.watchers)
             const message = ctx.message as IMessage
@@ -63,6 +63,9 @@ export class Room implements IRoom {
                 case 'msg':
 
                     alert = `🗣<b>${user.name}</b>: ${message.text}`
+                    break;
+                default:
+                    alert = msg as string
             }
 
             informedUsers.forEach((user, index) => {

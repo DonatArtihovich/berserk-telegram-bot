@@ -19,6 +19,7 @@ export interface IGame {
     changeStatus: (status: 'on' | 'off' | 'lobby') => void
     startGame: (ctx: Context) => void
     finishArranging: (ctx: Context) => void
+    generateHands: (ctx: Context) => void
 }
 
 export interface IGamePlayer {

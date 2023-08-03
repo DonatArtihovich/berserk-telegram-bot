@@ -16,7 +16,7 @@ async function manageInputs() {
     const cost = await askData('стоимость карты')
     const elite = await askData('элитность карты')
     const uniqueness = await askData('уникальность карты')
-    const element = 'Нейтральная'//await askData('стихию карты')
+    const element = await askData('стихию карты')
     const className = await askData('класс карты')
     const lifeCount = await askData('количество жизней карты')
     const walkCount = await askData('количество клеток хода карты')

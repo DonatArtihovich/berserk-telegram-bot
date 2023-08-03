@@ -138,8 +138,7 @@ export default class Deck {
         await ctx.replyWithHTML(`✅Колода <b>${deck.name}</b> выбрана для игры!`)
         room.informRoom(ctx, 'deck', new User(userId, userName))
 
-        // if (game.players.length === 2)
-        game.startGame(ctx)
+        if (game.players.length === 2) game.startGame(ctx)
     }
 
     public static generateHand(player: IGamePlayer): Card[] {
@@ -386,12 +385,15 @@ export default class Deck {
         ctx.telegram.editMessageText(ctx.from?.id, player.handMessages[player.handMessages.length - 1], undefined, `${playerCurrentSquad.trim() ? 'Ваш текущий отряд:\n' + playerCurrentSquad : ''}\n\n🃏Завершить набор/пересдать:`, { reply_markup: { inline_keyboard: menu } })
     }
 
-
-
     public static startArranging(ctx: Context) {
         const player = this.findGamePlayerByCtx(ctx)
         if (player == undefined) {
             ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            return
+        }
+
+        if (!player.squad.field.concat(player.squad.fliers).length) {
+            ctx.replyWithHTML('🚫<i>Вы не набрали отряд!</i>')
             return
         }
 
@@ -519,6 +521,33 @@ export default class Deck {
         ctx.editMessageText(message, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
     }
 
+    public static defineTurnOrder(ctx: Context, isFirst: boolean) {
+
+        ctx.editMessageText(`🎲Вы ходите ${isFirst ? 'первым' : 'вторым'}.`)
+
+        const userId = ctx.chat?.id
+        if (userId == undefined) throw new Error('User not found')
+
+        const player = this.findGamePlayerByCtx(ctx)
+
+        const room = findRoomForUser(userId)
+        if (room == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не находитесь в комнате.</i>')
+            return
+        }
+
+        const game = room.game
+        if (game === undefined) {
+            ctx.replyWithHTML('🚫<i>Игра не начата.</i>')
+            return
+        }
+
+        game.players = game.players[0].id === userId && !isFirst || game.players[0].id !== userId && isFirst ? game.players.reverse() : game.players
+
+        room.informRoom(ctx, 'def', { id: userId, name: player?.name == undefined ? 'Игрок' : player.name }, `🎲<b>${player?.name}</b> ходит ${isFirst ? 'первым' : 'вторым'}.`)
+        game.generateHands(ctx)
+    }
+
     private static arrange(ctx: Context, currentIndex: number): { message: string | undefined, menu: InlineKeyboardButton[][] | undefined } {
         const player = this.findGamePlayerByCtx(ctx)
         if (player == undefined) {
@@ -537,6 +566,8 @@ export default class Deck {
 
         const playerSquadStr = playerSquad.map((card, index) => index !== currentIndex - 1 ? (arrangingArr.findIndex(c => c.index === card.index) === -1 ? `✅(${card.index})${card.name}` : `✔️(${card.index})${card.name}`) : `➡️<b>(${card.index})${card.name}</b>`).join('\n')
         const message = `Расставьте свой отряд:\n${playerSquadStr}`
+
+        const arrowButtons = currentIndex === 1 ? [Markup.button.callback('Дальше🔜', 'arrange-next')] : [Markup.button.callback('🔙Назад', 'arrange-prev'), Markup.button.callback('Дальше🔜', 'arrange-next')]
 
         let idx = 0
         const menu = player.squad.startArrangement.map((array, i) => {
@@ -569,7 +600,7 @@ export default class Deck {
                 return Markup.button.callback(!item ? '⬜️' : `${itemElement}(${item.arrIndex})`, `ar-card-place_${idx + i}`)
             })
             return row
-        }).concat([[Markup.button.callback('🔙Назад', 'arrange-prev'), Markup.button.callback('Дальше🔜', 'arrange-next')]])
+        }).concat([arrowButtons])
         return { message, menu }
     }
 
