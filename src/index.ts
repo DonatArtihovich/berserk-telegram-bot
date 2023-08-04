@@ -5,14 +5,18 @@ import dotenv from 'dotenv'
 import * as Text from './text'
 import Controller from './controller/control'
 import { IMessage } from './types'
-import Deck from './game/deck'
+
+import cards from './data.json'
+import { getField } from './field/field'
+import GameCard from './game/game-card'
+import { IGameCard } from './game/game.types'
 dotenv.config()
 
 const token: string | undefined = process.env.TOKEN
 if (token == undefined) throw new Error('Bot isn\'t founded')
 
 const bot: Telegraf<Context> = new Telegraf(token)
-const app: Controller = new Controller()
+export const app: Controller = new Controller()
 
 bot.start((ctx: Context) => {
     const room = findRoomForUser(ctx.from?.id as number)
@@ -56,12 +60,52 @@ bot.command('watch', (ctx) => {
 
 // bot.command('deck', Deck.chooseDeck)
 
-bot.hears(/^(.|\n)+$\n(^\d+\s[а-яА-Яa-zA-Z]+)+/gm, (ctx) => Deck.addDeck(ctx))
+// bot.command('a', (ctx) => {
+//     let names = Array(30).fill(null)
+//     const limit = 5
+//     names = names.map(cell => {
+//         const index = Math.floor(Math.random() * 300)
+//         const name = index < 200 ? cards[index].name.slice(0, limit) : ' '
+
+//         if (name.length === limit) {
+//             return name
+//         }
+
+//         return name.padStart(Math.floor(name.length + (limit - name.length) / 2), ' ').padEnd(limit, ' ')
+//     })
+
+//     const nameRows = names.reduce((prev, curr, i) => {
+//         prev[prev.length - 1] = prev[prev.length - 1] + `${curr}|`
+
+//         if (!((i + 1) % 5) && i !== names.length - 1) {
+//             prev.push('│')
+//         }
+
+//         return prev
+//     }, ['│']).join('\n')
+
+//     console.log(names, nameRows)
+
+//     ctx.replyWithHTML(`<code>┌──────────┬──────────┬──────────┬──────────┬──────────┐\n${nameRows}\n└──────────┴──────────┴──────────┴──────────┴──────────┘</code>`)
+// })
+let id: number
+bot.command('u', async (ctx) => {
+    const matrix = Array(6).fill(null).map(() => Array(5).fill(null).map(() => Math.random() < 0.5 ? new GameCard(cards[Math.floor(Math.random() * 200)], Math.random() < 0.2) : null))
+    const fieldStream = await getField(matrix)
+    if (id == undefined) {
+        // ctx.replyWithPhoto({ source: fieldStream }, { caption: 'Поле игры:' })
+        //     .then(m => { id = m.message_id })
+        ctx.telegram.sendDocument(ctx.chat.id, { source: fieldStream, filename: 'field.png' }, { caption: 'Поле игры:' })
+    } else {
+        ctx.telegram.editMessageMedia(ctx.chat.id, id, undefined, { media: { source: fieldStream }, type: 'photo' })
+    }
+})
+bot.hears(/^(.|\n)+$\n(^\d+\s[а-яА-Яa-zA-Z]+)+/gm, (ctx) => app.addDeck(ctx))
 
 bot.on(message('text'), (ctx: Context) => {
     const message = ctx.message as IMessage
     const messageText = message.text
-
+    console.log(ctx.chat?.id)
     if (!messageText.startsWith('/')) app.sendMessage(ctx)
 })
 
@@ -103,39 +147,39 @@ bot.action('play', (ctx) => {
 })
 
 bot.action('add_deck', (ctx) => {
-    Deck.requireDecklist(ctx)
+    app.requireDecklist(ctx)
 })
 
 bot.action(/^choose-deck_/, (ctx) => {
     ctx.answerCbQuery()
 
     const deckName = ctx.match.input.split('_').slice(1).join('_')
-    Deck.chooseDeck(ctx, deckName)
+    app.chooseDeck(ctx, deckName)
 })
 
 bot.action('cancel_add-deck', (ctx) => {
     const userId = ctx.from?.id as number
-    const { message, menu } = Deck.printDecks(userId)
+    const { message, menu } = app.printDecks(userId)
 
     ctx.editMessageText(message, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 })
 
 bot.action('mulligan', async (ctx) => {
     ctx.answerCbQuery()
-    Deck.mulliganHand(ctx)
+    app.mulliganHand(ctx)
 })
 
 bot.action(/^squad_/, (ctx) => {
     ctx.answerCbQuery()
     const cardName = ctx.match.input.split('_')[1]
 
-    Deck.addCardToSquad(ctx, cardName)
+    app.addCardToSquad(ctx, cardName)
 
     const menu = [
         [Markup.button.callback('🔙Отмена', `cancel_squad-${cardName}`)]
     ]
 
-    const cardInfoArr = Deck.parseCard(cardName).split(' ')
+    const cardInfoArr = app.parseCard(cardName).split(' ')
     const cardElement = cardInfoArr[cardInfoArr.length - 1]
     const cardCost = cardInfoArr[0]
     ctx.editMessageCaption(`Карта ${cardElement}<b>${cardName}</b>(${cardCost}) взята в отряд!`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
@@ -153,7 +197,7 @@ bot.action(/^info_/, (ctx) => {
         ]
     ]
 
-    ctx.editMessageText(Deck.parseCard(cardName, true), { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+    ctx.editMessageText(app.parseCard(cardName, true), { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 })
 
 bot.action(/^(cancel_info|cancel_squad)-/, (ctx) => {
@@ -162,7 +206,7 @@ bot.action(/^(cancel_info|cancel_squad)-/, (ctx) => {
     const cardName = ctx.match.input.split('-').slice(1).join('-')
 
     if (ctx.match.input.startsWith('cancel_squad-')) {
-        Deck.deleteCardFromSquad(ctx, cardName)
+        app.deleteCardFromSquad(ctx, cardName)
     }
 
     const menu = [
@@ -171,31 +215,31 @@ bot.action(/^(cancel_info|cancel_squad)-/, (ctx) => {
         ]
     ]
 
-    ctx.editMessageCaption(Deck.parseCard(cardName), { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+    ctx.editMessageCaption(app.parseCard(cardName), { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 })
 
 bot.action('arrange-squad', (ctx) => {
     ctx.answerCbQuery()
-    Deck.startArranging(ctx)
+    app.startArranging(ctx)
 })
 
 bot.action(/^ar-card-place_/, (ctx) => {
     ctx.answerCbQuery()
-    Deck.arrangeCard(ctx, ctx.match.input)
+    app.arrangeCard(ctx, ctx.match.input)
 })
 
 bot.action('arrange-next', (ctx) => {
     ctx.answerCbQuery()
-    Deck.arrangeNext(ctx)
+    app.arrangeNext(ctx)
 })
 
 bot.action('arrange-prev', (ctx) => {
     ctx.answerCbQuery()
-    Deck.arrangePrev(ctx)
+    app.arrangePrev(ctx)
 })
 
-bot.action('first-turn', (ctx) => Deck.defineTurnOrder(ctx, true))
+bot.action('first-turn', (ctx) => app.defineTurnOrder(ctx, true))
 
-bot.action('second-turn', (ctx) => Deck.defineTurnOrder(ctx, false))
+bot.action('second-turn', (ctx) => app.defineTurnOrder(ctx, false))
 
 bot.launch()

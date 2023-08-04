@@ -1,19 +1,23 @@
 import { Context, Markup } from "telegraf";
 import { IRoom } from "../rooms/rooms.types";
-import { Card, IGame, IGamePlayer } from "./game.types";
-import Deck from './deck'
+import { Card, IGame, IGameCard, IGamePlayer } from "./game.types";
 import { User } from "../rooms/rooms";
+import { getField } from "../field/field";
+import GameCard from "./game-card";
+import { app } from "..";
 
 
 export class Game implements IGame {
     public status: 'off' | 'on' | 'lobby'
     public players: IGamePlayer[]
+    private battleField: (IGameCard | null)[][]
     readonly room: IRoom
 
     constructor(room: IRoom) {
         this.status = 'off'
         this.room = room
         this.players = []
+        this.battleField = [[]]
     }
 
     changeStatus(status: 'off' | 'on' | 'lobby') {
@@ -56,7 +60,7 @@ export class Game implements IGame {
     }
 
     public async finishArranging(ctx: Context) {
-        const player = Deck.findGamePlayerByCtx(ctx) as IGamePlayer
+        const player = app.findGamePlayerByCtx(ctx) as IGamePlayer
 
         const playerField = player.squad.startArrangement.map(arr => {
             return arr.map(cell => {
@@ -76,7 +80,7 @@ export class Game implements IGame {
     }
 
     public generateHands(ctx: Context): void {
-        const hands: Card[][] = this.players.map(player => Deck.generateHand(player)) as Card[][]
+        const hands: Card[][] = this.players.map(player => app.generateHand(player)) as Card[][]
 
         this.players.forEach(async (player, index) => {
             const hand: Card[] = hands[index]
@@ -92,7 +96,7 @@ export class Game implements IGame {
                         ]
                     ]
 
-                    ctx.telegram.sendPhoto(player.id, card.image, { parse_mode: 'HTML', caption: Deck.parseCard(card), reply_markup: { inline_keyboard: menu } })
+                    ctx.telegram.sendPhoto(player.id, card.image, { parse_mode: 'HTML', caption: app.parseCard(card), reply_markup: { inline_keyboard: menu } })
                         .then((res) => {
                             player.handMessages.push(res.message_id)
                         })
@@ -119,8 +123,19 @@ export class Game implements IGame {
 
     private async startBattle(ctx: Context) {
         await this.room.informRoom(ctx, 'gen_start-battle', new User(Number(ctx.from?.id), String(ctx.from?.first_name)))
+        this.battleField = this.players[0].squad.startArrangement
+            .reverse()
+            .map(arr => arr.reverse())
+            .concat(this.players[1].squad.startArrangement)
+            .map((arr, index) => arr.map((card: Card | null) => {
+                return card ? new GameCard(card, index === 5) : card
+            }))
 
+        const fieldStream = await getField(this.battleField)
 
+        this.room.players.concat(this.room.watchers).forEach(user => {
+            ctx.telegram.sendDocument(user.id, { source: fieldStream, filename: 'field.png' }, { caption: 'Поле игры:' })
+        })
     }
 }
 

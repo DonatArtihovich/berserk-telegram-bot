@@ -44,7 +44,7 @@ export interface Card {
     name: string
     cost: number
     elite: boolean
-    class: string
+    class: string | null
     uniqueness: boolean
     element: string
     stats: {
@@ -52,11 +52,16 @@ export interface Card {
         walkCount: string
         simpleHit: string
     }
-    abilities: string
+    abilities: string | null
     rarity: string
     index: number
-    description: string
+    description: string | null
     set: string
     image: string
     arrIndex?: number
+}
+
+export interface IGameCard extends Card {
+    isHidden: boolean
+    isTapped: boolean
 }
