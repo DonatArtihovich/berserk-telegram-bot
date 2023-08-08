@@ -648,7 +648,7 @@ export default class Controller implements IController {
 
 
         if (player.handMessages.length < 17) {
-            ctx.replyWithHTML(`${playerCurrentSquadStr.trim() ? 'Ваш текущий отряд:\n' + playerCurrentSquadStr : ''}\n\nКристаллов осталось: ${player.squad.crystals.gold + '🔶'}, ${player.squad.crystals.silver + '🔷'}\n\n🃏Завершить набор/пересдать:`, { reply_markup: { inline_keyboard: menu } })
+            ctx.replyWithHTML(`${playerCurrentSquadStr.trim() ? 'Ваш текущий отряд:\n' + playerCurrentSquadStr : ''}\n\nКристаллов осталось: ${gold}'🔶', ${silver}'🔷'\n\n🃏Завершить набор/пересдать:`, { reply_markup: { inline_keyboard: menu } })
                 .then(m => player.handMessages.push(m.message_id))
         } else {
             ctx.telegram.editMessageText(ctx.from?.id, player.handMessages[player.handMessages.length - 1], undefined, `${playerCurrentSquadStr.trim() ? 'Ваш текущий отряд:\n' + playerCurrentSquadStr : ''}\n\nКристаллов осталось: ${player.squad.crystals.gold + '🔶'}, ${player.squad.crystals.silver + '🔷'}\n\n🃏Завершить набор/пересдать:`, { reply_markup: { inline_keyboard: menu } })
