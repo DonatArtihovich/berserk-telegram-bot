@@ -414,6 +414,16 @@ export default class Controller implements IController {
             return
         }
 
+        const menu = [
+            [Markup.button.callback('🔙Отмена', `cancel_squad-${name}`)]
+        ]
+
+        const cardInfoArr = this.parseCard(name).split(' ')
+        const cardElement = cardInfoArr[cardInfoArr.length - 1]
+        const cardCost = cardInfoArr[0]
+        ctx.editMessageCaption(`Карта ${cardElement}<b>${name}</b>(${cardCost}) взята в отряд!`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+
+
         const card = this.findCardByName(name)
         if (card == undefined) throw new Error('Card not found')
 
@@ -433,6 +443,13 @@ export default class Controller implements IController {
             return
         }
 
+        ctx.deleteMessage()
+
+        if (player.squad.isHandKeeped) {
+            ctx.replyWithHTML('🚫<i>Вы уже оставили руку</i>')
+            return
+        }
+
         const game = player.game
         if (game == undefined) {
             ctx.replyWithHTML('🚫<i>Игра еще не началась/уже закончилась</i>')
@@ -443,22 +460,18 @@ export default class Controller implements IController {
 
         player.squad.isHandKeeped = true
 
-        const menu = [
-            [Markup.button.callback('🗺Расставить', 'arrange-squad')]
-        ]
-
         const isReady: boolean = room.game?.players.reduce((prev, curr) => !prev ? prev : curr.squad.isHandKeeped, true) as boolean
         if (isReady) game.areHandsKeeped = true
 
         room.players.concat(room.watchers).forEach(user => {
             if (isReady) {
                 user.id === player.id ?
-                    ctx.telegram.sendMessage(user.id, `✅<b>${player.name}</b> оставил руку.\nНабирайте отряд и расставляйте.`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
-                    : ctx.telegram.sendMessage(user.id, `✅Вы оставили руку.\nНабирайте отряд и расставляйте.`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                    ctx.telegram.sendMessage(user.id, `✅Вы оставили руку.\nНабирайте отряд и расставляйте.`, { parse_mode: 'HTML' })
+                    : ctx.telegram.sendMessage(user.id, `✅<b>${player.name}</b> оставил руку.\nНабирайте отряд и расставляйте.`, { parse_mode: 'HTML' })
             } else {
                 user.id === player.id ?
-                    ctx.telegram.sendMessage(user.id, `✅<b>${player.name}</b> оставил руку.`, { parse_mode: 'HTML' })
-                    : ctx.telegram.sendMessage(user.id, `✅Вы оставили руку. Подождите остальных, прежде чем расставлять отряд.`, { parse_mode: 'HTML' })
+                    ctx.telegram.sendMessage(user.id, `✅Вы оставили руку. Подождите остальных, прежде чем набирать отряд.`, { parse_mode: 'HTML' })
+                    : ctx.telegram.sendMessage(user.id, `✅<b>${player.name}</b> оставил руку.`, { parse_mode: 'HTML' })
             }
         })
     }
@@ -486,9 +499,8 @@ export default class Controller implements IController {
             hand.forEach(async (card) => {
 
                 const menu = [
-                    [
-                        Markup.button.callback('➕', `squad_${card.name}`)
-                    ]
+                    [Markup.button.callback('➕Взять в отряд', `squad_${card.name}`)],
+                    [Markup.button.callback('👁 Показать', `show_${card.name}`)],
                 ]
 
                 await ctx.replyWithPhoto(card.image, { caption: this.parseCard(card), parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
@@ -511,6 +523,17 @@ export default class Controller implements IController {
                     .then((res) => {
                         player.handMessages.push(res.message_id)
                     })
+            })
+            .then(() => {
+                const game = player.game
+                if (game == undefined) {
+                    ctx.replyWithHTML('🚫<i>Игра еще не началась</i>')
+                    return
+                }
+
+                game.room.players.concat(game.room.watchers).forEach(user => {
+                    ctx.telegram.sendMessage(user.id, `🔀${user.id === player.id ? 'Вы пересдали' : `<b>${player.name}</b> пересдал`} руку`, { parse_mode: 'HTML' })
+                })
             })
     }
 
@@ -600,29 +623,36 @@ export default class Controller implements IController {
         }).join('\n')
 
         const playerSquadElements: string[] = []
+        let gold: number = player.squad.crystals.gold
+        let silver: number = player.squad.crystals.silver
 
         playerCurrentSquad.forEach(card => {
             if (card == undefined) {
                 throw new Error('Card not found')
             }
 
-            card.elite ? player.squad.crystals.gold -= card.cost : player.squad.crystals.silver -= card.cost
+            card.elite ? gold -= card.cost : silver -= card.cost
 
             if (playerSquadElements.indexOf(card.element) === -1) {
                 playerSquadElements.push(card.element)
-                player.squad.crystals.gold -= 1
+                gold -= 1
             }
         })
 
 
         const menu = [
             [
-                Markup.button.callback('🗺Расставить', `arrange-squad`),
-                Markup.button.callback('🤚Пересдать', `mulligan`)
+                Markup.button.callback('🗺Расставить', `arrange-squad`)
             ]
         ]
 
-        ctx.telegram.editMessageText(ctx.from?.id, player.handMessages[player.handMessages.length - 1], undefined, `${playerCurrentSquadStr.trim() ? 'Ваш текущий отряд:\n' + playerCurrentSquadStr : ''}\n\nКристаллов осталось: ${player.squad.crystals.gold + '🔶'}, ${player.squad.crystals.silver + '🔷'}\n\n🃏Завершить набор/пересдать:`, { reply_markup: { inline_keyboard: menu } })
+
+        if (player.handMessages.length < 17) {
+            ctx.replyWithHTML(`${playerCurrentSquadStr.trim() ? 'Ваш текущий отряд:\n' + playerCurrentSquadStr : ''}\n\nКристаллов осталось: ${player.squad.crystals.gold + '🔶'}, ${player.squad.crystals.silver + '🔷'}\n\n🃏Завершить набор/пересдать:`, { reply_markup: { inline_keyboard: menu } })
+                .then(m => player.handMessages.push(m.message_id))
+        } else {
+            ctx.telegram.editMessageText(ctx.from?.id, player.handMessages[player.handMessages.length - 1], undefined, `${playerCurrentSquadStr.trim() ? 'Ваш текущий отряд:\n' + playerCurrentSquadStr : ''}\n\nКристаллов осталось: ${player.squad.crystals.gold + '🔶'}, ${player.squad.crystals.silver + '🔷'}\n\n🃏Завершить набор/пересдать:`, { reply_markup: { inline_keyboard: menu } })
+        }
     }
 
     public startArranging(ctx: Context) {
@@ -763,7 +793,7 @@ export default class Controller implements IController {
 
     public defineTurnOrder(ctx: Context, isFirst: boolean) {
 
-        ctx.editMessageText(`🎲Вы ходите ${isFirst ? 'первым' : 'вторым'}.`)
+        ctx.deleteMessage()
 
         const userId = ctx.chat?.id
         if (userId == undefined) throw new Error('User not found')
@@ -790,8 +820,8 @@ export default class Controller implements IController {
 
         room.players.concat(room.watchers).forEach(user => {
             user.id === userId ?
-                ctx.telegram.sendMessage(user.id, `🎲<b>${player?.name}</b> ходит ${isFirst ? 'первым' : 'вторым'}.`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
-                : ctx.telegram.sendMessage(user.id, `🎲Вы ходите ${isFirst ? 'первым' : 'вторым'}.`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                ctx.telegram.sendMessage(user.id, `🎲Вы ходите ${isFirst ? 'первым' : 'вторым'}.`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                : ctx.telegram.sendMessage(user.id, `🎲<b>${player?.name}</b> ходит ${isFirst ? 'первым' : 'вторым'}.`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
         })
 
     }
@@ -855,6 +885,8 @@ export default class Controller implements IController {
             ctx.replyWithHTML('🚫<i>Еще не все оставили свои руки</i>')
             return
         }
+
+        ctx.replyWithHTML(`Вы показали оппоненту карту <b>${name}</b>`)
 
         const opponentPlayer = game.players.find(p => p.id !== player.id) as IGamePlayer
 

@@ -165,7 +165,10 @@ bot.action('cancel_add-deck', (ctx) => {
     ctx.editMessageText(message, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 })
 
-bot.action('draw-hand', ctx => app.drawHand(ctx))
+bot.action('draw-hand', ctx => {
+    ctx.deleteMessage()
+    app.drawHand(ctx)
+})
 
 bot.action('keep-hand', ctx => app.keepHand(ctx))
 
@@ -179,15 +182,6 @@ bot.action(/^squad_/, (ctx) => {
     const cardName = ctx.match.input.split('_')[1]
 
     app.addCardToSquad(ctx, cardName)
-
-    const menu = [
-        [Markup.button.callback('🔙Отмена', `cancel_squad-${cardName}`)]
-    ]
-
-    const cardInfoArr = app.parseCard(cardName).split(' ')
-    const cardElement = cardInfoArr[cardInfoArr.length - 1]
-    const cardCost = cardInfoArr[0]
-    ctx.editMessageCaption(`Карта ${cardElement}<b>${cardName}</b>(${cardCost}) взята в отряд!`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 })
 
 bot.action(/^show_/, (ctx) => {
@@ -196,7 +190,6 @@ bot.action(/^show_/, (ctx) => {
 
     app.showCard(ctx, cardName)
 
-    ctx.replyWithHTML(`Вы показали оппоненту карту <b>${cardName}</b>`)
     // ctx.editMessageCaption(`Карта ${cardElement}<b>${cardName}</b>(${cardCost}) взята в отряд!`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 })
 
@@ -226,10 +219,10 @@ bot.action(/^cancel_squad-/, (ctx) => {
     // }
 
     const menu = [
-        [
-            Markup.button.callback('➕', `squad_${cardName}`)
-        ]
+        [Markup.button.callback('➕Взять в отряд', `squad_${cardName}`)],
+        [Markup.button.callback('👁 Показать', `show_${cardName}`)],
     ]
+
 
     ctx.editMessageCaption(app.parseCard(cardName), { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 })
