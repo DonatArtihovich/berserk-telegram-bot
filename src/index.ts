@@ -6,10 +6,6 @@ import * as Text from './text'
 import Controller from './controller/control'
 import { IMessage } from './types'
 
-import cards from './data.json'
-import { getField } from './field/field'
-import GameCard from './game/game-card'
-import { IGameCard } from './game/game.types'
 dotenv.config()
 
 const token: string | undefined = process.env.TOKEN
@@ -58,6 +54,9 @@ bot.command('watch', (ctx) => {
     app.joinRoom(ctx, messageText.split(' ')[1], true)
 })
 
+bot.command(/^(tap|t)$/, ctx => app.changeTappedCardStatus(ctx))
+bot.command(/^(untap|ut)$/, ctx => app.changeTappedCardStatus(ctx, false))
+
 // bot.command('deck', Deck.chooseDeck)
 
 // bot.command('a', (ctx) => {
@@ -88,18 +87,19 @@ bot.command('watch', (ctx) => {
 
 //     ctx.replyWithHTML(`<code>┌──────────┬──────────┬──────────┬──────────┬──────────┐\n${nameRows}\n└──────────┴──────────┴──────────┴──────────┴──────────┘</code>`)
 // })
-let id: number
-bot.command('u', async (ctx) => {
-    const matrix = Array(6).fill(null).map(() => Array(5).fill(null).map(() => Math.random() < 0.5 ? new GameCard(cards[Math.floor(Math.random() * 200)], Math.random() < 0.2) : null))
-    const fieldStream = await getField(matrix)
-    if (id == undefined) {
-        // ctx.replyWithPhoto({ source: fieldStream }, { caption: 'Поле игры:' })
-        //     .then(m => { id = m.message_id })
-        ctx.telegram.sendDocument(ctx.chat.id, { source: fieldStream, filename: 'field.png' }, { caption: 'Поле игры:' })
-    } else {
-        ctx.telegram.editMessageMedia(ctx.chat.id, id, undefined, { media: { source: fieldStream }, type: 'photo' })
-    }
-})
+
+// let id: number
+// bot.command('u', async (ctx) => {
+//     const matrix = Array(6).fill(null).map(() => Array(5).fill(null).map(() => Math.random() < 0.5 ? new GameCard(cards[Math.floor(Math.random() * 200)], Math.random() < 0.2) : null))
+//     const fieldStream = await getField(matrix)
+//     if (id == undefined) {
+//         // ctx.replyWithPhoto({ source: fieldStream }, { caption: 'Поле игры:' })
+//         //     .then(m => { id = m.message_id })
+//         ctx.telegram.sendDocument(ctx.chat.id, { source: fieldStream, filename: 'field.png' }, { caption: 'Поле игры:' })
+//     } else {
+//         ctx.telegram.editMessageMedia(ctx.chat.id, id, undefined, { media: { source: fieldStream }, type: 'photo' })
+//     }
+// })
 bot.hears(/^(.|\n)+$\n(^\d+\s[а-яА-Яa-zA-Z]+)+/gm, (ctx) => app.addDeck(ctx))
 
 bot.on(message('text'), (ctx: Context) => {
@@ -125,9 +125,10 @@ bot.action('exit', (ctx) => {
 })
 
 bot.action('roominfo', (ctx) => {
-    ctx.editMessageReplyMarkup({
-        inline_keyboard: [[Markup.button.callback('Начать игру', 'play')], [Markup.button.callback('Выйти', 'exit')]]
-    });
+    // ctx.editMessageReplyMarkup({
+    //     inline_keyboard: [[Markup.button.callback('Начать игру', 'play')], [Markup.button.callback('Выйти', 'exit')]]
+    // });
+    ctx.answerCbQuery()
 
     app.showRoom(ctx)
 })
@@ -164,6 +165,10 @@ bot.action('cancel_add-deck', (ctx) => {
     ctx.editMessageText(message, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 })
 
+bot.action('draw-hand', ctx => app.drawHand(ctx))
+
+bot.action('keep-hand', ctx => app.keepHand(ctx))
+
 bot.action('mulligan', async (ctx) => {
     ctx.answerCbQuery()
     app.mulliganHand(ctx)
@@ -185,29 +190,40 @@ bot.action(/^squad_/, (ctx) => {
     ctx.editMessageCaption(`Карта ${cardElement}<b>${cardName}</b>(${cardCost}) взята в отряд!`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 })
 
-bot.action(/^info_/, (ctx) => {
+bot.action(/^show_/, (ctx) => {
     ctx.answerCbQuery()
-
     const cardName = ctx.match.input.split('_')[1]
 
-    const menu = [
-        [
-            Markup.button.callback('➕Взять в отряд', `squad_${cardName}`),
-            Markup.button.callback('🔙Менее', `cancel_info-${cardName}`)
-        ]
-    ]
+    app.showCard(ctx, cardName)
 
-    ctx.editMessageText(app.parseCard(cardName, true), { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+    ctx.replyWithHTML(`Вы показали оппоненту карту <b>${cardName}</b>`)
+    // ctx.editMessageCaption(`Карта ${cardElement}<b>${cardName}</b>(${cardCost}) взята в отряд!`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
 })
 
-bot.action(/^(cancel_info|cancel_squad)-/, (ctx) => {
+// bot.action(/^info_/, (ctx) => {
+//     ctx.answerCbQuery()
+
+//     const cardName = ctx.match.input.split('_')[1]
+
+//     const menu = [
+//         [
+//             Markup.button.callback('➕Взять в отряд', `squad_${cardName}`),
+//             Markup.button.callback('🔙Менее', `cancel_info-${cardName}`)
+//         ]
+//     ]
+
+//     ctx.editMessageText(app.parseCard(cardName, true), { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+// })
+
+// bot.action(/^(cancel_info|cancel_squad)-/, (ctx) => {
+bot.action(/^cancel_squad-/, (ctx) => {
     ctx.answerCbQuery()
 
     const cardName = ctx.match.input.split('-').slice(1).join('-')
 
-    if (ctx.match.input.startsWith('cancel_squad-')) {
-        app.deleteCardFromSquad(ctx, cardName)
-    }
+    // if (ctx.match.input.startsWith('cancel_squad-')) {
+    app.deleteCardFromSquad(ctx, cardName)
+    // }
 
     const menu = [
         [
@@ -241,5 +257,7 @@ bot.action('arrange-prev', (ctx) => {
 bot.action('first-turn', (ctx) => app.defineTurnOrder(ctx, true))
 
 bot.action('second-turn', (ctx) => app.defineTurnOrder(ctx, false))
+
+bot.action('pass-turn', app.passTurn)
 
 bot.launch()

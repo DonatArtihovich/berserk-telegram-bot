@@ -15,11 +15,14 @@ export interface ICard {
 export interface IGame {
     status: 'on' | 'off' | 'lobby'
     players: IGamePlayer[]
+    battleField: (IGameCard | null)[][]
+    currentPlayer: IGamePlayer | null
+    areHandsKeeped: boolean
     readonly room: IRoom
     changeStatus: (status: 'on' | 'off' | 'lobby') => void
     startGame: (ctx: Context) => void
     finishArranging: (ctx: Context) => void
-    generateHands: (ctx: Context) => void
+    endTurn: (ctx: Context) => void
 }
 
 export interface IGamePlayer {
@@ -28,7 +31,8 @@ export interface IGamePlayer {
     game?: IGame
     deck: IDeck
     squad: ISquad
-    grave: Card[]
+    grave: IGameCard[]
+    fliers: IGameCard[]
     handMessages: number[]
 }
 
@@ -36,6 +40,8 @@ export interface ISquad {
     fliers: Card[]
     field: Card[]
     startArrangement: (Card | null)[][]
+    crystals: { gold: number, silver: number }
+    isHandKeeped: boolean
     arrangingArr?: { name: string, index: number }[]
     arrangingIndex?: number
 }

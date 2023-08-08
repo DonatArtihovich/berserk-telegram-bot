@@ -1,7 +1,8 @@
 import { Rooms, IRoom, IUser } from './rooms.types'
-import { Context } from 'telegraf'
+import { Context, Markup } from 'telegraf'
 import { IMessage } from '../types'
-import { Message } from 'telegraf/typings/core/types/typegram'
+import { InlineKeyboardButton, Message } from 'telegraf/typings/core/types/typegram'
+import { findRoomForUser } from '../controller/control'
 // import {requireDecks}
 
 export const rooms: Rooms = []
@@ -31,10 +32,11 @@ export class Room implements IRoom {
                 return
             }
 
+            let menu: null | InlineKeyboardButton[][] = null
             let alert: string;
             switch (key) {
                 case 'pjoin':
-
+                    menu = [[Markup.button.callback('Начать игру', 'play')]]
                     alert = `😀 Пользователь <b>${user.name}</b> присоединился к комнате как игрок.`
                     break;
                 case 'wjoin':
@@ -69,12 +71,21 @@ export class Room implements IRoom {
             }
 
             informedUsers.forEach((user, index) => {
-                ctx.telegram.sendMessage(user.id, alert, { parse_mode: 'HTML' })
-                    .then((res) => {
-                        if (index === informedUsers.length - 1) {
-                            resolve(res)
-                        }
-                    })
+                if (menu && findRoomForUser(user.id)?.players.findIndex(p => p.id === user.id) !== -1) {
+                    ctx.telegram.sendMessage(user.id, alert, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                        .then((res) => {
+                            if (index === informedUsers.length - 1) {
+                                resolve(res)
+                            }
+                        })
+                } else {
+                    ctx.telegram.sendMessage(user.id, alert, { parse_mode: 'HTML' })
+                        .then((res) => {
+                            if (index === informedUsers.length - 1) {
+                                resolve(res)
+                            }
+                        })
+                }
             })
         })
     }

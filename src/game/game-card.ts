@@ -1,6 +1,7 @@
-import { Card, IGameCard } from "./game.types";
+import { Card, IGameCard, IGamePlayer } from "./game.types";
 
 export default class GameCard implements IGameCard {
+    public control: IGamePlayer
     public name: string
     public cost: number
     public elite: boolean
@@ -21,7 +22,8 @@ export default class GameCard implements IGameCard {
     public isHidden: boolean
     public isTapped: boolean
 
-    constructor(card: Card, isHidden: boolean) {
+    constructor(card: Card, player: IGamePlayer, isHidden: boolean) {
+        this.control = player
         this.name = card.name
         this.cost = card.cost
         this.elite = card.elite
@@ -36,6 +38,6 @@ export default class GameCard implements IGameCard {
         this.set = card.set
         this.image = card.image
         this.isHidden = isHidden
-        this.isTapped = Math.random() < 0.5
+        this.isTapped = false
     }
 }

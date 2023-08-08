@@ -39,6 +39,7 @@ td:last-child {
 }
     
 td {
+    position: relative;
     width: 203px;
     height: 100px;
     border: 1px solid transparent;
@@ -66,13 +67,11 @@ td {
 }
 
 .life-counter {
-    background-color: red;
     color: white;
     left: 2%;
 }
 
 .walk-counter {
-    background-color: rgb(105, 18, 18);
     color: white;
     left: 23%;
 }
@@ -80,9 +79,16 @@ td {
 .hit-counter {
     width: 30px;
     height: 15px;
-    background-color: rgb(30, 182, 25);
     color: white;
     right: 2%;
+}
+
+.cell-number {
+    color: white;
+    position: absolute;
+    z-index: 200;
+    top: 5%;
+    left: 5%;
 }
 
 /*

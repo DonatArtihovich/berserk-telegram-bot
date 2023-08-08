@@ -1,4 +1,4 @@
-import { Card, IDeck, IGame, IGamePlayer, ISquad } from "./game.types";
+import { Card, IDeck, IGame, IGameCard, IGamePlayer, ISquad } from "./game.types";
 
 export class GamePlayer implements IGamePlayer {
     public id: number
@@ -6,7 +6,8 @@ export class GamePlayer implements IGamePlayer {
     public game?: IGame
     public deck: IDeck
     public squad: ISquad
-    public grave: Card[]
+    public fliers: IGameCard[]
+    public grave: IGameCard[]
     public handMessages: number[]
 
     constructor(id: number, name: string, deck: IDeck) {
@@ -14,6 +15,7 @@ export class GamePlayer implements IGamePlayer {
         this.name = name
         this.deck = deck
         this.squad = new Squad()
+        this.fliers = []
         this.grave = []
         this.handMessages = []
     }
@@ -24,11 +26,15 @@ class Squad implements ISquad {
     public field: Card[]
     public startArrangement: Card[][]
     public arrangingIndex: number
+    public crystals: { gold: number, silver: number }
+    public isHandKeeped: boolean
 
     constructor() {
         this.fliers = []
         this.field = []
         this.startArrangement = [new Array(5).fill(null), new Array(5).fill(null), new Array(5).fill(null)]
         this.arrangingIndex = 0
+        this.crystals = { gold: 0, silver: 0 }
+        this.isHandKeeped = false
     }
 }

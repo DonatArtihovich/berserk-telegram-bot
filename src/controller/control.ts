@@ -3,7 +3,7 @@ import { IController } from './control.types'
 import { rooms, Room, User } from '../rooms/rooms'
 import { IRoom, IUser } from '../rooms/rooms.types'
 import { Game } from '../game/game'
-import { Card, ICard, IDeck, IGame, IGamePlayer } from '../game/game.types'
+import { Card, ICard, IDeck, IGame, IGameCard, IGamePlayer } from '../game/game.types'
 import * as Text from '../text'
 import { IMessage } from '../types'
 import { IPlayer } from '../players/players.types'
@@ -11,6 +11,7 @@ import { Player, players } from '../players/players'
 import cards from '../data.json'
 import { GamePlayer } from '../game/game-player'
 import { InlineKeyboardButton } from 'telegraf/typings/core/types/typegram'
+import { getField } from '../field/field'
 
 export default class Controller implements IController {
     public createRoom(ctx: Context): void {
@@ -36,7 +37,6 @@ export default class Controller implements IController {
         const replyText = `✅Комната под названием <code>${roomName}</code> создана! Пригласите сюда оппонента и зрителей!\n\n😀<i>Оппонент должен ввести <code>/join ${roomName}</code>, чтобы присоединиться как игрок,\n🥸зритель должен ввести <code>/watch ${roomName}</code>, чтобы присоединиться как зритель</i>`
 
         const menu = Markup.inlineKeyboard([
-            [Markup.button.callback('Начать игру', 'play')],
             [Markup.button.callback('Подробности', 'roominfo')],
             [Markup.button.callback('Удалить и выйти', 'exit')]
         ])
@@ -70,6 +70,7 @@ export default class Controller implements IController {
         const user: IUser = new User(userId, userName)
 
         const menu = Markup.inlineKeyboard([
+            [Markup.button.callback('Начать игру', 'play')],
             [Markup.button.callback('Подробности', 'roominfo')],
             [Markup.button.callback('Выйти', 'exit')]
         ])
@@ -120,10 +121,7 @@ export default class Controller implements IController {
         if (curRoom === undefined) {
             ctx.replyWithHTML('🚫<i>Вы не находитесь в комнате.</i>')
         } else {
-
-            const playerMenu = Markup.inlineKeyboard([[Markup.button.callback('Начать игру', 'play')], [Markup.button.callback('Выйти', 'exit')], [Markup.button.callback('Закрыть', 'close')]])
-            const watcherMenu = Markup.inlineKeyboard([[Markup.button.callback('Выйти', 'exit')], [Markup.button.callback('Закрыть', 'close')]])
-            const menu = isPlayer(userId, curRoom) ? playerMenu : watcherMenu
+            const menu = Markup.inlineKeyboard([[Markup.button.callback('Выйти', 'exit')], [Markup.button.callback('Закрыть', 'close')]])
 
             const playersInRoom = curRoom.players.map(p => p.name)
             const watchersInRoom = curRoom.watchers.map(w => w.name)
@@ -411,6 +409,11 @@ export default class Controller implements IController {
             return
         }
 
+        if (!player.game?.areHandsKeeped) {
+            ctx.replyWithHTML('🚫<i>Еще не все оставили свои руки</i>')
+            return
+        }
+
         const card = this.findCardByName(name)
         if (card == undefined) throw new Error('Card not found')
 
@@ -423,17 +426,55 @@ export default class Controller implements IController {
         this.showCurrentSquad(ctx, player)
     }
 
+    public keepHand(ctx: Context) {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const game = player.game
+        if (game == undefined) {
+            ctx.replyWithHTML('🚫<i>Игра еще не началась/уже закончилась</i>')
+            return
+        }
+
+        const room = game.room
+
+        player.squad.isHandKeeped = true
+
+        const menu = [
+            [Markup.button.callback('🗺Расставить', 'arrange-squad')]
+        ]
+
+        const isReady: boolean = room.game?.players.reduce((prev, curr) => !prev ? prev : curr.squad.isHandKeeped, true) as boolean
+        if (isReady) game.areHandsKeeped = true
+
+        room.players.concat(room.watchers).forEach(user => {
+            if (isReady) {
+                user.id === player.id ?
+                    ctx.telegram.sendMessage(user.id, `✅<b>${player.name}</b> оставил руку.\nНабирайте отряд и расставляйте.`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                    : ctx.telegram.sendMessage(user.id, `✅Вы оставили руку.\nНабирайте отряд и расставляйте.`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+            } else {
+                user.id === player.id ?
+                    ctx.telegram.sendMessage(user.id, `✅<b>${player.name}</b> оставил руку.`, { parse_mode: 'HTML' })
+                    : ctx.telegram.sendMessage(user.id, `✅Вы оставили руку. Подождите остальных, прежде чем расставлять отряд.`, { parse_mode: 'HTML' })
+            }
+        })
+    }
+
     public async mulliganHand(ctx: Context) {
         this.deleteLastSquad(ctx)
         const player = this.findGamePlayerByCtx(ctx)
         if (player == undefined) {
-            ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
             return
         }
 
         player.handMessages = []
         player.squad.field = []
         player.squad.fliers = []
+        player.squad.crystals.gold--
         player.squad.arrangingIndex = 0
         player.squad.arrangingArr = []
         player.squad.startArrangement = [new Array(5).fill(null), new Array(5).fill(null), new Array(5).fill(null)]
@@ -461,12 +502,12 @@ export default class Controller implements IController {
 
                 const menu = [
                     [
-                        Markup.button.callback('🗺Расставить', `arrange-squad`),
-                        Markup.button.callback('🤚Пересдать', `mulligan`)
+                        Markup.button.callback('🤚Оставить', `keep-hand`),
+                        Markup.button.callback('🔀Пересдать', `mulligan`)
                     ]
                 ]
 
-                ctx.reply('🃏Завершить набор/пересдать: ', { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                ctx.reply('🃏Обязательно сообщите, что оставляете руку перед тем как набирать отряд:', { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
                     .then((res) => {
                         player.handMessages.push(res.message_id)
                     })
@@ -525,9 +566,9 @@ export default class Controller implements IController {
     private showCurrentSquad(ctx: Context, player: IGamePlayer) {
         if (player.handMessages.length < 16) return
 
-        const playerCurrentSquad = player.squad.field.concat(player.squad.fliers).map(({ name }) => {
-            const card = this.findCardByName(name)
+        const playerCurrentSquad: (Card | void)[] = player.squad.field.concat(player.squad.fliers).map(({ name }) => this.findCardByName(name))
 
+        const playerCurrentSquadStr: string = playerCurrentSquad.map(card => {
             if (card == undefined) {
                 throw new Error('Card not found')
             }
@@ -558,6 +599,21 @@ export default class Controller implements IController {
             return `${cardCost} ${card.name} ${cardElement}`
         }).join('\n')
 
+        const playerSquadElements: string[] = []
+
+        playerCurrentSquad.forEach(card => {
+            if (card == undefined) {
+                throw new Error('Card not found')
+            }
+
+            card.elite ? player.squad.crystals.gold -= card.cost : player.squad.crystals.silver -= card.cost
+
+            if (playerSquadElements.indexOf(card.element) === -1) {
+                playerSquadElements.push(card.element)
+                player.squad.crystals.gold -= 1
+            }
+        })
+
 
         const menu = [
             [
@@ -566,13 +622,13 @@ export default class Controller implements IController {
             ]
         ]
 
-        ctx.telegram.editMessageText(ctx.from?.id, player.handMessages[player.handMessages.length - 1], undefined, `${playerCurrentSquad.trim() ? 'Ваш текущий отряд:\n' + playerCurrentSquad : ''}\n\n🃏Завершить набор/пересдать:`, { reply_markup: { inline_keyboard: menu } })
+        ctx.telegram.editMessageText(ctx.from?.id, player.handMessages[player.handMessages.length - 1], undefined, `${playerCurrentSquadStr.trim() ? 'Ваш текущий отряд:\n' + playerCurrentSquadStr : ''}\n\nКристаллов осталось: ${player.squad.crystals.gold + '🔶'}, ${player.squad.crystals.silver + '🔷'}\n\n🃏Завершить набор/пересдать:`, { reply_markup: { inline_keyboard: menu } })
     }
 
     public startArranging(ctx: Context) {
         const player = this.findGamePlayerByCtx(ctx)
         if (player == undefined) {
-            ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
             return
         }
 
@@ -588,7 +644,7 @@ export default class Controller implements IController {
 
         const { message, menu } = this.arrange(ctx, 1)
         if (message == undefined || menu == undefined) {
-            ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
             return
         }
 
@@ -666,7 +722,7 @@ export default class Controller implements IController {
 
         const player = this.findGamePlayerByCtx(ctx)
         if (player == undefined) {
-            ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
             return
         }
 
@@ -690,7 +746,7 @@ export default class Controller implements IController {
     public arrangePrev(ctx: Context) {
         const player = this.findGamePlayerByCtx(ctx)
         if (player == undefined) {
-            ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
             return
         }
 
@@ -728,14 +784,106 @@ export default class Controller implements IController {
 
         game.players = game.players[0].id === userId && !isFirst || game.players[0].id !== userId && isFirst ? game.players.reverse() : game.players
 
-        room.informRoom(ctx, 'def', { id: userId, name: player?.name == undefined ? 'Игрок' : player.name }, `🎲<b>${player?.name}</b> ходит ${isFirst ? 'первым' : 'вторым'}.`)
-        game.generateHands(ctx)
+        const menu = [
+            [Markup.button.callback('🃏Взять 15 карт', 'draw-hand')]
+        ]
+
+        room.players.concat(room.watchers).forEach(user => {
+            user.id === userId ?
+                ctx.telegram.sendMessage(user.id, `🎲<b>${player?.name}</b> ходит ${isFirst ? 'первым' : 'вторым'}.`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                : ctx.telegram.sendMessage(user.id, `🎲Вы ходите ${isFirst ? 'первым' : 'вторым'}.`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+        })
+
+    }
+
+    public async drawHand(ctx: Context) {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const hand = this.generateHand(player)
+        await ctx.telegram.sendMessage(player.id, '🃏Ваша рука сгенерирована!')
+        new Promise((resolve) => {
+            hand.forEach(async (card) => {
+
+                const menu = [
+                    [Markup.button.callback('➕Взять в отряд', `squad_${card.name}`)],
+                    [Markup.button.callback('👁 Показать', `show_${card.name}`)],
+                    // Markup.button.callback('❔', `info_${card.name}`)
+                ]
+
+                ctx.telegram.sendPhoto(player.id, card.image, { parse_mode: 'HTML', caption: this.parseCard(card), reply_markup: { inline_keyboard: menu } })
+                    .then((res) => {
+                        player.handMessages.push(res.message_id)
+                    })
+                    .then(() => {
+                        if (player.handMessages.length === hand.length) resolve(1)
+                    })
+            })
+        })
+            .then(() => {
+
+                const menu = [
+                    [
+                        Markup.button.callback('🤚Оставить', `keep-hand`),
+                        Markup.button.callback('🔀Пересдать', `mulligan`)
+                    ]
+                ]
+
+                ctx.telegram.sendMessage(player.id, '🃏Обязательно сообщите, что оставляете руку перед тем как набирать отряд:', { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } }).then(m => {
+                    player.handMessages.push(m.message_id)
+                })
+            })
+    }
+
+    public showCard(ctx: Context, name: string) {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const game = player.game
+        if (game == undefined) {
+            ctx.replyWithHTML('🚫<i>Игра не начата.</i>')
+            return
+        }
+
+        if (!game.areHandsKeeped) {
+            ctx.replyWithHTML('🚫<i>Еще не все оставили свои руки</i>')
+            return
+        }
+
+        const opponentPlayer = game.players.find(p => p.id !== player.id) as IGamePlayer
+
+        const card = this.findCardByName(name)
+        if (card == undefined) {
+            ctx.replyWithHTML(`🚫<i>Карта <b>${name}</b> не найдена!</i>`)
+            return
+        }
+
+        ctx.telegram.sendPhoto(opponentPlayer.id, card.image, { caption: '👁Оппонент показывает вам карту:' })
+    }
+
+    public passTurn(ctx: Context) {
+        const player = this.findGamePlayerByCtx(ctx)
+
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const game = player.game as IGame
+
+        game.endTurn(ctx)
     }
 
     private arrange(ctx: Context, currentIndex: number): { message: string | undefined, menu: InlineKeyboardButton[][] | undefined } {
         const player = this.findGamePlayerByCtx(ctx)
         if (player == undefined) {
-            ctx.replyWithHTML('🚫<i>Вы не игрок.<i>')
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
             return { message: undefined, menu: undefined }
         }
 
@@ -749,16 +897,23 @@ export default class Controller implements IController {
         const playerSquad = player.squad.field.concat(player.squad.fliers).map(({ name }, index) => { return { name, index: index + 1 } })
 
         const playerSquadStr = playerSquad.map((card, index) => index !== currentIndex - 1 ? (arrangingArr.findIndex(c => c.index === card.index) === -1 ? `✅(${card.index})${card.name}` : `✔️(${card.index})${card.name}`) : `➡️<b>(${card.index})${card.name}</b>`).join('\n')
-        const message = `Расставьте свой отряд:\n${playerSquadStr}`
+        const message = `Расставьте свой отряд:\n${playerSquadStr}\n\n⬛ должны быть заняты прежде чем занимать ⬜️`
 
         const arrowButtons = currentIndex === 1 ? [Markup.button.callback('Дальше🔜', 'arrange-next')] : [Markup.button.callback('🔙Назад', 'arrange-prev'), Markup.button.callback('Дальше🔜', 'arrange-next')]
 
         let idx = 0
-        const menu = player.squad.startArrangement.map((array, i) => {
+        const menu = player.squad.startArrangement.map((array, index) => {
 
-            if (i) idx += array.length
+            if (index) idx += array.length
 
             const row = array.map((item, i) => {
+                let square: string
+                if (player.game?.players[0] === player) {
+                    square = i === 0 || i === 4 ? '⬜️' : '⬛️'
+                } else {
+                    square = i === 0 && index !== 0 || i === 4 && index !== 0 ? '⬜️' : '⬛️'
+                }
+
                 let itemElement
                 if (item) {
                     switch (item.element.trim().toLowerCase()) {
@@ -781,7 +936,7 @@ export default class Controller implements IController {
                             itemElement = '⚔️'
                     }
                 }
-                return Markup.button.callback(!item ? '⬜️' : `${itemElement}(${item.arrIndex})`, `ar-card-place_${idx + i}`)
+                return Markup.button.callback(!item ? square : `${itemElement}(${item.arrIndex})`, `ar-card-place_${idx + i}`)
             })
             return row
         }).concat([arrowButtons])
@@ -862,6 +1017,28 @@ export default class Controller implements IController {
         return result !== undefined ? JSON.parse(JSON.stringify(result)) : result
     }
 
+    public changeTappedCardStatus(ctx: Context, status = true): void {
+        console.log(this)
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const game = player.game
+        if (game == undefined) {
+            ctx.replyWithHTML('🚫<i>Игра еще не началась/уже закончилась</i>')
+            return
+        }
+
+        const cards = this.getCards(ctx, game)
+
+        cards.forEach(card => card.isTapped = status)
+
+        const text = status ? `⤵️<b>${player.name}</b> закрыл карты ${cards.map(c => c.name).join(', ')}.` : `⤴️<b>${player.name}</b> открыл карты ${cards.map(c => c.name).join(', ')}.`
+        this.redrawField(ctx, game, text)
+    }
+
     public findGamePlayerByCtx(ctx: Context): IGamePlayer | undefined {
         const userId = ctx.chat?.id
         if (userId == undefined) throw new Error('User not found')
@@ -879,6 +1056,66 @@ export default class Controller implements IController {
         }
 
         return game.players.find(player => player.id === userId)
+    }
+
+    private getCards(ctx: Context, game: IGame): IGameCard[] {
+        const message = ctx.message as IMessage
+        const text = message.text
+
+        const cardCells = text.split(' ').slice(1).map(cell => cell.trim())
+        const notFoundCells: string[] = []
+
+        const cards = cardCells
+            .map(cellName => {
+                let card
+
+                if (!cellName.startsWith('f')) {
+                    const cellIndex = cellNames.findIndex(name => name === cellName)
+
+                    const cardRow = Math.floor(cellIndex / 5)
+                    const cardCell = cellIndex % 5
+
+                    card = game.battleField[cardRow][cardCell]
+
+                } else {
+                    const flierIndex = Number(cellName.slice(1))
+
+                    const playerIndex = Number(!(flierIndex < 4))
+                    card = game.players[playerIndex].fliers[flierIndex - 1]
+                }
+
+                if (card == undefined) {
+                    notFoundCells.push(cellName)
+                    return null
+                }
+
+                return card
+            })
+            .filter(card => Boolean(card)) as IGameCard[]
+
+        if (notFoundCells.length) {
+            ctx.replyWithHTML(`🚫<i>Клетки/карты на клетках ${notFoundCells.join(', ')} не найдены.</i>`)
+        }
+
+        return cards
+    }
+
+    private async redrawField(ctx: Context, game: IGame, text: string) {
+        game.room.players.concat(game.room.watchers).forEach(user => {
+            ctx.telegram.sendMessage(user.id, '🔘Ожидайте загрузки поля.')
+        })
+        const fieldStream = await getField(game.battleField, game.players)
+
+        game.room.players.concat(game.room.watchers).forEach(user => {
+
+            if (user.id === game.currentPlayer?.id) {
+                ctx.telegram.sendPhoto(user.id, { source: fieldStream }, {
+                    caption: `Поле игры:\n\n${text}\n\nХодит: ${game.currentPlayer?.name}`, reply_markup: { inline_keyboard: [[Markup.button.callback('Передать ход🔜', 'pass-turn')]] }, parse_mode: 'HTML'
+                })
+            } else {
+                ctx.telegram.sendPhoto(user.id, { source: fieldStream }, { caption: `Поле игры:\n\n${text}\n\nХодит: ${game.currentPlayer?.name}`, parse_mode: 'HTML' })
+            }
+        })
     }
 }
 
@@ -909,3 +1146,37 @@ function isPlayer(userId: number, room: IRoom): boolean {
 }
 
 export const findPlayerById = (playerId: number): IPlayer | undefined => players.find(u => u.id === playerId)
+
+
+const cellNames = [
+    'a1',
+    'a2',
+    'a3',
+    'a4',
+    'a5',
+    'b1',
+    'b2',
+    'b3',
+    'b4',
+    'b5',
+    'c1',
+    'c2',
+    'c3',
+    'c4',
+    'c5',
+    'd1',
+    'd2',
+    'd3',
+    'd4',
+    'd5',
+    'e1',
+    'e2',
+    'e3',
+    'e4',
+    'e5',
+    'g1',
+    'g2',
+    'g3',
+    'g4',
+    'g5'
+]

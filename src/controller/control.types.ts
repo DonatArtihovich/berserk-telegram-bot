@@ -8,4 +8,5 @@ export interface IController {
     showAllRooms: (ctx: Context) => void
     sendMessage: (ctx: Context) => void
     prepareGame: (ctx: Context) => void
+    changeTappedCardStatus: (ctx: Context, status?: boolean) => void
 }
