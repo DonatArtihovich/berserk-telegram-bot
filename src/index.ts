@@ -8,7 +8,7 @@ import { IMessage } from './types'
 
 dotenv.config()
 
-const token = '6143133677:AAE5dm_3Jzvf2Oth1ltf6LEW3p-C9-9C7vs'
+const token = process.env.TOKEN
 if (token == undefined) throw new Error('Bot isn\'t founded')
 
 const bot: Telegraf<Context> = new Telegraf(token)
