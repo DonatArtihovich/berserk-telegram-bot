@@ -422,6 +422,7 @@ export default class Controller implements IController {
         const cardElement = cardInfoArr[cardInfoArr.length - 1]
         const cardCost = cardInfoArr[0]
         ctx.editMessageCaption(`Карта ${cardElement}<b>${name}</b>(${cardCost}) взята в отряд!`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+            .catch(e => e)
 
 
         const card = this.findCardByName(name)
@@ -721,6 +722,43 @@ export default class Controller implements IController {
             return
         }
 
+        const game = player.game
+        if (game == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не в игре</i>.')
+            return
+        }
+
+        console.log('arrange: ', game.players.map(p => p.name))
+
+        const isFirst = player === game.players[0]
+
+        let ability = true
+
+        if (cell === 0 || cell === 4) {
+
+            if (!isFirst && row) {
+                ability = player.squad.startArrangement.reduce((prev, arr, index) => {
+                    if (!prev) return prev
+                    else return (index && arr.slice(1, 4).indexOf(null) === -1) || (!index && arr.indexOf(null) === -1)
+                }, true)
+            } else if (isFirst && row) {
+                ability = player.squad.startArrangement.reduce((prev, arr) => {
+                    if (!prev) return prev
+                    else return arr.slice(1, 4).indexOf(null) === -1
+                }, true)
+            } else if (isFirst && !row) {
+                ability = player.squad.startArrangement.reduce((prev, arr, index) => {
+                    if (!prev) return prev
+                    else return (index && arr.indexOf(null) === -1) || (!index && arr.slice(1, 4).indexOf(null) === -1)
+                }, true)
+            }
+        }
+
+        if (!ability) {
+            ctx.replyWithHTML('🚫<i>Вы не можете поставить карту на эту клетку, пока не заполните все ⬛️</i>')
+            return
+        }
+
         let indicator = false;
         player.squad.startArrangement.forEach(arr => arr.forEach(card => { if (Number(card?.arrIndex) === player.squad.arrangingIndex) indicator = true }))
 
@@ -818,6 +856,7 @@ export default class Controller implements IController {
 
         game.players = game.players[0].id === userId && !isFirst || game.players[0].id !== userId && isFirst ? game.players.reverse() : game.players
 
+        console.log('first or second: ', game.players.map(p => p.name))
         const menu = [
             [Markup.button.callback('🃏Взять 15 карт', 'draw-hand')]
         ]
@@ -916,6 +955,31 @@ export default class Controller implements IController {
         game.endTurn(ctx)
     }
 
+    public getCardInfo(ctx: Context) {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const game = player.game
+        if (game == undefined) {
+            ctx.replyWithHTML('🚫<i>Игра еще не началась/уже закончилась</i>')
+            return
+        }
+
+        const cards = this.getCards(ctx, game)
+
+        if (!cards.length) return
+        const menu = [
+            [Markup.button.callback('✖️Закрыть', 'close')]
+        ]
+
+        cards.forEach(card => {
+            ctx.replyWithPhoto(card.image, { caption: `${card.element}<b>${card.name}</b>`, parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+        })
+    }
+
     private arrange(ctx: Context, currentIndex: number): { message: string | undefined, menu: InlineKeyboardButton[][] | undefined } {
         const player = this.findGamePlayerByCtx(ctx)
         if (player == undefined) {
@@ -962,7 +1026,7 @@ export default class Controller implements IController {
                         case 'горы':
                             itemElement = '🗻'
                             break;
-                        case 'болото':
+                        case 'болота':
                             itemElement = '🌾'
                             break;
                         case 'тьма':
@@ -1054,7 +1118,6 @@ export default class Controller implements IController {
     }
 
     public changeTappedCardStatus(ctx: Context, status = true): void {
-        console.log(this)
         const player = this.findGamePlayerByCtx(ctx)
         if (player == undefined) {
             ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
@@ -1069,7 +1132,11 @@ export default class Controller implements IController {
 
         const cards = this.getCards(ctx, game)
 
-        cards.forEach(card => card.isTapped = status)
+        if (!cards.length) return
+
+        cards.forEach(card => {
+            card.isTapped = status
+        })
 
         const text = status ? `⤵️<b>${player.name}</b> закрыл карты ${cards.map(c => c.name).join(', ')}.` : `⤴️<b>${player.name}</b> открыл карты ${cards.map(c => c.name).join(', ')}.`
         this.redrawField(ctx, game, text)
@@ -1095,10 +1162,12 @@ export default class Controller implements IController {
     }
 
     private getCards(ctx: Context, game: IGame): IGameCard[] {
+        const player = this.findGamePlayerByCtx(ctx) as IGamePlayer
+
         const message = ctx.message as IMessage
         const text = message.text
 
-        const cardCells = text.split(' ').slice(1).map(cell => cell.trim())
+        const cardCells = text.split(' ').slice(1).map(cell => cell.trim().toLowerCase())
         const notFoundCells: string[] = []
 
         const cards = cardCells
@@ -1127,7 +1196,16 @@ export default class Controller implements IController {
 
                 return card
             })
-            .filter(card => Boolean(card)) as IGameCard[]
+            .filter(card => Boolean(card))
+            .filter((cell) => {
+                const card = cell as IGameCard
+
+                const ability = !card.isHidden || card.owner === player
+
+                if (!ability) ctx.reply('🚫<i>Вы не можете взаимодейтсвовать с некоторыми картами</i>')
+
+                return ability
+            }) as IGameCard[]
 
         if (notFoundCells.length) {
             ctx.replyWithHTML(`🚫<i>Клетки/карты на клетках ${notFoundCells.join(', ')} не найдены.</i>`)

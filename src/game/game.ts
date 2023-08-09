@@ -53,8 +53,9 @@ export class Game implements IGame {
         const firstPlayer = playerDices.reduce((prev, curr) => curr.roll > prev.roll ? curr : prev)
         const message = `Броски игроков:\n${playerDices.map(({ name, roll }) => `<b>${name}</b>: ${roll}🎲`).join('\n')}\n\n <b>${firstPlayer.name}</b> выбирает каким ходить!`
 
-        this.players.forEach(p => {
-            if (this.players[0] === p) {
+        console.log('determine: ', this.players.map(p => p.name))
+        this.players.forEach((p, index) => {
+            if (!index) {
                 p.squad.crystals.gold = 24
                 p.squad.crystals.silver = 22
             } else {
@@ -137,6 +138,8 @@ export class Game implements IGame {
 
     private async startBattle(ctx: Context) {
         await this.room.informRoom(ctx, 'gen_start-battle', new User(Number(ctx.from?.id), String(ctx.from?.first_name)))
+
+        console.log(this.players.map(p => p.name))
 
         this.battleField = this.players[0].squad.startArrangement
             .reverse()

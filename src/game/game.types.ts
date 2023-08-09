@@ -68,6 +68,7 @@ export interface Card {
 }
 
 export interface IGameCard extends Card {
+    owner: IGamePlayer
     isHidden: boolean
     isTapped: boolean
 }

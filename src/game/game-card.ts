@@ -19,6 +19,7 @@ export default class GameCard implements IGameCard {
     public description: string | null
     public set: string
     public image: string
+    public owner: IGamePlayer
     public isHidden: boolean
     public isTapped: boolean
 
@@ -37,6 +38,7 @@ export default class GameCard implements IGameCard {
         this.description = card.description
         this.set = card.set
         this.image = card.image
+        this.owner = player
         this.isHidden = isHidden
         this.isTapped = false
     }

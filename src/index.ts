@@ -56,6 +56,7 @@ bot.command('watch', (ctx) => {
 
 bot.command(/^(tap|t)$/, ctx => app.changeTappedCardStatus(ctx))
 bot.command(/^(untap|ut)$/, ctx => app.changeTappedCardStatus(ctx, false))
+bot.command(/^(info|i)$/, ctx => app.getCardInfo(ctx))
 
 // bot.command('deck', Deck.chooseDeck)
 
@@ -166,7 +167,7 @@ bot.action('cancel_add-deck', (ctx) => {
 })
 
 bot.action('draw-hand', ctx => {
-    ctx.deleteMessage()
+    ctx.editMessageReplyMarkup(undefined).catch(e => e)
     app.drawHand(ctx)
 })
 
@@ -214,9 +215,7 @@ bot.action(/^cancel_squad-/, (ctx) => {
 
     const cardName = ctx.match.input.split('-').slice(1).join('-')
 
-    // if (ctx.match.input.startsWith('cancel_squad-')) {
     app.deleteCardFromSquad(ctx, cardName)
-    // }
 
     const menu = [
         [Markup.button.callback('➕Взять в отряд', `squad_${cardName}`)],

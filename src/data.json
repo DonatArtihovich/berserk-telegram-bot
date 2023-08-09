@@ -4,7 +4,7 @@
         "cost": 6,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": null,
         "stats": {
             "lifeCount": 14,
@@ -23,7 +23,7 @@
         "cost": 4,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": null,
         "stats": {
             "lifeCount": 5,
@@ -42,7 +42,7 @@
         "cost": 5,
         "elite": true,
         "uniqueness": true,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Дракон",
         "stats": {
             "lifeCount": 8,
@@ -61,7 +61,7 @@
         "cost": 7,
         "elite": true,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Тролль",
         "stats": {
             "lifeCount": 13,
@@ -80,7 +80,7 @@
         "cost": 7,
         "elite": false,
         "uniqueness": true,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Тролль",
         "stats": {
             "lifeCount": 10,
@@ -92,14 +92,14 @@
         "index": 119,
         "description": null,
         "set": "Война стихий",
-        "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20119-page-00001.jpg"
+        "image": null
     },
     {
         "name": "Василиск",
         "cost": 6,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": null,
         "stats": {
             "lifeCount": 12,
@@ -118,7 +118,7 @@
         "cost": 5,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": null,
         "stats": {
             "lifeCount": 9,
@@ -137,7 +137,7 @@
         "cost": 9,
         "elite": true,
         "uniqueness": true,
-        "element": "Болото",
+        "element": "Болота",
         "class": null,
         "stats": {
             "lifeCount": 13,
@@ -156,7 +156,7 @@
         "cost": 7,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": null,
         "stats": {
             "lifeCount": 10,
@@ -175,7 +175,7 @@
         "cost": 5,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Архаалит",
         "stats": {
             "lifeCount": 8,
@@ -194,7 +194,7 @@
         "cost": 4,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Архаалит",
         "stats": {
             "lifeCount": 9,
@@ -213,7 +213,7 @@
         "cost": 4,
         "elite": true,
         "uniqueness": true,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Речная дева",
         "stats": {
             "lifeCount": 9,
@@ -232,7 +232,7 @@
         "cost": 8,
         "elite": true,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": null,
         "stats": {
             "lifeCount": 14,
@@ -251,7 +251,7 @@
         "cost": 3,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Архаалит",
         "stats": {
             "lifeCount": 6,
@@ -270,7 +270,7 @@
         "cost": 5,
         "elite": true,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": null,
         "stats": {
             "lifeCount": 11,
@@ -289,7 +289,7 @@
         "cost": 6,
         "elite": true,
         "uniqueness": true,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Архаалит",
         "stats": {
             "lifeCount": 9,
@@ -308,7 +308,7 @@
         "cost": 5,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Речная дева",
         "stats": {
             "lifeCount": 11,
@@ -327,7 +327,7 @@
         "cost": 3,
         "elite": false,
         "uniqueness": true,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Архаалит",
         "stats": {
             "lifeCount": 6,
@@ -346,7 +346,7 @@
         "cost": 6,
         "elite": true,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": null,
         "stats": {
             "lifeCount": 10,
@@ -365,7 +365,7 @@
         "cost": 7,
         "elite": true,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": null,
         "stats": {
             "lifeCount": 13,
@@ -384,7 +384,7 @@
         "cost": 4,
         "elite": true,
         "uniqueness": true,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Речная дева",
         "stats": {
             "lifeCount": 7,
@@ -403,7 +403,7 @@
         "cost": 4,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Тролль",
         "stats": {
             "lifeCount": 8,
@@ -422,7 +422,7 @@
         "cost": 3,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Архаалит",
         "stats": {
             "lifeCount": 5,
@@ -441,7 +441,7 @@
         "cost": 3,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Архаалит",
         "stats": {
             "lifeCount": 6,
@@ -460,7 +460,7 @@
         "cost": 4,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": null,
         "stats": {
             "lifeCount": 7,
@@ -479,7 +479,7 @@
         "cost": 4,
         "elite": true,
         "uniqueness": true,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Архаалит",
         "stats": {
             "lifeCount": 7,
@@ -498,7 +498,7 @@
         "cost": 7,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": null,
         "stats": {
             "lifeCount": 10,
@@ -517,7 +517,7 @@
         "cost": 4,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Речная дева",
         "stats": {
             "lifeCount": 7,
@@ -536,7 +536,7 @@
         "cost": 4,
         "elite": true,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Тролль",
         "stats": {
             "lifeCount": 8,
@@ -555,7 +555,7 @@
         "cost": 5,
         "elite": true,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Тролль",
         "stats": {
             "lifeCount": 10,
@@ -574,7 +574,7 @@
         "cost": 5,
         "elite": true,
         "uniqueness": true,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Речная дева",
         "stats": {
             "lifeCount": 8,
@@ -593,7 +593,7 @@
         "cost": 7,
         "elite": true,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": null,
         "stats": {
             "lifeCount": 12,
@@ -612,7 +612,7 @@
         "cost": 4,
         "elite": false,
         "uniqueness": false,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Архаалит",
         "stats": {
             "lifeCount": 8,
@@ -631,7 +631,7 @@
         "cost": 6,
         "elite": false,
         "uniqueness": true,
-        "element": "Болото",
+        "element": "Болота",
         "class": "Тролль",
         "stats": {
             "lifeCount": 7,
@@ -1080,7 +1080,7 @@
         "index": 24,
         "description": "Покрытый ожогами старец разогнался и бросил огненный шар размером с него самого.",
         "set": "Война стихий",
-        "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2024-page-00001.jpg"
+        "image": null
     },
     {
         "name": "Пустотник",
