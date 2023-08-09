@@ -251,6 +251,6 @@ bot.action('first-turn', (ctx) => app.defineTurnOrder(ctx, true))
 
 bot.action('second-turn', (ctx) => app.defineTurnOrder(ctx, false))
 
-bot.action('pass-turn', app.passTurn)
+bot.action('pass-turn', (ctx) => app.passTurn(ctx))
 
 bot.launch()

@@ -443,7 +443,7 @@ export default class Controller implements IController {
             return
         }
 
-        ctx.deleteMessage()
+        ctx.deleteMessage().catch(e => e)
 
         if (player.squad.isHandKeeped) {
             ctx.replyWithHTML('🚫<i>Вы уже оставили руку</i>')
@@ -634,8 +634,11 @@ export default class Controller implements IController {
             card.elite ? gold -= card.cost : silver -= card.cost
 
             if (playerSquadElements.indexOf(card.element) === -1) {
+                if (playerSquadElements.length) {
+                    gold--
+                }
+
                 playerSquadElements.push(card.element)
-                gold -= 1
             }
         })
 
@@ -648,10 +651,11 @@ export default class Controller implements IController {
 
 
         if (player.handMessages.length < 17) {
-            ctx.replyWithHTML(`${playerCurrentSquadStr.trim() ? 'Ваш текущий отряд:\n' + playerCurrentSquadStr : ''}\n\nКристаллов осталось: ${gold}'🔶', ${silver}'🔷'\n\n🃏Завершить набор/пересдать:`, { reply_markup: { inline_keyboard: menu } })
+            ctx.replyWithHTML(`${playerCurrentSquadStr.trim() ? 'Ваш текущий отряд:\n' + playerCurrentSquadStr : ''}\n\nКристаллов осталось: ${gold}🔶, ${silver}🔷\n\n🃏Расставить:`, { reply_markup: { inline_keyboard: menu } })
                 .then(m => player.handMessages.push(m.message_id))
         } else {
-            ctx.telegram.editMessageText(ctx.from?.id, player.handMessages[player.handMessages.length - 1], undefined, `${playerCurrentSquadStr.trim() ? 'Ваш текущий отряд:\n' + playerCurrentSquadStr : ''}\n\nКристаллов осталось: ${player.squad.crystals.gold + '🔶'}, ${player.squad.crystals.silver + '🔷'}\n\n🃏Завершить набор/пересдать:`, { reply_markup: { inline_keyboard: menu } })
+            ctx.telegram.editMessageText(ctx.from?.id, player.handMessages[player.handMessages.length - 1], undefined, `${playerCurrentSquadStr.trim() ? 'Ваш текущий отряд:\n' + playerCurrentSquadStr : ''}\n\nКристаллов осталось: ${gold}🔶, ${silver}🔷\n\n🃏Расставить:`, { reply_markup: { inline_keyboard: menu } })
+                .catch(e => e)
         }
     }
 
@@ -756,7 +760,7 @@ export default class Controller implements IController {
             return
         }
 
-        if (cardNameIndex === text.split('\n').length - 1) {
+        if (cardNameIndex === text.split('\n').length - 3) {
 
             player.game?.finishArranging(ctx)
             return
@@ -886,7 +890,7 @@ export default class Controller implements IController {
             return
         }
 
-        ctx.replyWithHTML(`Вы показали оппоненту карту <b>${name}</b>`)
+        ctx.replyWithHTML(`👁Вы показали оппоненту карту <b>${name}</b>`)
 
         const opponentPlayer = game.players.find(p => p.id !== player.id) as IGamePlayer
 
