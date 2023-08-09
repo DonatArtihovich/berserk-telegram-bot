@@ -12,17 +12,17 @@
     "@typescript-eslint/parser": "^5.61.0",
     "eslint": "^8.44.0",
     "eslint-webpack-plugin": "^4.0.1",
-    "nodemon": "^2.0.22",
-    "ts-loader": "^9.4.4",
-    "webpack": "^5.88.1",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "nodemon": "^2.0.22"
   },
   "dependencies": {
     "@types/node": "^20.4.2",
     "@types/nodemon": "^1.19.2",
     "dotenv": "^16.3.1",
     "node-html-to-image": "^3.4.0",
-    "telegraf": "^4.12.2"
+    "telegraf": "^4.12.2",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
+    "ts-loader": "^9.4.4"
   }
 }

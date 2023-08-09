@@ -1,5 +1,4 @@
 const path = require('path');
-const EslingPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     target: 'node',
@@ -16,8 +15,5 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.js', '.json'],
-    },
-    plugins: [
-        new EslingPlugin({ extensions: 'ts' })
-    ],
+    }
 };
