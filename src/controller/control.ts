@@ -834,7 +834,6 @@ export default class Controller implements IController {
     }
 
     public defineTurnOrder(ctx: Context, isFirst: boolean) {
-
         ctx.deleteMessage()
 
         const userId = ctx.chat?.id
@@ -856,6 +855,15 @@ export default class Controller implements IController {
 
         game.players = game.players[0].id === userId && !isFirst || game.players[0].id !== userId && isFirst ? game.players.reverse() : game.players
 
+        game.players.forEach((p, index) => {
+            if (!index) {
+                p.squad.crystals.gold = 24
+                p.squad.crystals.silver = 22
+            } else {
+                p.squad.crystals.gold = 25
+                p.squad.crystals.silver = 23
+            }
+        })
         console.log('first or second: ', game.players.map(p => p.name))
         const menu = [
             [Markup.button.callback('🃏Взять 15 карт', 'draw-hand')]
@@ -968,7 +976,15 @@ export default class Controller implements IController {
             return
         }
 
-        const cards = this.getCards(ctx, game)
+        const cards = this.getCards(ctx, game).filter((cell) => {
+            const card = cell as IGameCard
+
+            const ability = !card.isHidden || card.owner === player
+
+            if (!ability) ctx.replyWithHTML('🚫<i>Вы не можете взаимодейтсвовать с некоторыми картами</i>')
+
+            return ability
+        })
 
         if (!cards.length) return
         const menu = [
@@ -978,6 +994,160 @@ export default class Controller implements IController {
         cards.forEach(card => {
             ctx.replyWithPhoto(card.image, { caption: `${card.element}<b>${card.name}</b>`, parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
         })
+    }
+
+    public changeTappedCardStatus(ctx: Context, status = true): void {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const game = player.game
+        if (game == undefined) {
+            ctx.replyWithHTML('🚫<i>Игра еще не началась/уже закончилась</i>')
+            return
+        }
+
+        const cards = this.getCards(ctx, game)
+
+        cards.forEach(card => {
+            card.isHidden = false
+            card.isTapped = status
+        })
+
+        const text = `${status ? '⤵️' : '⤴️'}<b>${player.name}</b> ${status ? 'за' : 'от'}крыл ${cards.length === 1 ? 'карту' : 'карты'} ${cards.map(c => c.name).join(', ')}.`
+        this.redrawField(ctx, game, text)
+    }
+
+    public openCard(ctx: Context): void {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const game = player.game
+        if (game == undefined) {
+            ctx.replyWithHTML('🚫<i>Игра еще не началась/уже закончилась</i>')
+            return
+        }
+
+        const cards = this.getCards(ctx, game).filter((cell) => {
+            const card = cell as IGameCard
+
+            const ability = card.owner === player
+
+            if (!ability) ctx.replyWithHTML('🚫<i>Вы не можете взаимодейтсвовать с некоторыми картами</i>')
+
+            return ability
+        })
+
+        if (!cards.length) return
+
+        cards.forEach(card => {
+            card.isHidden = false
+        })
+
+        const text = `⤵️<b>${player.name}</b> раскрыл ${cards.length === 1 ? 'карту' : 'карты'} ${cards.map(c => c.name).join(', ')}.`
+        this.redrawField(ctx, game, text)
+    }
+
+    public moveCard(ctx: Context): void {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const game = player.game
+        if (game == undefined) {
+            ctx.replyWithHTML('🚫<i>Игра еще не началась/уже закончилась</i>')
+            return
+        }
+
+        const message = ctx.message as IMessage
+        const messageText = message.text
+
+        const cells = messageText.split(' ').slice(1).map(cell => cell.trim().toLowerCase())
+
+        if (cells.length < 2) {
+            ctx.replyWithHTML('🚫<i>Введите координаты</i>.')
+            return
+        }
+
+        let currentCard: IGameCard | null = null
+        let currentCardName = 'Не опознана'
+
+        cells.forEach((cellName, index) => {
+
+            if (!cellName.startsWith('f')) {
+                const cellIndex = cellNames.findIndex(name => name === cellName)
+
+                const cardRow = Math.floor(cellIndex / 5)
+                const cardCell = cellIndex % 5
+
+                if (!index) {
+                    if (!game.battleField[cardRow][cardCell]) {
+                        ctx.replyWithHTML('🚫<i>Перемещаемая карта не найдена</i>')
+                        return
+                    }
+
+                    currentCard = game.battleField[cardRow][cardCell] as IGameCard
+                    currentCardName = `${game.battleField[cardRow][cardCell]?.name}`
+
+                    game.battleField[cardRow][cardCell] = null
+                } else {
+                    game.battleField[cardRow][cardCell] = currentCard as IGameCard
+                }
+            } else {
+                const flierIndex = Number(cellName.slice(1))
+
+                const playerIndex = Number(!(flierIndex < 4))
+                if (!index) {
+                    currentCard = game.players[playerIndex].fliers[flierIndex - 1]
+                    currentCardName = `${game.players[playerIndex].fliers[flierIndex - 1]?.name}`
+
+                    game.players[playerIndex].fliers.splice(flierIndex - 1, 1)
+                } else {
+                    game.players[playerIndex].fliers.push(currentCard as IGameCard)
+                }
+            }
+        })
+
+        const text = `🐾<b>${player.name}</b> переместил карту ${currentCardName} на клетку ${cells[1]}.`
+        this.redrawField(ctx, game, text)
+    }
+
+    public changeCardsLifeCount(ctx: Context, isDamage: boolean): void {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const game = player.game
+        if (game == undefined) {
+            ctx.replyWithHTML('🚫<i>Игра еще не началась/уже закончилась</i>')
+            return
+        }
+
+        const message = ctx.message as IMessage
+        const difference = +message.text.split(' ')[message.text.split(' ').length - 1]
+        if (isNaN(difference)) {
+            ctx.replyWithHTML(`🚫<i>Вы не ввели количество ${isDamage ? 'наносимых ран' : 'добавляемых жизней'} </i>`)
+            return
+        }
+
+        const cards = this.getCards(ctx, game, -1)
+        cards.forEach(card => {
+            isDamage ?
+                card.stats.lifeCount -= difference
+                : card.stats.lifeCount += difference
+        })
+
+        const text = `${isDamage ? '🩸' : '❤️'}<b>${player.name}</b> ${isDamage ? 'ранил' : 'излечил'} ${cards.length === 1 ? 'карту' : 'карты'} ${cards.map(c => c.name).join(', ')}.`
+        this.redrawField(ctx, game, text)
     }
 
     private arrange(ctx: Context, currentIndex: number): { message: string | undefined, menu: InlineKeyboardButton[][] | undefined } {
@@ -1117,31 +1287,6 @@ export default class Controller implements IController {
         return result !== undefined ? JSON.parse(JSON.stringify(result)) : result
     }
 
-    public changeTappedCardStatus(ctx: Context, status = true): void {
-        const player = this.findGamePlayerByCtx(ctx)
-        if (player == undefined) {
-            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
-            return
-        }
-
-        const game = player.game
-        if (game == undefined) {
-            ctx.replyWithHTML('🚫<i>Игра еще не началась/уже закончилась</i>')
-            return
-        }
-
-        const cards = this.getCards(ctx, game)
-
-        if (!cards.length) return
-
-        cards.forEach(card => {
-            card.isTapped = status
-        })
-
-        const text = status ? `⤵️<b>${player.name}</b> закрыл карты ${cards.map(c => c.name).join(', ')}.` : `⤴️<b>${player.name}</b> открыл карты ${cards.map(c => c.name).join(', ')}.`
-        this.redrawField(ctx, game, text)
-    }
-
     public findGamePlayerByCtx(ctx: Context): IGamePlayer | undefined {
         const userId = ctx.chat?.id
         if (userId == undefined) throw new Error('User not found')
@@ -1161,13 +1306,14 @@ export default class Controller implements IController {
         return game.players.find(player => player.id === userId)
     }
 
-    private getCards(ctx: Context, game: IGame): IGameCard[] {
-        const player = this.findGamePlayerByCtx(ctx) as IGamePlayer
-
+    private getCards(ctx: Context, game: IGame, limit?: number): IGameCard[] {
         const message = ctx.message as IMessage
         const text = message.text
 
-        const cardCells = text.split(' ').slice(1).map(cell => cell.trim().toLowerCase())
+        const cardCells = limit == undefined ?
+            text.split(' ').slice(1).map(cell => cell.trim().toLowerCase())
+            : text.split(' ').slice(1, limit).map(cell => cell.trim().toLowerCase())
+
         const notFoundCells: string[] = []
 
         const cards = cardCells
@@ -1196,16 +1342,7 @@ export default class Controller implements IController {
 
                 return card
             })
-            .filter(card => Boolean(card))
-            .filter((cell) => {
-                const card = cell as IGameCard
-
-                const ability = !card.isHidden || card.owner === player
-
-                if (!ability) ctx.reply('🚫<i>Вы не можете взаимодейтсвовать с некоторыми картами</i>')
-
-                return ability
-            }) as IGameCard[]
+            .filter(card => Boolean(card)) as IGameCard[]
 
         if (notFoundCells.length) {
             ctx.replyWithHTML(`🚫<i>Клетки/карты на клетках ${notFoundCells.join(', ')} не найдены.</i>`)

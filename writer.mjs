@@ -70,9 +70,14 @@ async function writeToFile(data) {
             }
         })
     }).then(json => {
-        const arr = JSON.parse(json)
-        const out = arr.concat(data).map(o => `{ "name": "${o.name}", "cost": ${o.cost}, "elite": ${o.elite},"uniqueness": ${o.uniqueness}, "element": "${o.element.trim().toLowerCase() === 'болото' ? 'Болота' : o.element}","class": ${o.class ? '"' + o.class + '"' : null}, "stats": {"lifeCount":${o.stats.lifeCount},"walkCount":"${o.stats.walkCount}","simpleHit":"${o.stats.simpleHit}"},"abilities": ${o.abilities ? '"' + o.abilities + '"' : null}, "rarity": "${o.rarity}", "index": ${o.index}, "description": ${o.description ? '"' + o.description + '"' : null}, "set": "Война стихий", "image": ${valikCards.find(card => card.title === o.name) == undefined ? null : '"' + valikCards.find(card => card.title === o.name).image + '"'} }`)
-
+        const arr = JSON.parse(json).sort((a, b) => a.index - b.index)
+        const out = arr.concat(data).map(o => `{ "name": "${o.name}", "cost": ${o.cost}, "elite": ${o.elite},"uniqueness": ${o.uniqueness}, "element": "${o.element.trim().toLowerCase() === 'болото' ? 'Болота' : o.element}","class": ${o.class ? '"' + o.class + '"' : null}, "stats": {"lifeCount":${o.stats.lifeCount},"walkCount":"${o.stats.walkCount}","simpleHit":"${o.stats.simpleHit}"},"abilities": ${o.abilities ? '"' + o.abilities + '"' : null}, "rarity": "${o.rarity}", "index": ${o.index}, "description": ${o.description ? '"' + o.description + '"' : null}, "set": "${o.set}", "image": "${o.image}" }`)
+        // const out = arr.concat(data).reduce((prev, curr) => {
+        //     return {
+        //         ...prev,
+        //         [`${curr.name.toLowerCase()}`]: curr.image
+        //     }
+        // }, {})
         writeJSONFile(out)
     })
 }
@@ -92,10 +97,11 @@ async function readJSONFile() {
 }
 
 async function writeJSONFile(data) {
-    const writableStream = fs.createWriteStream(PATH_TO_FILE)
+    const writableStream = fs.createWriteStream(PATH_TO_FILE /* path.join(__dirname, './src/array.json')*/)
     await fs.truncate(PATH_TO_FILE, 0, () => { })
 
     writableStream.write(`[${data.join(', ')}]`)
+    // writableStream.write(`${JSON.stringify(data)}`)
     console.log('Карт добавлено: ', data.length)
     writableStream.on('close', () => process.exit())
 }

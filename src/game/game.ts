@@ -54,15 +54,6 @@ export class Game implements IGame {
         const message = `Броски игроков:\n${playerDices.map(({ name, roll }) => `<b>${name}</b>: ${roll}🎲`).join('\n')}\n\n <b>${firstPlayer.name}</b> выбирает каким ходить!`
 
         console.log('determine: ', this.players.map(p => p.name))
-        this.players.forEach((p, index) => {
-            if (!index) {
-                p.squad.crystals.gold = 24
-                p.squad.crystals.silver = 22
-            } else {
-                p.squad.crystals.gold = 25
-                p.squad.crystals.silver = 23
-            }
-        })
 
         this.room.informRoom(ctx, 'gen_def', firstPlayer, message).then(() => {
 
