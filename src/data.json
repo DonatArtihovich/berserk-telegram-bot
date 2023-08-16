@@ -38,6 +38,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%201-page-00001.jpg"
     },
     {
+        "name": "Заступник ордена",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Степи",
+        "class": "Тоа-Дан",
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "1",
+            "simpleHit": "1-1-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 1,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-001.jpg"
+    },
+    {
         "name": "Кшар",
         "cost": 3,
         "elite": false,
@@ -55,6 +74,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%202-page-00001.jpg"
+    },
+    {
+        "name": "Кентавр",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": null,
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "2",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 2,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-002.jpg"
     },
     {
         "name": "Волхв",
@@ -76,6 +114,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%203-page-00001.jpg"
     },
     {
+        "name": "Орчонок",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": "Орк",
+        "stats": {
+            "lifeCount": 6,
+            "walkCount": "1",
+            "simpleHit": "1-1-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 3,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-003.jpg"
+    },
+    {
         "name": "Гиррит",
         "cost": 4,
         "elite": false,
@@ -93,6 +150,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%204-page-00001.jpg"
+    },
+    {
+        "name": "Разумный вихрь",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": null,
+        "stats": {
+            "lifeCount": 4,
+            "walkCount": "0",
+            "simpleHit": "0-0-0"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 4,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-004.jpg"
     },
     {
         "name": "Ост",
@@ -133,6 +209,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%206-page-00001.jpg"
     },
     {
+        "name": "Карлик Унд",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": null,
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "0",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 6,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-006.jpg"
+    },
+    {
         "name": "Смотритель стойла",
         "cost": 4,
         "elite": false,
@@ -171,6 +266,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%208-page-00001.jpg"
     },
     {
+        "name": "Кондор-стервятник",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": null,
+        "stats": {
+            "lifeCount": 6,
+            "walkCount": "NaN",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 8,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-008.jpg"
+    },
+    {
         "name": "Хозяйка прайда",
         "cost": 4,
         "elite": false,
@@ -188,6 +302,25 @@
         "description": "Гонимый раскалённым ветром, песок пустыни Дзара хлещет подобно львиным когтям.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%209-page-00001.jpg"
+    },
+    {
+        "name": "Лихо одноглазое",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": null,
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 9,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-009.jpg"
     },
     {
         "name": "Аколит Дзара",
@@ -209,6 +342,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2010-page-00001.jpg"
     },
     {
+        "name": "Поури",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": null,
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "1",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 10,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-010.jpg"
+    },
+    {
         "name": "Змееглав",
         "cost": 5,
         "elite": false,
@@ -226,6 +378,25 @@
         "description": "В пустыне Сота издревле существовал культ служителей Змея. Тот, кто постигал высшие заповеди учения, начинал обретать черты своего божества.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2011-page-00001.jpg"
+    },
+    {
+        "name": "Пустыня Дзара",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": "Пустыня",
+        "stats": {
+            "lifeCount": 0,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 11,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-011.jpg"
     },
     {
         "name": "Кабаний наездник",
@@ -247,6 +418,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2012-page-00001.jpg"
     },
     {
+        "name": "Стражник Туллена",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": "Аккениец",
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "1",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 12,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-012.jpg"
+    },
+    {
         "name": "Орк",
         "cost": 5,
         "elite": false,
@@ -264,6 +454,25 @@
         "description": "Орки Великих степей... Их орды из года в год штурмуют неприступные скалы Лант-Мора.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2013-page-00001.jpg"
+    },
+    {
+        "name": "Витязь Адрелиана",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": "Аккениец",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "2",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 13,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-013.jpg"
     },
     {
         "name": "Пустынный кондор",
@@ -285,6 +494,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2014-page-00001.jpg"
     },
     {
+        "name": "Омидгал",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Степи",
+        "class": "Тоа-Дан",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "1",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 14,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-014.jpg"
+    },
+    {
         "name": "Рубаки Холверта",
         "cost": 5,
         "elite": false,
@@ -302,6 +530,25 @@
         "description": "«Кто ел из моего котелка?!»",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2015-page-00001.jpg"
+    },
+    {
+        "name": "Песчаный пират",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": "Пират",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "2",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 15,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-015.jpg"
     },
     {
         "name": "Санкторум",
@@ -323,6 +570,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2016-page-00001.jpg"
     },
     {
+        "name": "Пикинер Альхенгарда",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": "Аккениец",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "2",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 16,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-016.jpg"
+    },
+    {
         "name": "Арбалетчик",
         "cost": 6,
         "elite": false,
@@ -340,6 +606,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2017-page-00001.jpg"
+    },
+    {
+        "name": "Боргак",
+        "cost": 6,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": "Орк",
+        "stats": {
+            "lifeCount": 12,
+            "walkCount": "1",
+            "simpleHit": "3-4-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 17,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-017.jpg"
     },
     {
         "name": "Килсус",
@@ -361,6 +646,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2018-page-00001.jpg"
     },
     {
+        "name": "Кулхан",
+        "cost": 6,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": "Тоа-Дан",
+        "stats": {
+            "lifeCount": 12,
+            "walkCount": "1",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 18,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-018.jpg"
+    },
+    {
         "name": "Щитоносец",
         "cost": 7,
         "elite": false,
@@ -378,6 +682,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2019-page-00001.jpg"
+    },
+    {
+        "name": "Ясновидящая",
+        "cost": 6,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Степи",
+        "class": null,
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "1-1-2"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 19,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-019.jpg"
     },
     {
         "name": "Глорм",
@@ -399,6 +722,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2020-page-00001.jpg"
     },
     {
+        "name": "Раптор",
+        "cost": 9,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Степи",
+        "class": null,
+        "stats": {
+            "lifeCount": 16,
+            "walkCount": "1",
+            "simpleHit": "3-4-5"
+        },
+        "abilities": null,
+        "rarity": "Ультраредкая",
+        "index": 20,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-020.jpg"
+    },
+    {
         "name": "Мантикора",
         "cost": 4,
         "elite": true,
@@ -416,6 +758,25 @@
         "description": "Говорят, клык мантикоры помогает в любовных делах. Жаль, никто не сумел проверить.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2021-page-00001.jpg"
+    },
+    {
+        "name": "Купец",
+        "cost": 2,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Степи",
+        "class": null,
+        "stats": {
+            "lifeCount": 5,
+            "walkCount": "1",
+            "simpleHit": "1-1-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 21,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-021.jpg"
     },
     {
         "name": "Орк-бомбардир",
@@ -475,6 +836,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2024-page-00001.jpg"
     },
     {
+        "name": "Великая катапульта",
+        "cost": 5,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Степи",
+        "class": "Боевая машина",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 24,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-024.jpg"
+    },
+    {
         "name": "Хронос",
         "cost": 5,
         "elite": true,
@@ -532,6 +912,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2027-page-00001.jpg"
     },
     {
+        "name": "Пиромант Дзара",
+        "cost": 5,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": "Тоа-Дан",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 27,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-027.jpg"
+    },
+    {
         "name": "Матриарх племени",
         "cost": 6,
         "elite": true,
@@ -549,6 +948,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2028-page-00001.jpg"
+    },
+    {
+        "name": "Степной варвар",
+        "cost": 5,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": null,
+        "stats": {
+            "lifeCount": 11,
+            "walkCount": "2",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 28,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-028.jpg"
     },
     {
         "name": "Пеший латник",
@@ -570,6 +988,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2029-page-00001.jpg"
     },
     {
+        "name": "Орк-арбалетчик",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": "Орк",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 29,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-029.jpg"
+    },
+    {
         "name": "Бронтобей",
         "cost": 7,
         "elite": true,
@@ -587,6 +1024,25 @@
         "description": "Упрямство бронтобеев широко известно. Большинство старается просто не попадаться им на глаза.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2030-page-00001.jpg"
+    },
+    {
+        "name": "Рыцарь Туллена",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": "Аккениец",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "3",
+            "simpleHit": "3-3-4"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 30,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-030.jpg"
     },
     {
         "name": "Ойуун",
@@ -608,6 +1064,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2031-page-00001.jpg"
     },
     {
+        "name": "Хазг",
+        "cost": 7,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": "Аккениец",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "2",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 31,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-031.jpg"
+    },
+    {
         "name": "Дегаска",
         "cost": 7,
         "elite": true,
@@ -625,6 +1100,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2032-page-00001.jpg"
+    },
+    {
+        "name": "Адрелиан",
+        "cost": 8,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Степи",
+        "class": "Герой-воин, Аккениец",
+        "stats": {
+            "lifeCount": 13,
+            "walkCount": "1",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Ультраредкая",
+        "index": 32,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-032.jpg"
     },
     {
         "name": "Скелос",
@@ -646,6 +1140,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2033-page-00001.jpg"
     },
     {
+        "name": "Кест",
+        "cost": 8,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Степи",
+        "class": "Аккениец",
+        "stats": {
+            "lifeCount": 13,
+            "walkCount": "2",
+            "simpleHit": "4-5-6"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 33,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-033.jpg"
+    },
+    {
         "name": "Минотавр",
         "cost": 9,
         "elite": true,
@@ -665,6 +1178,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2034-page-00001.jpg"
     },
     {
+        "name": "Свирепый резак",
+        "cost": 8,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Степи",
+        "class": "Герой-воин, Орк",
+        "stats": {
+            "lifeCount": 13,
+            "walkCount": "1",
+            "simpleHit": "3-3-5"
+        },
+        "abilities": null,
+        "rarity": "Ультраредкая",
+        "index": 34,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-034.jpg"
+    },
+    {
         "name": "Гном-поджигатель",
         "cost": 3,
         "elite": false,
@@ -682,6 +1214,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2035-page-00001.jpg"
+    },
+    {
+        "name": "Гном-арбалетчик",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": "Гном",
+        "stats": {
+            "lifeCount": 6,
+            "walkCount": "1",
+            "simpleHit": "1-1-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 35,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-035.jpg"
     },
     {
         "name": "Ледяной змей",
@@ -722,6 +1273,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2037-page-00001.jpg"
     },
     {
+        "name": "Стражница Ульфгарда",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": "Йордлинг",
+        "stats": {
+            "lifeCount": 6,
+            "walkCount": "2",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 37,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-037.jpg"
+    },
+    {
         "name": "Бешеный маг",
         "cost": 4,
         "elite": false,
@@ -739,6 +1309,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2038-page-00001.jpg"
+    },
+    {
+        "name": "Гарпунщик",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": "Йордлинг",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "2",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 38,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-038.jpg"
     },
     {
         "name": "Гуль",
@@ -760,6 +1349,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2039-page-00001.jpg"
     },
     {
+        "name": "Дух горы",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": "Дух, Дракон",
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "NaN",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 39,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-039.jpg"
+    },
+    {
         "name": "Мразень",
         "cost": 4,
         "elite": false,
@@ -777,6 +1385,25 @@
         "description": "Огромная сосулька вылетела из бушующей метели и свалила всадника вместе с лошадью.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2040-page-00001.jpg"
+    },
+    {
+        "name": "Жрец штормов",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Горы",
+        "class": "Линунг",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 40,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-040.jpg"
     },
     {
         "name": "Айрин",
@@ -817,6 +1444,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2042-page-00001.jpg"
     },
     {
+        "name": "Скальд",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": "Йордлинг",
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "1",
+            "simpleHit": "1-1-1"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 42,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-042.jpg"
+    },
+    {
         "name": "Каменный голем",
         "cost": 5,
         "elite": false,
@@ -834,6 +1480,25 @@
         "description": "Плоти гор не страшны даже острейшие гномьи клинки.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2043-page-00001.jpg"
+    },
+    {
+        "name": "Скальный фантом",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": "Дух",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "2",
+            "simpleHit": "1-3-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 43,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-043.jpg"
     },
     {
         "name": "Страж чертогов",
@@ -855,6 +1520,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2044-page-00001.jpg"
     },
     {
+        "name": "Альгорн",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": "Линунг",
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 44,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-044.jpg"
+    },
+    {
         "name": "Ледовый охотник",
         "cost": 5,
         "elite": false,
@@ -872,6 +1556,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2045-page-00001.jpg"
+    },
+    {
+        "name": "Астральный двойник",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Горы",
+        "class": "Дух",
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "1",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 45,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-045.jpg"
     },
     {
         "name": "Мастер топора",
@@ -893,6 +1596,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2046-page-00001.jpg"
     },
     {
+        "name": "Гаргулья",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": null,
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 46,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-046.jpg"
+    },
+    {
         "name": "Ртунх",
         "cost": 5,
         "elite": false,
@@ -910,6 +1632,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2047-page-00001.jpg"
+    },
+    {
+        "name": "Ледяной тролль",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Горы",
+        "class": "Тролль",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "1",
+            "simpleHit": "0-0-0"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 47,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-047.jpg"
     },
     {
         "name": "Смотритель горнила",
@@ -931,6 +1672,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2048-page-00001.jpg"
     },
     {
+        "name": "Олаф",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": "Йордлинг",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "2-3-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 48,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-048.jpg"
+    },
+    {
         "name": "Центурион",
         "cost": 5,
         "elite": false,
@@ -948,6 +1708,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2049-page-00001.jpg"
+    },
+    {
+        "name": "Сердце бурь",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": null,
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 49,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-049.jpg"
     },
     {
         "name": "Хранитель гор",
@@ -988,6 +1767,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2051-page-00001.jpg"
     },
     {
+        "name": "Черновар",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Горы",
+        "class": "Гном",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "1",
+            "simpleHit": "2-3-3"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 51,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-051.jpg"
+    },
+    {
         "name": "Тан Ханеранга",
         "cost": 6,
         "elite": false,
@@ -1005,6 +1803,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2052-page-00001.jpg"
+    },
+    {
+        "name": "Хозяйка лавин",
+        "cost": 6,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Горы",
+        "class": "Линунг",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "1-1-1"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 52,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-052.jpg"
     },
     {
         "name": "Гном-басаарг",
@@ -1064,6 +1881,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2055-page-00001.jpg"
     },
     {
+        "name": "Скалы Лант-Мора",
+        "cost": 3,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": "Горы",
+        "stats": {
+            "lifeCount": 0,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 55,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-055.jpg"
+    },
+    {
         "name": "Ном",
         "cost": 4,
         "elite": true,
@@ -1081,6 +1917,25 @@
         "description": "Номы упрямы и мстительны и даже в предсмертной агонии успевают нанести последний удар.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2056-page-00001.jpg"
+    },
+    {
+        "name": "Шипокрыл",
+        "cost": 3,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": "Дракон",
+        "stats": {
+            "lifeCount": 6,
+            "walkCount": "0",
+            "simpleHit": "1-1-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 56,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-056.jpg"
     },
     {
         "name": "Криомант",
@@ -1121,6 +1976,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2058-page-00001.jpg"
     },
     {
+        "name": "Глиняный голем",
+        "cost": 4,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": null,
+        "stats": {
+            "lifeCount": 15,
+            "walkCount": "1",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 58,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-058.jpg"
+    },
+    {
         "name": "Оборотень",
         "cost": 5,
         "elite": true,
@@ -1138,6 +2012,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2059-page-00001.jpg"
+    },
+    {
+        "name": "Камень гнева",
+        "cost": 4,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Горы",
+        "class": "Постройка",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 59,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-059.jpg"
     },
     {
         "name": "Аргвальд",
@@ -1178,6 +2071,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2061-page-00001.jpg"
     },
     {
+        "name": "Дхайа",
+        "cost": 5,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Горы",
+        "class": "Линунг, Герой-маг",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 61,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-061.jpg"
+    },
+    {
         "name": "Костедробитель",
         "cost": 6,
         "elite": true,
@@ -1195,6 +2107,25 @@
         "description": "Однажды монахи Тарга выкрали Рунный камень из пещер Ханеранга. Горные варвары пробились внутрь монастыря, дубинами проломив его толстые стены.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2062-page-00001.jpg"
+    },
+    {
+        "name": "Морозный тюремщик",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Горы",
+        "class": "Линунг",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 62,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-062.jpg"
     },
     {
         "name": "Рагнар",
@@ -1216,6 +2147,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2063-page-00001.jpg"
     },
     {
+        "name": "Нага",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": null,
+        "stats": {
+            "lifeCount": 12,
+            "walkCount": "2",
+            "simpleHit": "1-1-1"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 63,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-063.jpg"
+    },
+    {
         "name": "Гобрах",
         "cost": 7,
         "elite": true,
@@ -1233,6 +2183,25 @@
         "description": "«Назад! Его невозможно убить! Навалитесь со всех сторон, рубите все разом — в этом наш шанс...» (из Великой книги гномьего Исхода).",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2064-page-00001.jpg"
+    },
+    {
+        "name": "Гаргант",
+        "cost": 7,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": null,
+        "stats": {
+            "lifeCount": 12,
+            "walkCount": "1",
+            "simpleHit": "3-3-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 64,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-064.jpg"
     },
     {
         "name": "Ледовый страж",
@@ -1273,6 +2242,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2066-page-00001.jpg"
     },
     {
+        "name": "Хельмир",
+        "cost": 7,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Горы",
+        "class": "Гном, Герой-воин",
+        "stats": {
+            "lifeCount": 13,
+            "walkCount": "1",
+            "simpleHit": "2-3-5"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 66,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-066.jpg"
+    },
+    {
         "name": "Гномий король",
         "cost": 8,
         "elite": true,
@@ -1290,6 +2278,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2067-page-00001.jpg"
+    },
+    {
+        "name": "Фенрир",
+        "cost": 8,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Горы",
+        "class": null,
+        "stats": {
+            "lifeCount": 14,
+            "walkCount": "1",
+            "simpleHit": "4-5-6"
+        },
+        "abilities": null,
+        "rarity": "Ультраредкая",
+        "index": 67,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-067.jpg"
     },
     {
         "name": "Владыка небес",
@@ -1311,6 +2318,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2068-page-00001.jpg"
     },
     {
+        "name": "Рукан",
+        "cost": 9,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Горы",
+        "class": null,
+        "stats": {
+            "lifeCount": 15,
+            "walkCount": "1",
+            "simpleHit": "3-4-5"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 68,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-068.jpg"
+    },
+    {
         "name": "Атекар",
         "cost": 3,
         "elite": false,
@@ -1328,6 +2354,25 @@
         "description": "Серебристые шкурки атекаров ценятся среди модников Холверта, но любой знающий егерь скажет, что добыть такую — задачка не из лёгких.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2069-page-00001.jpg"
+    },
+    {
+        "name": "Эльм",
+        "cost": 1,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": null,
+        "stats": {
+            "lifeCount": 1,
+            "walkCount": "NaN",
+            "simpleHit": "1-1-1"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 69,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-069.jpg"
     },
     {
         "name": "Дракс",
@@ -1349,6 +2394,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2070-page-00001.jpg"
     },
     {
+        "name": "Бяка",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": null,
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "1-1-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 70,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-070.jpg"
+    },
+    {
         "name": "Леший",
         "cost": 3,
         "elite": false,
@@ -1366,6 +2430,25 @@
         "description": "Схватка с лешим один на один была похожа на фарс. Получив хотя бы царапину, эта тварь, хихикая, залезала на дерево и через пару минут была уже полностью здоровой.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2071-page-00001.jpg"
+    },
+    {
+        "name": "Лепрекон",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Леса",
+        "class": null,
+        "stats": {
+            "lifeCount": 6,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 71,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-071.jpg"
     },
     {
         "name": "Фея леса",
@@ -1406,6 +2489,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2073-page-00001.jpg"
     },
     {
+        "name": "Гигантский орел",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Леса",
+        "class": null,
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "NaN",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 73,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-073.jpg"
+    },
+    {
         "name": "Корпит",
         "cost": 4,
         "elite": false,
@@ -1423,6 +2525,25 @@
         "description": "Эти маленькие пожиратели падали вечно кружат над полем боя, надеясь на поживу.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2074-page-00001.jpg"
+    },
+    {
+        "name": "Разведчик эльфов",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": "Эльф",
+        "stats": {
+            "lifeCount": 6,
+            "walkCount": "1",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 74,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-074.jpg"
     },
     {
         "name": "Лесной разбойник",
@@ -1444,6 +2565,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2075-page-00001.jpg"
     },
     {
+        "name": "Раэннат",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": null,
+        "stats": {
+            "lifeCount": 0,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 75,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-075.jpg"
+    },
+    {
         "name": "Оури",
         "cost": 4,
         "elite": false,
@@ -1461,6 +2601,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2076-page-00001.jpg"
+    },
+    {
+        "name": "Рейнджер",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": "Страж леса",
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 76,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-076.jpg"
     },
     {
         "name": "Паук-пересмешник",
@@ -1482,6 +2641,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2077-page-00001.jpg"
     },
     {
+        "name": "Санитар рощи",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": "Страж леса",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "1",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 77,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-077.jpg"
+    },
+    {
         "name": "Эриала",
         "cost": 4,
         "elite": false,
@@ -1499,6 +2677,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2078-page-00001.jpg"
+    },
+    {
+        "name": "Ламия",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Леса",
+        "class": "Страж леса",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "1",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 78,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-078.jpg"
     },
     {
         "name": "Бегущая по кронам",
@@ -1520,7 +2717,26 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2079-page-00001.jpg"
     },
     {
-        "name": "Бьёрн",
+        "name": "Мара",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": null,
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "1-1-1"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 79,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-079.jpg"
+    },
+    {
+        "name": "Бьерн",
         "cost": 5,
         "elite": false,
         "uniqueness": false,
@@ -1537,6 +2753,25 @@
         "description": "Бьёрны — мрачное племя холодных лесов севера Лаара. Эти суровые воины славятся и отвагой, и умением врачевать.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2080-page-00001.jpg"
+    },
+    {
+        "name": "Пастух Кронга",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": "Страж леса",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "1-1-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 80,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-080.jpg"
     },
     {
         "name": "Вожак сатиров",
@@ -1556,6 +2791,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2081-page-00001.jpg"
+    },
+    {
+        "name": "Ягуар",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": "Дитя Кронга",
+        "stats": {
+            "lifeCount": 11,
+            "walkCount": "1",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 81,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-081.jpg"
     },
     {
         "name": "Клаэр",
@@ -1596,6 +2850,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2083-page-00001.jpg"
     },
     {
+        "name": "Гвеор",
+        "cost": 6,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": "Страж леса",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "NaN",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 83,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-083.jpg"
+    },
+    {
         "name": "Камнедрев",
         "cost": 6,
         "elite": false,
@@ -1615,7 +2888,26 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2084-page-00001.jpg"
     },
     {
-        "name": "Лёккен",
+        "name": "Грост",
+        "cost": 6,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Леса",
+        "class": null,
+        "stats": {
+            "lifeCount": 14,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 84,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-084.jpg"
+    },
+    {
+        "name": "Леккен",
         "cost": 6,
         "elite": false,
         "uniqueness": false,
@@ -1653,6 +2945,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2086-page-00001.jpg"
     },
     {
+        "name": "Рузарх",
+        "cost": 7,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": "Дитя Кронга",
+        "stats": {
+            "lifeCount": 12,
+            "walkCount": "1",
+            "simpleHit": "2-3-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 86,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-086.jpg"
+    },
+    {
         "name": "Фагор",
         "cost": 7,
         "elite": false,
@@ -1670,6 +2981,25 @@
         "description": "Могучая магия топора Норна способна собрать мощь всех защитников леса воедино.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2087-page-00001.jpg"
+    },
+    {
+        "name": "Гризли Кронга",
+        "cost": 8,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": "Дитя Кронга",
+        "stats": {
+            "lifeCount": 14,
+            "walkCount": "1",
+            "simpleHit": "3-3-4"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 87,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-087.jpg"
     },
     {
         "name": "Резчик идолов",
@@ -1748,6 +3078,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2092-page-00001.jpg"
     },
     {
+        "name": "Бард Святолесья",
+        "cost": 4,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Леса",
+        "class": "Страж леса",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 92,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-092.jpg"
+    },
+    {
         "name": "Очи Кронга",
         "cost": 5,
         "elite": true,
@@ -1765,6 +3114,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2093-page-00001.jpg"
+    },
+    {
+        "name": "Орк-птицелов",
+        "cost": 4,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": "Орк",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 93,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-093.jpg"
     },
     {
         "name": "Король-жрец",
@@ -1786,6 +3154,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2094-page-00001.jpg"
     },
     {
+        "name": "Хрумг",
+        "cost": 4,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": null,
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "0",
+            "simpleHit": "3-4-5"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 94,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-094.jpg"
+    },
+    {
         "name": "Ловец душ",
         "cost": 6,
         "elite": true,
@@ -1803,6 +3190,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2095-page-00001.jpg"
+    },
+    {
+        "name": "Чародейка",
+        "cost": 4,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": "Эльф",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 95,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-095.jpg"
     },
     {
         "name": "Тергала",
@@ -1824,6 +3230,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2096-page-00001.jpg"
     },
     {
+        "name": "Эльфийский арсенал",
+        "cost": 4,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Леса",
+        "class": "Постройка",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 96,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-096.jpg"
+    },
+    {
         "name": "Эльфийский воин",
         "cost": 6,
         "elite": true,
@@ -1841,6 +3266,25 @@
         "description": "Переняв чуждое им искусство ближнего боя, эльфы достигли в нём вершин мастерства.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2097-page-00001.jpg"
+    },
+    {
+        "name": "Вейде",
+        "cost": 5,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Леса",
+        "class": "Герой-маг, Эльф",
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "NaN",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Ультраредкая",
+        "index": 97,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-097.jpg"
     },
     {
         "name": "Ётун",
@@ -1881,6 +3325,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%2099-page-00001.jpg"
     },
     {
+        "name": "Дикий циклоп",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Леса",
+        "class": "Дитя Кронга",
+        "stats": {
+            "lifeCount": 11,
+            "walkCount": "1",
+            "simpleHit": "3-4-4"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 99,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-099.jpg"
+    },
+    {
         "name": "Хобгоблин",
         "cost": 8,
         "elite": true,
@@ -1898,6 +3361,25 @@
         "description": "В незапамятные времена некоторые племена гоблинов были вынуждены покинуть родные болота и поселиться в негостеприимных лесах Кронга.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20100-page-00001.jpg"
+    },
+    {
+        "name": "Исса",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": null,
+        "stats": {
+            "lifeCount": 13,
+            "walkCount": "1",
+            "simpleHit": "3-3-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 100,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-100.jpg"
     },
     {
         "name": "Циклоп",
@@ -1938,6 +3420,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20102-page-00001.jpg"
     },
     {
+        "name": "Линдвурм",
+        "cost": 7,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Леса",
+        "class": null,
+        "stats": {
+            "lifeCount": 14,
+            "walkCount": "1",
+            "simpleHit": "3-4-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 102,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-102.jpg"
+    },
+    {
         "name": "Ижор",
         "cost": 3,
         "elite": false,
@@ -1976,6 +3477,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20104-page-00001.jpg"
     },
     {
+        "name": "Нервный ург",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Болота",
+        "class": null,
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 104,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/back.jpg"
+    },
+    {
         "name": "Отряд карателей",
         "cost": 3,
         "elite": false,
@@ -1993,6 +3513,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20105-page-00001.jpg"
+    },
+    {
+        "name": "Виверна",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Болота",
+        "class": null,
+        "stats": {
+            "lifeCount": 5,
+            "walkCount": "NaN",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 105,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-105.jpg"
     },
     {
         "name": "Римаанды",
@@ -2052,6 +3591,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20108-page-00001.jpg"
     },
     {
+        "name": "Призрак Зенды",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Болота",
+        "class": "Дух",
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "2",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 108,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-108.jpg"
+    },
+    {
         "name": "Осклизг",
         "cost": 4,
         "elite": false,
@@ -2069,6 +3627,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20109-page-00001.jpg"
+    },
+    {
+        "name": "Руины Уорлога",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Болота",
+        "class": "Постройка",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 109,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-109.jpg"
     },
     {
         "name": "Рэккен",
@@ -2090,6 +3667,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20110-page-00001.jpg"
     },
     {
+        "name": "Топи Зенды",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Болота",
+        "class": "Болото",
+        "stats": {
+            "lifeCount": 0,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 110,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-110.jpg"
+    },
+    {
         "name": "Тови",
         "cost": 4,
         "elite": false,
@@ -2107,6 +3703,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20111-page-00001.jpg"
+    },
+    {
+        "name": "Торфяной змей",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Болота",
+        "class": null,
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "0",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 111,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-111.jpg"
     },
     {
         "name": "Хедд",
@@ -2128,6 +3743,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20112-page-00001.jpg"
     },
     {
+        "name": "Умпи",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Болота",
+        "class": null,
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "1-1-1"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 112,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-112.jpg"
+    },
+    {
         "name": "Гаррид-лучник",
         "cost": 5,
         "elite": false,
@@ -2147,7 +3781,26 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20113-page-00001.jpg"
     },
     {
-        "name": "Грёзы Архааля",
+        "name": "Шутовка",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Болота",
+        "class": "Речная дева",
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "1",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 113,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-113.jpg"
+    },
+    {
+        "name": "Грезы Архааля",
         "cost": 5,
         "elite": false,
         "uniqueness": false,
@@ -2164,6 +3817,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20114-page-00001.jpg"
+    },
+    {
+        "name": "Щупальце кракена",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Болота",
+        "class": null,
+        "stats": {
+            "lifeCount": 6,
+            "walkCount": "0",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 114,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-114.jpg"
     },
     {
         "name": "Кровяница",
@@ -2185,6 +3857,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20115-page-00001.jpg"
     },
     {
+        "name": "Ядовитый плющ",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Болота",
+        "class": null,
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "0",
+            "simpleHit": "0-0-0"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 115,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-115.jpg"
+    },
+    {
         "name": "Василиск",
         "cost": 6,
         "elite": false,
@@ -2202,6 +3893,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20116-page-00001.jpg"
+    },
+    {
+        "name": "Ахти",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Болота",
+        "class": "Дух",
+        "stats": {
+            "lifeCount": 11,
+            "walkCount": "4",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 116,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-116.jpg"
     },
     {
         "name": "Вайл",
@@ -2223,6 +3933,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20117-page-00001.jpg"
     },
     {
+        "name": "Джаал",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Болота",
+        "class": "Архаалит",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 117,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-117.jpg"
+    },
+    {
         "name": "Шаман-душегрыз",
         "cost": 6,
         "elite": false,
@@ -2240,6 +3969,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20118-page-00001.jpg"
+    },
+    {
+        "name": "Обелиск топей",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Болота",
+        "class": "Постройка",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 118,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-118.jpg"
     },
     {
         "name": "Бул'Багур",
@@ -2261,6 +4009,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20119-page-00001.jpg"
     },
     {
+        "name": "Тифозный вайл",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Болота",
+        "class": null,
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "1",
+            "simpleHit": "1-1-4"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 119,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-119.jpg"
+    },
+    {
         "name": "Гоблин",
         "cost": 7,
         "elite": false,
@@ -2278,6 +4045,25 @@
         "description": "Гоблин нанёс коварный выпад и ощерился зубастой усмешкой — его противник был обречён.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20120-page-00001.jpg"
+    },
+    {
+        "name": "Хэсодэ",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Болота",
+        "class": "Архаалит, Герой-разбойник",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Ультраредкая",
+        "index": 120,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-120.jpg"
     },
     {
         "name": "Слизь",
@@ -2375,6 +4161,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20125-page-00001.jpg"
     },
     {
+        "name": "Ведьма",
+        "cost": 5,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Болота",
+        "class": null,
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "1-1-1"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 125,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-125.jpg"
+    },
+    {
         "name": "Вилохвост",
         "cost": 5,
         "elite": true,
@@ -2430,6 +4235,25 @@
         "description": "Бывалые воины рассказывают, что если уж вступил в битву с троллем, то, нанося последний удар, убедись, что он смертелен, ибо поразительно быстро зализывают свои раны тролли в глубине болот.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20128-page-00001.jpg"
+    },
+    {
+        "name": "Пустоголов",
+        "cost": 5,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Болота",
+        "class": "Тролль",
+        "stats": {
+            "lifeCount": 11,
+            "walkCount": "1",
+            "simpleHit": "3-3-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 128,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-128.jpg"
     },
     {
         "name": "Ундина",
@@ -2508,6 +4332,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20132-page-00001.jpg"
     },
     {
+        "name": "Кракен",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Болота",
+        "class": null,
+        "stats": {
+            "lifeCount": 11,
+            "walkCount": "0",
+            "simpleHit": "0-0-0"
+        },
+        "abilities": null,
+        "rarity": "Ультраредкая",
+        "index": 132,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-132.jpg"
+    },
+    {
         "name": "Морок",
         "cost": 7,
         "elite": true,
@@ -2525,6 +4368,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20133-page-00001.jpg"
+    },
+    {
+        "name": "Одинокий призрак",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Болота",
+        "class": "Дух",
+        "stats": {
+            "lifeCount": 30,
+            "walkCount": "1",
+            "simpleHit": "0-0-0"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 133,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-133.jpg"
     },
     {
         "name": "Уриил",
@@ -2584,6 +4446,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20136-page-00001.jpg"
     },
     {
+        "name": "Броненосец",
+        "cost": 9,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Болота",
+        "class": null,
+        "stats": {
+            "lifeCount": 15,
+            "walkCount": "1",
+            "simpleHit": "3-5-6"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 136,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-136.jpg"
+    },
+    {
         "name": "Вестник мора",
         "cost": 3,
         "elite": false,
@@ -2603,6 +4484,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20137-page-00001.jpg"
     },
     {
+        "name": "Бес",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Демон",
+        "stats": {
+            "lifeCount": 5,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 137,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-137.jpg"
+    },
+    {
         "name": "Огненный имп",
         "cost": 3,
         "elite": false,
@@ -2620,6 +4520,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20138-page-00001.jpg"
+    },
+    {
+        "name": "Выкормыш слуа",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Слуа",
+        "stats": {
+            "lifeCount": 6,
+            "walkCount": "1",
+            "simpleHit": "1-1-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 138,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-138.jpg"
     },
     {
         "name": "Вампир",
@@ -2660,6 +4579,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20140-page-00001.jpg"
     },
     {
+        "name": "Саламандра",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Демон",
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "0",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 140,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-140.jpg"
+    },
+    {
         "name": "Моровой всадник",
         "cost": 4,
         "elite": false,
@@ -2679,6 +4617,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20141-page-00001.jpg"
     },
     {
+        "name": "Скелет",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Нежить",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 141,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-141.jpg"
+    },
+    {
         "name": "Суккуб-истязатель",
         "cost": 4,
         "elite": false,
@@ -2696,6 +4653,25 @@
         "description": "Горе унгару, попавшему в застенки крепости Ригорн. Тюремщицы-суккубы, хозяйничающие там, не успокоятся, пока не выведают все секреты своих жертв.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20142-page-00001.jpg"
+    },
+    {
+        "name": "Малефик",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Слуа",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 142,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-142.jpg"
     },
     {
         "name": "Возница",
@@ -2736,6 +4712,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20144-page-00001.jpg"
     },
     {
+        "name": "Призрачный рыцарь",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Дух",
+        "stats": {
+            "lifeCount": 5,
+            "walkCount": "3",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 144,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-144.jpg"
+    },
+    {
         "name": "Демон зависти",
         "cost": 5,
         "elite": false,
@@ -2753,6 +4748,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20145-page-00001.jpg"
+    },
+    {
+        "name": "Проклятый маг",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": null,
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "1",
+            "simpleHit": "1-1-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 145,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-145.jpg"
     },
     {
         "name": "Керсамская знать",
@@ -2774,7 +4788,26 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20146-page-00001.jpg"
     },
     {
-        "name": "Повелитель мёртвых",
+        "name": "Пустошь Тул-Багар",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Пустыня",
+        "stats": {
+            "lifeCount": 0,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 146,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-146.jpg"
+    },
+    {
+        "name": "Повелитель мертвых",
         "cost": 5,
         "elite": false,
         "uniqueness": true,
@@ -2791,6 +4824,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20147-page-00001.jpg"
+    },
+    {
+        "name": "Берелгал",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Демон",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "1",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 147,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-147.jpg"
     },
     {
         "name": "Сшиватель плоти",
@@ -2812,6 +4864,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20148-page-00001.jpg"
     },
     {
+        "name": "Демонические врата",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Тьма",
+        "class": "Постройка",
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 148,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-148.jpg"
+    },
+    {
         "name": "Талион",
         "cost": 5,
         "elite": false,
@@ -2829,6 +4900,25 @@
         "description": "«Аланиэль, моя госпожа, пусть в жизни вместе быть нам не пришлось, мы будем вечно вместе после смерти».",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20149-page-00001.jpg"
+    },
+    {
+        "name": "Живущий в тумане",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Дух",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "2",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 149,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-149.jpg"
     },
     {
         "name": "Харон",
@@ -2888,6 +4978,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20152-page-00001.jpg"
     },
     {
+        "name": "Скелетная гончая",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Нежить",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "2",
+            "simpleHit": "2-3-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 152,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-152.jpg"
+    },
+    {
         "name": "Сайкорон",
         "cost": 6,
         "elite": false,
@@ -2905,6 +5014,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20153-page-00001.jpg"
+    },
+    {
+        "name": "Исчадие",
+        "cost": 6,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Демон",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "1",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 153,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-153.jpg"
     },
     {
         "name": "Мрачная дворянка",
@@ -2945,6 +5073,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20155-page-00001.jpg"
     },
     {
+        "name": "Дзингор",
+        "cost": 7,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Демон",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "NaN",
+            "simpleHit": "2-3-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 155,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-155.jpg"
+    },
+    {
         "name": "Метаморф",
         "cost": 4,
         "elite": true,
@@ -2981,6 +5128,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20157-page-00001.jpg"
+    },
+    {
+        "name": "Дракон-зомби",
+        "cost": 10,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Дракон, Нежить",
+        "stats": {
+            "lifeCount": 16,
+            "walkCount": "1",
+            "simpleHit": "5-6-8"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 157,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-157.jpg"
     },
     {
         "name": "Уордак",
@@ -3040,6 +5206,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20160-page-00001.jpg"
     },
     {
+        "name": "Адепт тьмы",
+        "cost": 5,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Тьма",
+        "class": "Нежить",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 160,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-160.jpg"
+    },
+    {
         "name": "Скелетный червь",
         "cost": 6,
         "elite": true,
@@ -3078,6 +5263,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20162-page-00001.jpg"
     },
     {
+        "name": "Лаэтар",
+        "cost": 5,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Тьма",
+        "class": "Герой-маг, Нежить",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 162,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-162.jpg"
+    },
+    {
         "name": "Хозяин склепа",
         "cost": 6,
         "elite": true,
@@ -3095,6 +5299,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20163-page-00001.jpg"
+    },
+    {
+        "name": "Огненный демон",
+        "cost": 5,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Демон",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "2-3-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 163,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-163.jpg"
     },
     {
         "name": "Поганище",
@@ -3116,6 +5339,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20164-page-00001.jpg"
     },
     {
+        "name": "Королева мертвых",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Тьма",
+        "class": null,
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "2",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Ультраредкая",
+        "index": 164,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-164.jpg"
+    },
+    {
         "name": "Барака",
         "cost": 7,
         "elite": true,
@@ -3133,6 +5375,25 @@
         "description": "Главную твердыню Тёмной стороны Лаара, замок-крепость Урангрунд, охраняли элитные воины тьмы. Их чудовищно изменённые заклинаниями некромантов замка тела не знали ни боли, ни усталости.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20165-page-00001.jpg"
+    },
+    {
+        "name": "Темный эльф",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": "Эльф",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 165,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-165.jpg"
     },
     {
         "name": "Вурдалак",
@@ -3154,6 +5415,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20166-page-00001.jpg"
     },
     {
+        "name": "Шарль де Лорм",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Тьма",
+        "class": "Герой-жрец",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 166,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-166.jpg"
+    },
+    {
         "name": "Мерцающий змей",
         "cost": 7,
         "elite": true,
@@ -3173,6 +5453,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20167-page-00001.jpg"
     },
     {
+        "name": "Раэр",
+        "cost": 7,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Тьма",
+        "class": "Нежить, Герой-воин",
+        "stats": {
+            "lifeCount": 13,
+            "walkCount": "1",
+            "simpleHit": "2-3-5"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 167,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-167.jpg"
+    },
+    {
         "name": "Повелитель бездны",
         "cost": 8,
         "elite": true,
@@ -3190,6 +5489,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20168-page-00001.jpg"
+    },
+    {
+        "name": "Арахнид",
+        "cost": 8,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Тьма",
+        "class": null,
+        "stats": {
+            "lifeCount": 15,
+            "walkCount": "1",
+            "simpleHit": "3-4-5"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 168,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-168.jpg"
     },
     {
         "name": "Властелин хаоса",
@@ -3230,7 +5548,26 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Berserk_VS_all_card%20170-page-00001.jpg"
     },
     {
-        "name": "Мародёр",
+        "name": "Левиафан",
+        "cost": 9,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Тьма",
+        "class": "Демон",
+        "stats": {
+            "lifeCount": 14,
+            "walkCount": "1",
+            "simpleHit": "4-5-6"
+        },
+        "abilities": null,
+        "rarity": "Ультраредкая",
+        "index": 170,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-170.jpg"
+    },
+    {
+        "name": "Мародер",
         "cost": 3,
         "elite": false,
         "uniqueness": true,
@@ -3247,6 +5584,25 @@
         "description": "«Может, эти сапоги немного тесноваты, но гораздо крепче моих».",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(171).jpg"
+    },
+    {
+        "name": "Ури",
+        "cost": 2,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Нейтральная",
+        "class": null,
+        "stats": {
+            "lifeCount": 5,
+            "walkCount": "0",
+            "simpleHit": "1-1-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 171,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-171.jpg"
     },
     {
         "name": "Ведающий запасами",
@@ -3268,6 +5624,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(172).jpg"
     },
     {
+        "name": "Аларино",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Нейтральная",
+        "class": "Койар",
+        "stats": {
+            "lifeCount": 6,
+            "walkCount": "1",
+            "simpleHit": "1-1-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 172,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-172.jpg"
+    },
+    {
         "name": "Ведунья Ордена",
         "cost": 4,
         "elite": false,
@@ -3285,6 +5660,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(173).jpg"
+    },
+    {
+        "name": "Алтарь Хигарта",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Нейтральная",
+        "class": "Постройка",
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 173,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-173.jpg"
     },
     {
         "name": "Взрывная Мэри",
@@ -3306,6 +5700,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(174).jpg"
     },
     {
+        "name": "Иркиан",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Нейтральная",
+        "class": "Река",
+        "stats": {
+            "lifeCount": 0,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 174,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-174.jpg"
+    },
+    {
         "name": "Крондак",
         "cost": 4,
         "elite": false,
@@ -3323,6 +5736,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(175).jpg"
+    },
+    {
+        "name": "Йоро",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Нейтральная",
+        "class": null,
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "0",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 175,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-175.jpg"
     },
     {
         "name": "Наемник",
@@ -3344,6 +5776,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(176).jpg"
     },
     {
+        "name": "Охотник за головами",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Нейтральная",
+        "class": "Койар",
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 176,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-176.jpg"
+    },
+    {
         "name": "Следопыт",
         "cost": 4,
         "elite": false,
@@ -3361,6 +5812,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(177).jpg"
+    },
+    {
+        "name": "Пономарь",
+        "cost": 3,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Нейтральная",
+        "class": "Инквизитор",
+        "stats": {
+            "lifeCount": 6,
+            "walkCount": "1",
+            "simpleHit": "1-1-1"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 177,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-177.jpg"
     },
     {
         "name": "Алвалинд",
@@ -3401,6 +5871,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(179).jpg"
     },
     {
+        "name": "Изувер",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Нейтральная",
+        "class": "Инквизитор",
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "1",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 179,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-179.jpg"
+    },
+    {
         "name": "Линнет",
         "cost": 5,
         "elite": false,
@@ -3418,6 +5907,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(180).jpg"
+    },
+    {
+        "name": "Картограф",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Нейтральная",
+        "class": null,
+        "stats": {
+            "lifeCount": 7,
+            "walkCount": "1",
+            "simpleHit": "1-1-1"
+        },
+        "abilities": null,
+        "rarity": "Необычная",
+        "index": 180,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-180.jpg"
     },
     {
         "name": "Ловец удачи",
@@ -3458,6 +5966,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(182).jpg"
     },
     {
+        "name": "Оруженосец",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Нейтральная",
+        "class": null,
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 182,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-182.jpg"
+    },
+    {
         "name": "Дозор Форрендора",
         "cost": 5,
         "elite": false,
@@ -3475,6 +6002,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(183).jpg"
+    },
+    {
+        "name": "Стерегущий добычу",
+        "cost": 4,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Нейтральная",
+        "class": null,
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 183,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-183.jpg"
     },
     {
         "name": "Отшельница",
@@ -3515,6 +6061,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(185).jpg"
     },
     {
+        "name": "Кьелэрн",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": true,
+        "element": "Нейтральная",
+        "class": "Герой-маг",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "1-1-2"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 185,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-185.jpg"
+    },
+    {
         "name": "Головорез",
         "cost": 6,
         "elite": false,
@@ -3532,6 +6097,25 @@
         "description": "Опаснее бесчестного пирата может быть только команда бесчестных пиратов.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(186).jpg"
+    },
+    {
+        "name": "Разящий в ночи",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Нейтральная",
+        "class": "Койар",
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "1",
+            "simpleHit": "1-2-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 186,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-186.jpg"
     },
     {
         "name": "Лазутчица",
@@ -3591,6 +6175,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(189).jpg"
     },
     {
+        "name": "Тайник Эллиона",
+        "cost": 5,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Нейтральная",
+        "class": null,
+        "stats": {
+            "lifeCount": 9,
+            "walkCount": "0",
+            "simpleHit": "--"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 189,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-189.jpg"
+    },
+    {
         "name": "Вольный воитель",
         "cost": 2,
         "elite": true,
@@ -3608,6 +6211,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(190).jpg"
+    },
+    {
+        "name": "Крестоносец Сеггера",
+        "cost": 7,
+        "elite": false,
+        "uniqueness": false,
+        "element": "Нейтральная",
+        "class": "Инквизитор",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "1",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 190,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-190.jpg"
     },
     {
         "name": "Ассасин",
@@ -3648,6 +6270,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(192).jpg"
     },
     {
+        "name": "Аделаида",
+        "cost": 5,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Нейтральная",
+        "class": "Пират, Герой-разбойник",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "2",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 192,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-192.jpg"
+    },
+    {
         "name": "Арацент",
         "cost": 6,
         "elite": true,
@@ -3665,6 +6306,25 @@
         "description": "Не кровь, но яд, сильней которого нет на земле, течёт в их жилах.",
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(193).jpg"
+    },
+    {
+        "name": "Алетрис",
+        "cost": 5,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Нейтральная",
+        "class": null,
+        "stats": {
+            "lifeCount": 12,
+            "walkCount": "2",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 193,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-193.jpg"
     },
     {
         "name": "Аристократка",
@@ -3705,6 +6365,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(195).jpg"
     },
     {
+        "name": "Горец",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Нейтральная",
+        "class": null,
+        "stats": {
+            "lifeCount": 13,
+            "walkCount": "1",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 195,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-195.jpg"
+    },
+    {
         "name": "Гермет",
         "cost": 6,
         "elite": true,
@@ -3722,6 +6401,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(196).jpg"
+    },
+    {
+        "name": "Старая гвардия",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": false,
+        "element": "Нейтральная",
+        "class": "Инквизитор",
+        "stats": {
+            "lifeCount": 12,
+            "walkCount": "1",
+            "simpleHit": "1-2-3"
+        },
+        "abilities": null,
+        "rarity": "Частая",
+        "index": 196,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-196.jpg"
     },
     {
         "name": "Эорвал",
@@ -3743,6 +6441,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(197).jpg"
     },
     {
+        "name": "Феникс",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Нейтральная",
+        "class": null,
+        "stats": {
+            "lifeCount": 8,
+            "walkCount": "NaN",
+            "simpleHit": "2-3-4"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 197,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-197.jpg"
+    },
+    {
         "name": "Варлок",
         "cost": 7,
         "elite": true,
@@ -3760,6 +6477,25 @@
         "description": null,
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(198).jpg"
+    },
+    {
+        "name": "Хранитель Хартии",
+        "cost": 6,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Нейтральная",
+        "class": "Койар",
+        "stats": {
+            "lifeCount": 10,
+            "walkCount": "1",
+            "simpleHit": "1-2-2"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 198,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-198.jpg"
     },
     {
         "name": "Тич",
@@ -3781,6 +6517,25 @@
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(199).jpg"
     },
     {
+        "name": "Хигарт",
+        "cost": 7,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Нейтральная",
+        "class": "Герой-воин",
+        "stats": {
+            "lifeCount": 14,
+            "walkCount": "1",
+            "simpleHit": "3-4-5"
+        },
+        "abilities": null,
+        "rarity": "Редкая",
+        "index": 199,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-199.jpg"
+    },
+    {
         "name": "Волот",
         "cost": 9,
         "elite": true,
@@ -3799,2780 +6554,23 @@
         "set": "Война стихий",
         "image": "https://berserk.ru/image/data/00_Berserk/01_Война%20стихий/Card%20(200).jpg"
     },
-    [
-        {
-            "name": "Заступник ордена",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Степи",
-            "class": "Тоа-Дан",
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "1",
-                "simpleHit": "1-1-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 1,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-001.jpg"
-        },
-        {
-            "name": "Кентавр",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": null,
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "2",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 2,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-002.jpg"
-        },
-        {
-            "name": "Орчонок",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": "Орк",
-            "stats": {
-                "lifeCount": 6,
-                "walkCount": "1",
-                "simpleHit": "1-1-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 3,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-003.jpg"
-        },
-        {
-            "name": "Разумный вихрь",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": null,
-            "stats": {
-                "lifeCount": 4,
-                "walkCount": "0",
-                "simpleHit": "0-0-0"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 4,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-004.jpg"
-        },
-        {
-            "name": "Карлик Унд",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": null,
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "0",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 6,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-006.jpg"
-        },
-        {
-            "name": "Кондор-стервятник",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": null,
-            "stats": {
-                "lifeCount": 6,
-                "walkCount": "NaN",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 8,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-008.jpg"
-        },
-        {
-            "name": "Лихо одноглазое",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": null,
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 9,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-009.jpg"
-        },
-        {
-            "name": "Поури",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": null,
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "1",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 10,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-010.jpg"
-        },
-        {
-            "name": "Пустыня Дзара",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": "Пустыня",
-            "stats": {
-                "lifeCount": 0,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 11,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-011.jpg"
-        },
-        {
-            "name": "Стражник Туллена",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": "Аккениец",
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "1",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 12,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-012.jpg"
-        },
-        {
-            "name": "Витязь Адрелиана",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": "Аккениец",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "2",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 13,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-013.jpg"
-        },
-        {
-            "name": "Омидгал",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Степи",
-            "class": "Тоа-Дан",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "1",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 14,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-014.jpg"
-        },
-        {
-            "name": "Песчаный пират",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": "Пират",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "2",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 15,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-015.jpg"
-        },
-        {
-            "name": "Пикинёр Альхенгарда",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": "Аккениец",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "2",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 16,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-016.jpg"
-        },
-        {
-            "name": "Боргак",
-            "cost": 6,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": "Орк",
-            "stats": {
-                "lifeCount": 12,
-                "walkCount": "1",
-                "simpleHit": "3-4-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 17,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-017.jpg"
-        },
-        {
-            "name": "Кулхан",
-            "cost": 6,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": "Тоа-Дан",
-            "stats": {
-                "lifeCount": 12,
-                "walkCount": "1",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 18,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-018.jpg"
-        },
-        {
-            "name": "Ясновидящая",
-            "cost": 6,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Степи",
-            "class": null,
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "1-1-2"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 19,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-019.jpg"
-        },
-        {
-            "name": "Раптор",
-            "cost": 9,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Степи",
-            "class": null,
-            "stats": {
-                "lifeCount": 16,
-                "walkCount": "1",
-                "simpleHit": "3-4-5"
-            },
-            "abilities": null,
-            "rarity": "Ультраредкая",
-            "index": 20,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-020.jpg"
-        },
-        {
-            "name": "Купец",
-            "cost": 2,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Степи",
-            "class": null,
-            "stats": {
-                "lifeCount": 5,
-                "walkCount": "1",
-                "simpleHit": "1-1-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 21,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-021.jpg"
-        },
-        {
-            "name": "Великая катапульта",
-            "cost": 5,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Степи",
-            "class": "Боевая машина",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 24,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-024.jpg"
-        },
-        {
-            "name": "Пиромант Дзара",
-            "cost": 5,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": "Тоа-Дан",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 27,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-027.jpg"
-        },
-        {
-            "name": "Степной варвар",
-            "cost": 5,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": null,
-            "stats": {
-                "lifeCount": 11,
-                "walkCount": "2",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 28,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-028.jpg"
-        },
-        {
-            "name": "Орк-арбалетчик",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": "Орк",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 29,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-029.jpg"
-        },
-        {
-            "name": "Рыцарь Туллена",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": "Аккениец",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "3",
-                "simpleHit": "3-3-4"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 30,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-030.jpg"
-        },
-        {
-            "name": "Хазг",
-            "cost": 7,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": "Аккениец",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "2",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 31,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-031.jpg"
-        },
-        {
-            "name": "Адрелиан",
-            "cost": 8,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Степи",
-            "class": "Герой-воин, Аккениец",
-            "stats": {
-                "lifeCount": 13,
-                "walkCount": "1",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Ультраредкая",
-            "index": 32,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-032.jpg"
-        },
-        {
-            "name": "Кест",
-            "cost": 8,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Степи",
-            "class": "Аккениец",
-            "stats": {
-                "lifeCount": 13,
-                "walkCount": "2",
-                "simpleHit": "4-5-6"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 33,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-033.jpg"
-        },
-        {
-            "name": "Свирепый резак",
-            "cost": 8,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Степи",
-            "class": "Герой-воин, Орк",
-            "stats": {
-                "lifeCount": 13,
-                "walkCount": "1",
-                "simpleHit": "3-3-5"
-            },
-            "abilities": null,
-            "rarity": "Ультраредкая",
-            "index": 34,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-034.jpg"
-        },
-        {
-            "name": "Гном-арбалетчик",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": "Гном",
-            "stats": {
-                "lifeCount": 6,
-                "walkCount": "1",
-                "simpleHit": "1-1-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 35,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-035.jpg"
-        },
-        {
-            "name": "Стражница Ульфгарда",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": "Йордлинг",
-            "stats": {
-                "lifeCount": 6,
-                "walkCount": "2",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 37,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-037.jpg"
-        },
-        {
-            "name": "Гарпунщик",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": "Йордлинг",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "2",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 38,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-038.jpg"
-        },
-        {
-            "name": "Дух горы",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": "Дух, Дракон",
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "NaN",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 39,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-039.jpg"
-        },
-        {
-            "name": "Жрец штормов",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Горы",
-            "class": "Линунг",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 40,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-040.jpg"
-        },
-        {
-            "name": "Скальд",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": "Йордлинг",
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "1",
-                "simpleHit": "1-1-1"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 42,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-042.jpg"
-        },
-        {
-            "name": "Скальный фантом",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": "Дух",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "2",
-                "simpleHit": "1-3-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 43,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-043.jpg"
-        },
-        {
-            "name": "Альгорн",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": "Линунг",
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 44,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-044.jpg"
-        },
-        {
-            "name": "Астральный двойник",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Горы",
-            "class": "Дух",
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "1",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 45,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-045.jpg"
-        },
-        {
-            "name": "Гаргулья",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": null,
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 46,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-046.jpg"
-        },
-        {
-            "name": "Ледяной тролль",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Горы",
-            "class": "Тролль",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "1",
-                "simpleHit": "0-0-0"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 47,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-047.jpg"
-        },
-        {
-            "name": "Олаф",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": "Йордлинг",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "2-3-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 48,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-048.jpg"
-        },
-        {
-            "name": "Сердце бурь",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": null,
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 49,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-049.jpg"
-        },
-        {
-            "name": "Черновар",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Горы",
-            "class": "Гном",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "1",
-                "simpleHit": "2-3-3"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 51,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-051.jpg"
-        },
-        {
-            "name": "Хозяйка лавин",
-            "cost": 6,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Горы",
-            "class": "Линунг",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "1-1-1"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 52,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-052.jpg"
-        },
-        {
-            "name": "Скалы Лант-Мора",
-            "cost": 3,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": "Горы",
-            "stats": {
-                "lifeCount": 0,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 55,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-055.jpg"
-        },
-        {
-            "name": "Шипокрыл",
-            "cost": 3,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": "Дракон",
-            "stats": {
-                "lifeCount": 6,
-                "walkCount": "0",
-                "simpleHit": "1-1-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 56,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-056.jpg"
-        },
-        {
-            "name": "Глиняный голем",
-            "cost": 4,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": null,
-            "stats": {
-                "lifeCount": 15,
-                "walkCount": "1",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 58,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-058.jpg"
-        },
-        {
-            "name": "Камень гнева",
-            "cost": 4,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Горы",
-            "class": "Постройка",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 59,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-059.jpg"
-        },
-        {
-            "name": "Дхайа",
-            "cost": 5,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Горы",
-            "class": "Линунг, Герой-маг",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 61,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-061.jpg"
-        },
-        {
-            "name": "Морозный тюремщик",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Горы",
-            "class": "Линунг",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 62,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-062.jpg"
-        },
-        {
-            "name": "Нага",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": null,
-            "stats": {
-                "lifeCount": 12,
-                "walkCount": "2",
-                "simpleHit": "1-1-1"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 63,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-063.jpg"
-        },
-        {
-            "name": "Гаргант",
-            "cost": 7,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": null,
-            "stats": {
-                "lifeCount": 12,
-                "walkCount": "1",
-                "simpleHit": "3-3-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 64,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-064.jpg"
-        },
-        {
-            "name": "Хельмир",
-            "cost": 7,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Горы",
-            "class": "Гном, Герой-воин",
-            "stats": {
-                "lifeCount": 13,
-                "walkCount": "1",
-                "simpleHit": "2-3-5"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 66,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-066.jpg"
-        },
-        {
-            "name": "Фенрир",
-            "cost": 8,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Горы",
-            "class": null,
-            "stats": {
-                "lifeCount": 14,
-                "walkCount": "1",
-                "simpleHit": "4-5-6"
-            },
-            "abilities": null,
-            "rarity": "Ультраредкая",
-            "index": 67,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-067.jpg"
-        },
-        {
-            "name": "Рукан",
-            "cost": 9,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Горы",
-            "class": null,
-            "stats": {
-                "lifeCount": 15,
-                "walkCount": "1",
-                "simpleHit": "3-4-5"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 68,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-068.jpg"
-        },
-        {
-            "name": "Эльм",
-            "cost": 1,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": null,
-            "stats": {
-                "lifeCount": 1,
-                "walkCount": "NaN",
-                "simpleHit": "1-1-1"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 69,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-069.jpg"
-        },
-        {
-            "name": "Бяка",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": null,
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "1-1-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 70,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-070.jpg"
-        },
-        {
-            "name": "Лепрекон",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Леса",
-            "class": null,
-            "stats": {
-                "lifeCount": 6,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 71,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-071.jpg"
-        },
-        {
-            "name": "Гигантский орёл",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Леса",
-            "class": null,
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "NaN",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 73,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-073.jpg"
-        },
-        {
-            "name": "Разведчик эльфов",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": "Эльф",
-            "stats": {
-                "lifeCount": 6,
-                "walkCount": "1",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 74,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-074.jpg"
-        },
-        {
-            "name": "Раэннат",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": null,
-            "stats": {
-                "lifeCount": 0,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 75,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-075.jpg"
-        },
-        {
-            "name": "Рейнджер",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": "Страж леса",
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 76,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-076.jpg"
-        },
-        {
-            "name": "Санитар рощи",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": "Страж леса",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "1",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 77,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-077.jpg"
-        },
-        {
-            "name": "Ламия",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Леса",
-            "class": "Страж леса",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "1",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 78,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-078.jpg"
-        },
-        {
-            "name": "Мара",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": null,
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "1-1-1"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 79,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-079.jpg"
-        },
-        {
-            "name": "Пастух Кронга",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": "Страж леса",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "1-1-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 80,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-080.jpg"
-        },
-        {
-            "name": "Ягуар",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": "Дитя Кронга",
-            "stats": {
-                "lifeCount": 11,
-                "walkCount": "1",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 81,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-081.jpg"
-        },
-        {
-            "name": "Гвеор",
-            "cost": 6,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": "Страж леса",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "NaN",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 83,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-083.jpg"
-        },
-        {
-            "name": "Грост",
-            "cost": 6,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Леса",
-            "class": null,
-            "stats": {
-                "lifeCount": 14,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 84,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-084.jpg"
-        },
-        {
-            "name": "Рузарх",
-            "cost": 7,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": "Дитя Кронга",
-            "stats": {
-                "lifeCount": 12,
-                "walkCount": "1",
-                "simpleHit": "2-3-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 86,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-086.jpg"
-        },
-        {
-            "name": "Гризли Кронга",
-            "cost": 8,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": "Дитя Кронга",
-            "stats": {
-                "lifeCount": 14,
-                "walkCount": "1",
-                "simpleHit": "3-3-4"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 87,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-087.jpg"
-        },
-        {
-            "name": "Бард Святолесья",
-            "cost": 4,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Леса",
-            "class": "Страж леса",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 92,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-092.jpg"
-        },
-        {
-            "name": "Орк-птицелов",
-            "cost": 4,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": "Орк",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 93,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-093.jpg"
-        },
-        {
-            "name": "Хрумг",
-            "cost": 4,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": null,
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "0",
-                "simpleHit": "3-4-5"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 94,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-094.jpg"
-        },
-        {
-            "name": "Чародейка",
-            "cost": 4,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": "Эльф",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 95,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-095.jpg"
-        },
-        {
-            "name": "Эльфийский арсенал",
-            "cost": 4,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Леса",
-            "class": "Постройка",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 96,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-096.jpg"
-        },
-        {
-            "name": "Вейде",
-            "cost": 5,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Леса",
-            "class": "Герой-маг, Эльф",
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "NaN",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Ультраредкая",
-            "index": 97,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-097.jpg"
-        },
-        {
-            "name": "Дикий циклоп",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Леса",
-            "class": "Дитя Кронга",
-            "stats": {
-                "lifeCount": 11,
-                "walkCount": "1",
-                "simpleHit": "3-4-4"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 99,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-099.jpg"
-        },
-        {
-            "name": "Исса",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": null,
-            "stats": {
-                "lifeCount": 13,
-                "walkCount": "1",
-                "simpleHit": "3-3-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 100,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-100.jpg"
-        },
-        {
-            "name": "Линдвурм",
-            "cost": 7,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Леса",
-            "class": null,
-            "stats": {
-                "lifeCount": 14,
-                "walkCount": "1",
-                "simpleHit": "3-4-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 102,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-102.jpg"
-        },
-        {
-            "name": "Нервный ург",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Болота",
-            "class": null,
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 104,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/back.jpg"
-        },
-        {
-            "name": "Виверна",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Болота",
-            "class": null,
-            "stats": {
-                "lifeCount": 5,
-                "walkCount": "NaN",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 105,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-105.jpg"
-        },
-        {
-            "name": "Призрак Зенды",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Болота",
-            "class": "Дух",
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "2",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 108,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-108.jpg"
-        },
-        {
-            "name": "Руины Уорлога",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Болота",
-            "class": "Постройка",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 109,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-109.jpg"
-        },
-        {
-            "name": "Топи Зенды",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Болота",
-            "class": "Болото",
-            "stats": {
-                "lifeCount": 0,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 110,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-110.jpg"
-        },
-        {
-            "name": "Торфяной змей",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Болота",
-            "class": null,
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "0",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 111,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-111.jpg"
-        },
-        {
-            "name": "Умпи",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Болота",
-            "class": null,
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "1-1-1"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 112,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-112.jpg"
-        },
-        {
-            "name": "Шутовка",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Болота",
-            "class": "Речная дева",
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "1",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 113,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-113.jpg"
-        },
-        {
-            "name": "Щупальце кракена",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Болота",
-            "class": null,
-            "stats": {
-                "lifeCount": 6,
-                "walkCount": "0",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 114,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-114.jpg"
-        },
-        {
-            "name": "Ядовитый плющ",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Болота",
-            "class": null,
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "0",
-                "simpleHit": "0-0-0"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 115,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-115.jpg"
-        },
-        {
-            "name": "Ахти",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Болота",
-            "class": "Дух",
-            "stats": {
-                "lifeCount": 11,
-                "walkCount": "4",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 116,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-116.jpg"
-        },
-        {
-            "name": "Джаал",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Болота",
-            "class": "Архаалит",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 117,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-117.jpg"
-        },
-        {
-            "name": "Обелиск топей",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Болота",
-            "class": "Постройка",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 118,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-118.jpg"
-        },
-        {
-            "name": "Тифозный вайл",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Болота",
-            "class": null,
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "1",
-                "simpleHit": "1-1-4"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 119,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-119.jpg"
-        },
-        {
-            "name": "Хэсодэ",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Болота",
-            "class": "Архаалит, Герой-разбойник",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Ультраредкая",
-            "index": 120,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-120.jpg"
-        },
-        {
-            "name": "Ведьма",
-            "cost": 5,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Болота",
-            "class": null,
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "1-1-1"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 125,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-125.jpg"
-        },
-        {
-            "name": "Пустоголов",
-            "cost": 5,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Болота",
-            "class": "Тролль",
-            "stats": {
-                "lifeCount": 11,
-                "walkCount": "1",
-                "simpleHit": "3-3-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 128,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-128.jpg"
-        },
-        {
-            "name": "Кракен",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Болота",
-            "class": null,
-            "stats": {
-                "lifeCount": 11,
-                "walkCount": "0",
-                "simpleHit": "0-0-0"
-            },
-            "abilities": null,
-            "rarity": "Ультраредкая",
-            "index": 132,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-132.jpg"
-        },
-        {
-            "name": "Одинокий призрак",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Болота",
-            "class": "Дух",
-            "stats": {
-                "lifeCount": 30,
-                "walkCount": "1",
-                "simpleHit": "0-0-0"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 133,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-133.jpg"
-        },
-        {
-            "name": "Броненосец",
-            "cost": 9,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Болота",
-            "class": null,
-            "stats": {
-                "lifeCount": 15,
-                "walkCount": "1",
-                "simpleHit": "3-5-6"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 136,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-136.jpg"
-        },
-        {
-            "name": "Бес",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Демон",
-            "stats": {
-                "lifeCount": 5,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 137,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-137.jpg"
-        },
-        {
-            "name": "Выкормыш слуа",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Слуа",
-            "stats": {
-                "lifeCount": 6,
-                "walkCount": "1",
-                "simpleHit": "1-1-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 138,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-138.jpg"
-        },
-        {
-            "name": "Саламандра",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Демон",
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "0",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 140,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-140.jpg"
-        },
-        {
-            "name": "Скелет",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Нежить",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 141,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-141.jpg"
-        },
-        {
-            "name": "Малефик",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Слуа",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 142,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-142.jpg"
-        },
-        {
-            "name": "Призрачный рыцарь",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Дух",
-            "stats": {
-                "lifeCount": 5,
-                "walkCount": "3",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 144,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-144.jpg"
-        },
-        {
-            "name": "Проклятый маг",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": null,
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "1",
-                "simpleHit": "1-1-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 145,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-145.jpg"
-        },
-        {
-            "name": "Пустошь Тул-Багар",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Пустыня",
-            "stats": {
-                "lifeCount": 0,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 146,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-146.jpg"
-        },
-        {
-            "name": "Берелгал",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Демон",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "1",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 147,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-147.jpg"
-        },
-        {
-            "name": "Демонические врата",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Тьма",
-            "class": "Постройка",
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 148,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-148.jpg"
-        },
-        {
-            "name": "Живущий в тумане",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Дух",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "2",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 149,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-149.jpg"
-        },
-        {
-            "name": "Скелетная гончая",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Нежить",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "2",
-                "simpleHit": "2-3-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 152,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-152.jpg"
-        },
-        {
-            "name": "Исчадие",
-            "cost": 6,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Демон",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "1",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 153,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-153.jpg"
-        },
-        {
-            "name": "Дзингор",
-            "cost": 7,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Демон",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "NaN",
-                "simpleHit": "2-3-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 155,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-155.jpg"
-        },
-        {
-            "name": "Дракон-зомби",
-            "cost": 10,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Дракон, Нежить",
-            "stats": {
-                "lifeCount": 16,
-                "walkCount": "1",
-                "simpleHit": "5-6-8"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 157,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-157.jpg"
-        },
-        {
-            "name": "Адепт тьмы",
-            "cost": 5,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Тьма",
-            "class": "Нежить",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 160,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-160.jpg"
-        },
-        {
-            "name": "Лаэтар",
-            "cost": 5,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Тьма",
-            "class": "Герой-маг, Нежить",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 162,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-162.jpg"
-        },
-        {
-            "name": "Огненный демон",
-            "cost": 5,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Демон",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "2-3-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 163,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-163.jpg"
-        },
-        {
-            "name": "Королева мёртвых",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Тьма",
-            "class": null,
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "2",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Ультраредкая",
-            "index": 164,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-164.jpg"
-        },
-        {
-            "name": "Тёмный эльф",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": "Эльф",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 165,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-165.jpg"
-        },
-        {
-            "name": "Шарль де Лорм",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Тьма",
-            "class": "Герой-жрец",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 166,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-166.jpg"
-        },
-        {
-            "name": "Раэр",
-            "cost": 7,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Тьма",
-            "class": "Нежить, Герой-воин",
-            "stats": {
-                "lifeCount": 13,
-                "walkCount": "1",
-                "simpleHit": "2-3-5"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 167,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-167.jpg"
-        },
-        {
-            "name": "Арахнид",
-            "cost": 8,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Тьма",
-            "class": null,
-            "stats": {
-                "lifeCount": 15,
-                "walkCount": "1",
-                "simpleHit": "3-4-5"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 168,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-168.jpg"
-        },
-        {
-            "name": "Левиафан",
-            "cost": 9,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Тьма",
-            "class": "Демон",
-            "stats": {
-                "lifeCount": 14,
-                "walkCount": "1",
-                "simpleHit": "4-5-6"
-            },
-            "abilities": null,
-            "rarity": "Ультраредкая",
-            "index": 170,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-170.jpg"
-        },
-        {
-            "name": "Ури",
-            "cost": 2,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Нейтральная",
-            "class": null,
-            "stats": {
-                "lifeCount": 5,
-                "walkCount": "0",
-                "simpleHit": "1-1-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 171,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-171.jpg"
-        },
-        {
-            "name": "Аларино",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Нейтральная",
-            "class": "Койар",
-            "stats": {
-                "lifeCount": 6,
-                "walkCount": "1",
-                "simpleHit": "1-1-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 172,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-172.jpg"
-        },
-        {
-            "name": "Алтарь Хигарта",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Нейтральная",
-            "class": "Постройка",
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 173,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-173.jpg"
-        },
-        {
-            "name": "Иркиан",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Нейтральная",
-            "class": "Река",
-            "stats": {
-                "lifeCount": 0,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 174,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-174.jpg"
-        },
-        {
-            "name": "Йоро",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Нейтральная",
-            "class": null,
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "0",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 175,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-175.jpg"
-        },
-        {
-            "name": "Охотник за головами",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Нейтральная",
-            "class": "Койар",
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 176,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-176.jpg"
-        },
-        {
-            "name": "Пономарь",
-            "cost": 3,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Нейтральная",
-            "class": "Инквизитор",
-            "stats": {
-                "lifeCount": 6,
-                "walkCount": "1",
-                "simpleHit": "1-1-1"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 177,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-177.jpg"
-        },
-        {
-            "name": "Изувер",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Нейтральная",
-            "class": "Инквизитор",
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "1",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 179,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-179.jpg"
-        },
-        {
-            "name": "Картограф",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Нейтральная",
-            "class": null,
-            "stats": {
-                "lifeCount": 7,
-                "walkCount": "1",
-                "simpleHit": "1-1-1"
-            },
-            "abilities": null,
-            "rarity": "Необычная",
-            "index": 180,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-180.jpg"
-        },
-        {
-            "name": "Оруженосец",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Нейтральная",
-            "class": null,
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 182,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-182.jpg"
-        },
-        {
-            "name": "Стерегущий добычу",
-            "cost": 4,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Нейтральная",
-            "class": null,
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 183,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-183.jpg"
-        },
-        {
-            "name": "Кьелэрн",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": true,
-            "element": "Нейтральная",
-            "class": "Герой-маг",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "1-1-2"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 185,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-185.jpg"
-        },
-        {
-            "name": "Разящий в ночи",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Нейтральная",
-            "class": "Койар",
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "1",
-                "simpleHit": "1-2-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 186,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-186.jpg"
-        },
-        {
-            "name": "Тайник Эллиона",
-            "cost": 5,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Нейтральная",
-            "class": null,
-            "stats": {
-                "lifeCount": 9,
-                "walkCount": "0",
-                "simpleHit": "--"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 189,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-189.jpg"
-        },
-        {
-            "name": "Крестоносец Сеггера",
-            "cost": 7,
-            "elite": false,
-            "uniqueness": false,
-            "element": "Нейтральная",
-            "class": "Инквизитор",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "1",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 190,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-190.jpg"
-        },
-        {
-            "name": "Аделаида",
-            "cost": 5,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Нейтральная",
-            "class": "Пират, Герой-разбойник",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "2",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 192,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-192.jpg"
-        },
-        {
-            "name": "Алетрис",
-            "cost": 5,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Нейтральная",
-            "class": null,
-            "stats": {
-                "lifeCount": 12,
-                "walkCount": "2",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 193,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-193.jpg"
-        },
-        {
-            "name": "Горец",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Нейтральная",
-            "class": null,
-            "stats": {
-                "lifeCount": 13,
-                "walkCount": "1",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 195,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-195.jpg"
-        },
-        {
-            "name": "Старая гвардия",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": false,
-            "element": "Нейтральная",
-            "class": "Инквизитор",
-            "stats": {
-                "lifeCount": 12,
-                "walkCount": "1",
-                "simpleHit": "1-2-3"
-            },
-            "abilities": null,
-            "rarity": "Частая",
-            "index": 196,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-196.jpg"
-        },
-        {
-            "name": "Феникс",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Нейтральная",
-            "class": null,
-            "stats": {
-                "lifeCount": 8,
-                "walkCount": "NaN",
-                "simpleHit": "2-3-4"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 197,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-197.jpg"
-        },
-        {
-            "name": "Хранитель Хартии",
-            "cost": 6,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Нейтральная",
-            "class": "Койар",
-            "stats": {
-                "lifeCount": 10,
-                "walkCount": "1",
-                "simpleHit": "1-2-2"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 198,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-198.jpg"
-        },
-        {
-            "name": "Хигарт",
-            "cost": 7,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Нейтральная",
-            "class": "Герой-воин",
-            "stats": {
-                "lifeCount": 14,
-                "walkCount": "1",
-                "simpleHit": "3-4-5"
-            },
-            "abilities": null,
-            "rarity": "Редкая",
-            "index": 199,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-199.jpg"
-        },
-        {
-            "name": "Кнеллервирм",
-            "cost": 9,
-            "elite": true,
-            "uniqueness": true,
-            "element": "Нейтральная",
-            "class": "Дракон",
-            "stats": {
-                "lifeCount": 15,
-                "walkCount": "2",
-                "simpleHit": "2-2-3"
-            },
-            "abilities": null,
-            "rarity": "Ультраредкая",
-            "index": 200,
-            "description": null,
-            "set": "Война стихий",
-            "image": "https://www.proberserk.ru/images/cards/02-200.jpg"
-        }
-    ]
+    {
+        "name": "Кнеллервирм",
+        "cost": 9,
+        "elite": true,
+        "uniqueness": true,
+        "element": "Нейтральная",
+        "class": "Дракон",
+        "stats": {
+            "lifeCount": 15,
+            "walkCount": "2",
+            "simpleHit": "2-2-3"
+        },
+        "abilities": null,
+        "rarity": "Ультраредкая",
+        "index": 200,
+        "description": null,
+        "set": "Война стихий",
+        "image": "https://www.proberserk.ru/images/cards/02-200.jpg"
+    }
 ]

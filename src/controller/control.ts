@@ -1283,7 +1283,7 @@ export default class Controller implements IController {
     }
 
     private findCardByName(name: string): Card | void {
-        const result = cards.find(card => card.name.toLowerCase().trim() === name.toLowerCase().trim())
+        const result = cards.find(card => card.name.toLowerCase().trim() === name.toLowerCase().trim().replaceAll('ё', 'е'))
         return result !== undefined ? JSON.parse(JSON.stringify(result)) : result
     }
 

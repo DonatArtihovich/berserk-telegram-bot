@@ -71,7 +71,7 @@ async function writeToFile(data) {
         })
     }).then(json => {
         const arr = JSON.parse(json).sort((a, b) => a.index - b.index)
-        const out = arr.concat(data).map(o => `{ "name": "${o.name}", "cost": ${o.cost}, "elite": ${o.elite},"uniqueness": ${o.uniqueness}, "element": "${o.element.trim().toLowerCase() === 'болото' ? 'Болота' : o.element}","class": ${o.class ? '"' + o.class + '"' : null}, "stats": {"lifeCount":${o.stats.lifeCount},"walkCount":"${o.stats.walkCount}","simpleHit":"${o.stats.simpleHit}"},"abilities": ${o.abilities ? '"' + o.abilities + '"' : null}, "rarity": "${o.rarity}", "index": ${o.index}, "description": ${o.description ? '"' + o.description + '"' : null}, "set": "${o.set}", "image": "${o.image}" }`)
+        const out = arr.concat(data).map(o => `{ "name": "${o.name.replaceAll('ё', 'е')}", "cost": ${o.cost}, "elite": ${o.elite},"uniqueness": ${o.uniqueness}, "element": "${o.element.trim().toLowerCase() === 'болото' ? 'Болота' : o.element}","class": ${o.class ? '"' + o.class + '"' : null}, "stats": {"lifeCount":${o.stats.lifeCount},"walkCount":"${o.stats.walkCount}","simpleHit":"${o.stats.simpleHit}"},"abilities": ${o.abilities ? '"' + o.abilities + '"' : null}, "rarity": "${o.rarity}", "index": ${o.index}, "description": ${o.description ? '"' + o.description + '"' : null}, "set": "${o.set}", "image": "${o.image}" }`)
         // const out = arr.concat(data).reduce((prev, curr) => {
         //     return {
         //         ...prev,
