@@ -97,15 +97,13 @@ bot.command(/^(untap|ut)$/, ctx => app.changeTappedCardStatus(ctx, false))
 bot.command(/^(info|i)$/, ctx => app.getCardInfo(ctx))
 bot.command(/^(open|o)$/, ctx => app.openCard(ctx))
 bot.command(/^(move|m)$/, ctx => app.moveCard(ctx))
-bot.command(/^(damage|d)$/, ctx => app.changeCardsLifeCount(ctx, true))
-bot.command(/^(heal|h)$/, ctx => app.changeCardsLifeCount(ctx, false))
+// bot.command(/^(damage|d)$/, ctx => app.changeCardsLifeCount(ctx, true))
+// bot.command(/^(heal|h)$/, ctx => app.changeCardsLifeCount(ctx, false))
 
-bot.command('pin', ctx => {
-    ctx.reply('pinned').then(({ message_id }) => {
-        ctx.pinChatMessage(message_id)
-    })
+bot.command(/^(life|l)$/, ctx => app.changeCardsLifeCount(ctx))
+bot.command(/^(poison|p)$/, ctx => app.poisonCard(ctx))
+bot.command(/^(c|count)$/, ctx => app.changeCardCounters(ctx))
 
-})
 // bot.command('deck', Deck.chooseDeck)
 
 // bot.command('a', (ctx) => {

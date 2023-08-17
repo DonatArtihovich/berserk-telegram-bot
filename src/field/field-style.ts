@@ -55,7 +55,6 @@ td {
 .counter {
     width: 15px;
     height: 15px;
-    position: absolute;
     z-index: 200;
     border-radius: 100px;
     font-size: 12px;
@@ -67,16 +66,19 @@ td {
 }
 
 .life-counter {
+    position: absolute;
     color: white;
     left: 2%;
 }
 
 .walk-counter {
+    position: absolute;
     color: white;
     left: 23%;
 }
 
 .hit-counter {
+    position: absolute;
     width: 30px;
     height: 15px;
     color: white;
@@ -89,6 +91,27 @@ td {
     z-index: 200;
     top: 5%;
     left: 5%;
+}
+
+.counters {
+    width: auto;
+    max-width: 100px;
+    max-height: 45px;
+    position: absolute;
+    top: 13%;
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.poison-counter {
+    color: white;
+    background-color: rgb(16, 171, 24);
+}
+
+.chip-counter {
+    background-color: rgb(85, 129, 150);
 }
 
 /*

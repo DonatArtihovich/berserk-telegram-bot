@@ -18,6 +18,10 @@
                     <div class="counter life-counter">14</div>
                     <div class="counter walk-counter">2</div>
                     <div class="counter hit-counter">2-3-4</div>
+                    <div class="counters">
+                        <div class="counter poison-counter">30</div>
+                        <div class="counter chip-counter">10</div>
+                    </div>
                 </div>
             </td>
             <td>
@@ -232,7 +236,6 @@
         }
 
         .counter {
-            position: absolute;
             z-index: 200;
             font-size: 20px;
             border-radius: 100px;
@@ -242,15 +245,39 @@
         }
 
         .life-counter {
+            position: absolute;
             left: 10%;
         }
 
         .walk-counter {
+            position: absolute;
             left: 30%;
         }
 
         .hit-counter {
+            position: absolute;
             right: 10%;
+        }
+
+        .counters {
+            border: 1px solid white;
+            width: auto;
+            max-width: 100px;
+            max-height: 45px;
+            position: absolute;
+            top: 13%;
+            z-index: 300;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+
+        .poison-counter {
+            background-color: rgb(16, 171, 24);
+        }
+
+        .chip-counter {
+            background-color: rgb(85, 129, 150);
         }
     </style>
 </body>

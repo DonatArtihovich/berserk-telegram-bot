@@ -22,6 +22,8 @@ export default class GameCard implements IGameCard {
     public owner: IGamePlayer
     public isHidden: boolean
     public isTapped: boolean
+    public poison: number
+    public chipsNumber: number
 
     constructor(card: Card, player: IGamePlayer, isHidden: boolean) {
         this.control = player
@@ -41,5 +43,7 @@ export default class GameCard implements IGameCard {
         this.owner = player
         this.isHidden = isHidden
         this.isTapped = false
+        this.poison = 0
+        this.chipsNumber = 0
     }
 }

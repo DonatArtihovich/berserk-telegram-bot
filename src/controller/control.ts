@@ -872,7 +872,13 @@ export default class Controller implements IController {
         room.players.concat(room.watchers).forEach(user => {
             user.id === userId ?
                 ctx.telegram.sendMessage(user.id, `🎲Вы ходите ${isFirst ? 'первым' : 'вторым'}.`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                    .then(({ message_id }) => {
+                        ctx.pinChatMessage(message_id)
+                    })
                 : ctx.telegram.sendMessage(user.id, `🎲<b>${player?.name}</b> ходит ${isFirst ? 'первым' : 'вторым'}.`, { parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+                    .then(({ message_id }) => {
+                        ctx.pinChatMessage(message_id)
+                    })
         })
 
     }
@@ -976,7 +982,7 @@ export default class Controller implements IController {
             return
         }
 
-        const cards = this.getCards(ctx, game).filter((cell) => {
+        const cards = this.getCards(ctx, game).map(({ card }) => card).filter((cell) => {
             const card = cell as IGameCard
 
             const ability = !card.isHidden || card.owner === player
@@ -1032,7 +1038,7 @@ export default class Controller implements IController {
             return
         }
 
-        const cards = this.getCards(ctx, game)
+        const cards = this.getCards(ctx, game).map(({ card }) => card)
 
         cards.forEach(card => {
             card.isHidden = false
@@ -1056,7 +1062,7 @@ export default class Controller implements IController {
             return
         }
 
-        const cards = this.getCards(ctx, game).filter((cell) => {
+        const cards = this.getCards(ctx, game).map(({ card }) => card).filter((cell) => {
             const card = cell as IGameCard
 
             const ability = card.owner === player
@@ -1149,7 +1155,7 @@ export default class Controller implements IController {
         this.redrawField(ctx, game, text)
     }
 
-    public changeCardsLifeCount(ctx: Context, isDamage: boolean): void {
+    public changeCardsLifeCount(ctx: Context): void {
         const player = this.findGamePlayerByCtx(ctx)
         if (player == undefined) {
             ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
@@ -1163,20 +1169,91 @@ export default class Controller implements IController {
         }
 
         const message = ctx.message as IMessage
-        const difference = +message.text.split(' ')[message.text.split(' ').length - 1]
+        const difference = Math.round(Number(message.text.split(' ')[message.text.split(' ').length - 1]))
         if (isNaN(difference)) {
-            ctx.replyWithHTML(`🚫<i>Вы не ввели количество ${isDamage ? 'наносимых ран' : 'добавляемых жизней'} </i>`)
+            ctx.replyWithHTML(`🚫<i>Вы не ввели количество ${difference < 0 ? 'наносимых ран' : 'добавляемых жизней'} </i>`)
             return
         }
 
+        const deadCards: string[] = []
         const cards = this.getCards(ctx, game, -1)
-        cards.forEach(card => {
-            isDamage ?
-                card.stats.lifeCount -= difference
-                : card.stats.lifeCount += difference
+        cards.forEach(({ row, cell, flierIndex, card }) => {
+            card.stats.lifeCount += difference
+
+            if (card.stats.lifeCount < 0) {
+                if (row && cell) game.battleField[row][cell] = null
+                if (flierIndex) player.fliers.splice(flierIndex, 1)
+
+                deadCards.push(card.name)
+            }
         })
 
-        const text = `${isDamage ? '🩸' : '❤️'}<b>${player.name}</b> ${isDamage ? 'ранил' : 'излечил'} ${cards.length === 1 ? 'карту' : 'карты'} ${cards.map(c => c.name).join(', ')}.`
+        const text = `${difference < 0 ? '🩸' : '💚'}<b>${player.name}</b> ${difference < 0 ? 'снял' : 'добавил'} ${Math.abs(difference)}❤️ ${cards.length === 1 ? 'карту' : 'карты'} ${cards.map(c => c.card.name).join(', ')}.
+        ${deadCards.length ? `${deadCards.length !== 1 ? 'Карты' : 'Карта'} ${deadCards.join(', ')} ${deadCards.length !== 1 ? 'уничтожены' : 'уничтожена'}.` : ''}`
+        this.redrawField(ctx, game, text)
+    }
+
+    public poisonCard(ctx: Context) {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const game = player.game
+        if (game == undefined) {
+            ctx.replyWithHTML('🚫<i>Игра еще не началась/уже закончилась</i>')
+            return
+        }
+
+        const message = ctx.message as IMessage
+        const value = +message.text.split(' ')[message.text.split(' ').length - 1]
+        if (isNaN(value)) {
+            ctx.replyWithHTML(`🚫<i>Вы не ввели величину отравления</i>`)
+            return
+        }
+
+        const cards = this.getCards(ctx, game, -1).map(({ card }) => card).filter(card => {
+            const ability = card.stats.walkCount.trim().toLowerCase() !== 'артефакт' || card.stats.walkCount.trim().toLowerCase() !== 'артефакт'
+
+            if (!ability) ctx.replyWithHTML('🚫<i>Вы не можете отравить некоторые карты</i>')
+
+            return ability
+        })
+        cards.forEach(card => {
+            card.poison = value
+        })
+
+        const text = `🤢<b>${player.name}</b> отравил ${cards.length === 1 ? 'карту' : 'карты'} ${cards.map(c => c.name).join(', ')} на ${value}.`
+        this.redrawField(ctx, game, text)
+    }
+
+    public changeCardCounters(ctx: Context) {
+        const player = this.findGamePlayerByCtx(ctx)
+        if (player == undefined) {
+            ctx.replyWithHTML('🚫<i>Вы не игрок.</i>')
+            return
+        }
+
+        const game = player.game
+        if (game == undefined) {
+            ctx.replyWithHTML('🚫<i>Игра еще не началась/уже закончилась</i>')
+            return
+        }
+
+        const message = ctx.message as IMessage
+        const value = Math.round(+message.text.split(' ')[message.text.split(' ').length - 1])
+        if (isNaN(value)) {
+            ctx.replyWithHTML(`🚫<i>Вы не ввели количество фишек</i>`)
+            return
+        }
+
+        const cards = this.getCards(ctx, game, -1).map(({ card }) => card)
+        cards.forEach(card => {
+            card.chipsNumber += value
+        })
+
+        const text = `⚪️<b>${player.name}</b> ${value >= 0 ? 'добавил' : 'удалил'} ${Math.abs(value)}⚪️ ${cards.length === 1 ? value > 0 ? 'карте' : 'с карты' : value > 0 ? 'картам' : 'с карт'} ${cards.map(c => c.name).join(', ')}.`
         this.redrawField(ctx, game, text)
     }
 
@@ -1270,9 +1347,9 @@ export default class Controller implements IController {
                             list.splice(i, 1)
                         }
 
-                        if (card.count > 3) {
-                            card.count = 3
-                        }
+                        // if (card.count > 3) {
+                        //     card.count = 3
+                        // }
                     }
 
                     return card
@@ -1336,7 +1413,7 @@ export default class Controller implements IController {
         return game.players.find(player => player.id === userId)
     }
 
-    private getCards(ctx: Context, game: IGame, limit?: number): IGameCard[] {
+    private getCards(ctx: Context, game: IGame, limit?: number): { row: number | null, cell: number | null, flierIndex: number | null, card: IGameCard }[] {
         const message = ctx.message as IMessage
         const text = message.text
 
@@ -1350,16 +1427,19 @@ export default class Controller implements IController {
             .map(cellName => {
                 let card
 
+                let cardRow: number | null = null
+                let cardCell: number | null = null
+                let flierIndex: number | null = null
                 if (!cellName.startsWith('f')) {
                     const cellIndex = cellNames.findIndex(name => name === cellName)
 
-                    const cardRow = Math.floor(cellIndex / 5)
-                    const cardCell = cellIndex % 5
+                    cardRow = Math.floor(cellIndex / 5)
+                    cardCell = cellIndex % 5
 
                     card = game.battleField[cardRow][cardCell]
 
                 } else {
-                    const flierIndex = Number(cellName.slice(1))
+                    flierIndex = Number(cellName.slice(1))
 
                     const playerIndex = Number(!(flierIndex < 4))
                     card = game.players[playerIndex].fliers[flierIndex - 1]
@@ -1370,9 +1450,9 @@ export default class Controller implements IController {
                     return null
                 }
 
-                return card
+                return { row: cardRow, cell: cardCell, flierIndex, card }
             })
-            .filter(card => Boolean(card)) as IGameCard[]
+            .filter((card) => Boolean(card)) as { row: number | null, cell: number | null, flierIndex: number | null, card: IGameCard }[]
 
         if (notFoundCells.length) {
             ctx.replyWithHTML(`🚫<i>Клетки/карты на клетках ${notFoundCells.join(', ')} не найдены.</i>`)
@@ -1381,7 +1461,7 @@ export default class Controller implements IController {
         return cards
     }
 
-    private async redrawField(ctx: Context, game: IGame, text: string) {
+    public async redrawField(ctx: Context, game: IGame, text: string) {
         game.room.players.concat(game.room.watchers).forEach(user => {
             ctx.telegram.sendMessage(user.id, '🔘Ожидайте загрузки поля.')
         })

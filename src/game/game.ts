@@ -150,6 +150,13 @@ export class Game implements IGame {
                         return null
                     }
 
+                    if (card && card.stats.walkCount.trim().toLowerCase() === 'местность' && !card.isHidden) {
+                        const player = rowIndex < 3 ? this.players[0] : this.players[1]
+                        player.terrain = card
+
+                        return null
+                    }
+
                     return card
                 })
             })
@@ -158,6 +165,8 @@ export class Game implements IGame {
 
         this.currentPlayer = this.players[0]
 
+        console.log(JSON.stringify(this.battleField))
+        console.log(JSON.stringify(this.players))
         this.room.players.concat(this.room.watchers).forEach(user => {
             // ctx.telegram.sendPhoto(user.id, { source: './assets/table.jpg' }).then(({ message_id }) => {
             //     ctx.pinChatMessage(message_id)
@@ -170,18 +179,29 @@ export class Game implements IGame {
             }
         })
 
-        this.startTurn(true)
+        this.startTurn(ctx, true)
     }
 
-    private startTurn(isFirstTurn = false) {
+    private startTurn(ctx: Context, isFirstTurn = false) {
         const { players } = this
 
         if (!isFirstTurn) this.currentPlayer = this.currentPlayer === players[0] ? players[1] : players[0]
+
+        this.battleField.forEach(row => row.forEach(card => {
+            if (!card) return
+            if (card.poison) card.stats.lifeCount -= card.poison
+        }))
+
+        this.currentPlayer?.fliers.forEach(card => {
+            if (card.poison) card.stats.lifeCount -= card.poison
+        })
+
+        app.redrawField(ctx, this, `${this.currentPlayer} начинает ход`)
     }
 
-    public endTurn() {
+    public endTurn(ctx: Context) {
 
-        this.startTurn()
+        this.startTurn(ctx)
     }
 }
 

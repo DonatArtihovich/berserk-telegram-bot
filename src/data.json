@@ -274,7 +274,7 @@
         "class": null,
         "stats": {
             "lifeCount": 6,
-            "walkCount": "NaN",
+            "walkCount": "Полет",
             "simpleHit": "1-2-2"
         },
         "abilities": null,
@@ -312,8 +312,8 @@
         "class": null,
         "stats": {
             "lifeCount": 8,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Артефакт",
+            "simpleHit": "Артефакт"
         },
         "abilities": null,
         "rarity": "Необычная",
@@ -388,8 +388,8 @@
         "class": "Пустыня",
         "stats": {
             "lifeCount": 0,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Местность",
+            "simpleHit": "Местность"
         },
         "abilities": null,
         "rarity": "Редкая",
@@ -844,8 +844,8 @@
         "class": "Боевая машина",
         "stats": {
             "lifeCount": 10,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Артефакт",
+            "simpleHit": "Артефакт"
         },
         "abilities": null,
         "rarity": "Редкая",
@@ -1357,7 +1357,7 @@
         "class": "Дух, Дракон",
         "stats": {
             "lifeCount": 7,
-            "walkCount": "NaN",
+            "walkCount": "Полет",
             "simpleHit": "2-2-3"
         },
         "abilities": null,
@@ -1718,8 +1718,8 @@
         "class": null,
         "stats": {
             "lifeCount": 10,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Артефакт",
+            "simpleHit": "Артефакт"
         },
         "abilities": null,
         "rarity": "Редкая",
@@ -1889,8 +1889,8 @@
         "class": "Горы",
         "stats": {
             "lifeCount": 0,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Местность",
+            "simpleHit": "Местность"
         },
         "abilities": null,
         "rarity": "Редкая",
@@ -2022,8 +2022,8 @@
         "class": "Постройка",
         "stats": {
             "lifeCount": 8,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Артефакт",
+            "simpleHit": "Артефакт"
         },
         "abilities": null,
         "rarity": "Необычная",
@@ -2364,7 +2364,7 @@
         "class": null,
         "stats": {
             "lifeCount": 1,
-            "walkCount": "NaN",
+            "walkCount": "Полет",
             "simpleHit": "1-1-1"
         },
         "abilities": null,
@@ -2497,7 +2497,7 @@
         "class": null,
         "stats": {
             "lifeCount": 7,
-            "walkCount": "NaN",
+            "walkCount": "Полет",
             "simpleHit": "1-2-2"
         },
         "abilities": null,
@@ -2573,8 +2573,8 @@
         "class": null,
         "stats": {
             "lifeCount": 0,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Местность",
+            "simpleHit": "Местность"
         },
         "abilities": null,
         "rarity": "Редкая",
@@ -2858,7 +2858,7 @@
         "class": "Страж леса",
         "stats": {
             "lifeCount": 8,
-            "walkCount": "NaN",
+            "walkCount": "Полет",
             "simpleHit": "2-3-4"
         },
         "abilities": null,
@@ -2896,8 +2896,8 @@
         "class": null,
         "stats": {
             "lifeCount": 14,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Артефакт",
+            "simpleHit": "Артефакт"
         },
         "abilities": null,
         "rarity": "Необычная",
@@ -3238,8 +3238,8 @@
         "class": "Постройка",
         "stats": {
             "lifeCount": 8,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Артефакт",
+            "simpleHit": "Артефакт"
         },
         "abilities": null,
         "rarity": "Редкая",
@@ -3276,7 +3276,7 @@
         "class": "Герой-маг, Эльф",
         "stats": {
             "lifeCount": 7,
-            "walkCount": "NaN",
+            "walkCount": "Полет",
             "simpleHit": "1-2-2"
         },
         "abilities": null,
@@ -3523,7 +3523,7 @@
         "class": null,
         "stats": {
             "lifeCount": 5,
-            "walkCount": "NaN",
+            "walkCount": "Полет",
             "simpleHit": "1-2-2"
         },
         "abilities": null,
@@ -3637,8 +3637,8 @@
         "class": "Постройка",
         "stats": {
             "lifeCount": 8,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Артефакт",
+            "simpleHit": "Артефакт"
         },
         "abilities": null,
         "rarity": "Редкая",
@@ -3675,8 +3675,8 @@
         "class": "Болото",
         "stats": {
             "lifeCount": 0,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Местность",
+            "simpleHit": "Местность"
         },
         "abilities": null,
         "rarity": "Редкая",
@@ -3979,8 +3979,8 @@
         "class": "Постройка",
         "stats": {
             "lifeCount": 8,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Артефакт",
+            "simpleHit": "Артефакт"
         },
         "abilities": null,
         "rarity": "Необычная",
@@ -4796,8 +4796,8 @@
         "class": "Пустыня",
         "stats": {
             "lifeCount": 0,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Местность",
+            "simpleHit": "Местность"
         },
         "abilities": null,
         "rarity": "Редкая",
@@ -4872,8 +4872,8 @@
         "class": "Постройка",
         "stats": {
             "lifeCount": 7,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Артефакт",
+            "simpleHit": "Артефакт"
         },
         "abilities": null,
         "rarity": "Необычная",
@@ -5081,7 +5081,7 @@
         "class": "Демон",
         "stats": {
             "lifeCount": 10,
-            "walkCount": "NaN",
+            "walkCount": "Полет",
             "simpleHit": "2-3-3"
         },
         "abilities": null,
@@ -5670,8 +5670,8 @@
         "class": "Постройка",
         "stats": {
             "lifeCount": 7,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Артефакт",
+            "simpleHit": "Артефакт"
         },
         "abilities": null,
         "rarity": "Необычная",
@@ -5708,8 +5708,8 @@
         "class": "Река",
         "stats": {
             "lifeCount": 0,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Местность",
+            "simpleHit": "Местность"
         },
         "abilities": null,
         "rarity": "Необычная",
@@ -6183,8 +6183,8 @@
         "class": null,
         "stats": {
             "lifeCount": 9,
-            "walkCount": "0",
-            "simpleHit": "--"
+            "walkCount": "Артефакт",
+            "simpleHit": "Артефакт"
         },
         "abilities": null,
         "rarity": "Частая",
@@ -6449,7 +6449,7 @@
         "class": null,
         "stats": {
             "lifeCount": 8,
-            "walkCount": "NaN",
+            "walkCount": "Полет",
             "simpleHit": "2-3-4"
         },
         "abilities": null,

@@ -34,6 +34,7 @@ export interface IGamePlayer {
     grave: IGameCard[]
     fliers: IGameCard[]
     handMessages: number[]
+    terrain: IGameCard | null
 }
 
 export interface ISquad {
@@ -71,4 +72,6 @@ export interface IGameCard extends Card {
     owner: IGamePlayer
     isHidden: boolean
     isTapped: boolean
+    poison: number
+    chipsNumber: number
 }

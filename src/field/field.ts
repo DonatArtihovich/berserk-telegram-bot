@@ -95,9 +95,13 @@ function getCard(card: IGameCard | null, name: null | string, arrIndex?: number,
             <div class="cell-number">${name ? name : cellNames[`c${arrIndex as number * 5 + (cellIndex as number) + 1}`]}</div>
             <div class="${className} card-wrapper">
                  <img src="${src}">
-                 <div class="counter life-counter" style="background-color:${color}">${card.stats.lifeCount}</div>
-                 <div class="counter walk-counter" style="background-color:${color}">${card.stats.walkCount.trim().toLowerCase() === 'полет' ? '🕊' : card.stats.walkCount}</div>
-                 <div class="counter hit-counter" style="background-color:${color}">${card.stats.simpleHit}</div>
+                 ${card.stats.walkCount.toLowerCase().trim() !== 'местность' ? `<div class="counter life-counter" style="background-color:${color}">${card.stats.lifeCount}</div>` : ''}
+                 ${card.stats.walkCount.toLowerCase().trim() !== 'артефакт' && card.stats.walkCount.toLowerCase().trim() !== 'местность' ? `<div class="counter walk-counter" style="background-color:${color}">${card.stats.walkCount.trim().toLowerCase() === 'полет' ? '🕊' : card.stats.walkCount}</div>` : ''}
+                 ${card.stats.walkCount.toLowerCase().trim() !== 'артефакт' && card.stats.walkCount.toLowerCase().trim() !== 'местность' ? `<div class="counter hit-counter" style="background-color:${color}">${card.stats.simpleHit}</div>` : ''}
+                 <div class="counters">
+                        ${card.poison ? `<div class="counter poison-counter">${card.poison}</div>` : ''}
+                        ${card.chipsNumber ? `<div class="counter chip-counter">${card.chipsNumber}</div>` : ''}
+                 </div>
             </div>
         </td>`)
     })
@@ -108,7 +112,7 @@ async function getRightCell(rowIndex: number, players: IGamePlayer[]) {
         case 0: return players[0].fliers[0] == undefined ? '<td><div class="cell-number">f1</div></td>' : await getCard(players[0].fliers[0], `f1`)
         case 1: return players[0].fliers[1] == undefined ? '<td><div class="cell-number">f2</div></td>' : await getCard(players[0].fliers[1], `f2`)
         case 2: return players[0].fliers[2] == undefined ? '<td><div class="cell-number">f3</div></td>' : await getCard(players[0].fliers[2], `f3`)
-        case 3: return '<td></td>'
+        case 3: return players[1].terrain ? '<td><div class="cell-number">t2</div></td>' : await getCard(players[1].terrain, `t2`)
         case 4: return players[0].grave[players[0].grave.length - 1] != undefined ? `<td><div class="card-wrapper"><img src="${players[0].grave[players[0].grave.length - 1].image}"></div></td>` : '<td></td>'
         case 5: return '<td><div class="card-wrapper"><img src="https://sun9-49.userapi.com/impg/VkNvFosdvodyEPs1a0VYHYMc6Hn39xtPMeSUUQ/K6luO7j7B-I.jpg?size=495x700&quality=95&sign=34785b727068237a68703901161fcaf9&type=album"></div></td>'
     }
@@ -117,8 +121,8 @@ async function getRightCell(rowIndex: number, players: IGamePlayer[]) {
 async function getLeftCell(rowIndex: number, players: IGamePlayer[]) {
     switch (rowIndex) {
         case 0: return '<td><div class="card-wrapper"><img src="https://sun9-49.userapi.com/impg/VkNvFosdvodyEPs1a0VYHYMc6Hn39xtPMeSUUQ/K6luO7j7B-I.jpg?size=495x700&quality=95&sign=34785b727068237a68703901161fcaf9&type=album"></div></td>'
-        case 1: return players[1].grave[players[1].grave.length - 1] != undefined ? `<td><div class="card-wrapper"><img src="${players[1].grave[players[1].grave.length - 1].image}"></div></td>` : '<td></td>'
-        case 2: return '<td></td>'
+        case 1: return players[0].grave[players[1].grave.length - 1] != undefined ? `<td><div class="card-wrapper"><img src="${players[1].grave[players[1].grave.length - 1].image}"></div></td>` : '<td></td>'
+        case 3: return players[0].terrain ? '<td><div class="cell-number">t1</div></td>' : await getCard(players[0].terrain, `t1`)
         case 3: return players[1].fliers[0] == undefined ? '<td><div class="cell-number">f4</div></td>' : await getCard(players[1].fliers[0], `f4`)
         case 4: return players[1].fliers[1] == undefined ? '<td><div class="cell-number">f5</div></td>' : await getCard(players[1].fliers[1], `f5`)
         case 5: return players[1].fliers[2] == undefined ? '<td><div class="cell-number">f6</div></td>' : await getCard(players[1].fliers[2], `f6`)

@@ -9,6 +9,7 @@ export class GamePlayer implements IGamePlayer {
     public fliers: IGameCard[]
     public grave: IGameCard[]
     public handMessages: number[]
+    public terrain: IGameCard | null
 
     constructor(id: number, name: string, deck: IDeck) {
         this.id = id
@@ -18,6 +19,7 @@ export class GamePlayer implements IGamePlayer {
         this.fliers = []
         this.grave = []
         this.handMessages = []
+        this.terrain = null
     }
 }
 
