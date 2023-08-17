@@ -991,8 +991,31 @@ export default class Controller implements IController {
             [Markup.button.callback('✖️Закрыть', 'close')]
         ]
 
+
         cards.forEach(card => {
-            ctx.replyWithPhoto(card.image, { caption: `${card.element}<b>${card.name}</b>`, parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
+
+            let cardElement: string
+            switch (card.element.toLowerCase().trim()) {
+                case 'степи':
+                    cardElement = '☀️'
+                    break;
+                case 'леса':
+                    cardElement = '🌳'
+                    break;
+                case 'горы':
+                    cardElement = '🗻'
+                    break;
+                case 'болото':
+                    cardElement = '🌾'
+                    break;
+                case 'тьма':
+                    cardElement = '💀'
+                    break;
+                default:
+                    cardElement = '⚔'
+            }
+
+            ctx.replyWithPhoto(card.image, { caption: `${cardElement}<b>${card.name}</b>`, parse_mode: 'HTML', reply_markup: { inline_keyboard: menu } })
         })
     }
 
@@ -1079,11 +1102,16 @@ export default class Controller implements IController {
         let currentCard: IGameCard | null = null
         let currentCardName = 'Не опознана'
 
+        let isError = false
         cells.forEach((cellName, index) => {
-
+            if (isError) return
             if (!cellName.startsWith('f')) {
                 const cellIndex = cellNames.findIndex(name => name === cellName)
 
+                if (cellIndex === -1) {
+                    ctx.replyWithHTML(`🚫<i>Клетки ${cellName} не существует</i>`)
+                    isError = true
+                }
                 const cardRow = Math.floor(cellIndex / 5)
                 const cardCell = cellIndex % 5
 
@@ -1114,6 +1142,8 @@ export default class Controller implements IController {
                 }
             }
         })
+
+        if (isError) return
 
         const text = `🐾<b>${player.name}</b> переместил карту ${currentCardName} на клетку ${cells[1]}.`
         this.redrawField(ctx, game, text)
@@ -1282,7 +1312,7 @@ export default class Controller implements IController {
         return hand
     }
 
-    private findCardByName(name: string): Card | void {
+    public findCardByName(name: string): Card | void {
         const result = cards.find(card => card.name.toLowerCase().trim() === name.toLowerCase().trim().replaceAll('ё', 'е'))
         return result !== undefined ? JSON.parse(JSON.stringify(result)) : result
     }

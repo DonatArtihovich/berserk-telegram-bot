@@ -5,6 +5,7 @@ import { User } from "../rooms/rooms";
 import { getField } from "../field/field";
 import GameCard from "./game-card";
 import { app } from "..";
+import '../assets/table.jpg'
 
 
 export class Game implements IGame {
@@ -158,6 +159,9 @@ export class Game implements IGame {
         this.currentPlayer = this.players[0]
 
         this.room.players.concat(this.room.watchers).forEach(user => {
+            // ctx.telegram.sendPhoto(user.id, { source: './assets/table.jpg' }).then(({ message_id }) => {
+            //     ctx.pinChatMessage(message_id)
+            // })
 
             if (user.id === this.players[0].id) {
                 ctx.telegram.sendPhoto(user.id, { source: fieldStream }, { caption: `Поле игры:\n\nПервым ходит ${this.currentPlayer?.name}`, reply_markup: { inline_keyboard: [[Markup.button.callback('Передать ход🔜', 'pass-turn')]] } })
@@ -166,13 +170,13 @@ export class Game implements IGame {
             }
         })
 
-        this.startTurn()
+        this.startTurn(true)
     }
 
-    private startTurn() {
+    private startTurn(isFirstTurn = false) {
         const { players } = this
 
-        this.currentPlayer = this.currentPlayer === players[0] ? players[1] : players[0]
+        if (!isFirstTurn) this.currentPlayer = this.currentPlayer === players[0] ? players[1] : players[0]
     }
 
     public endTurn() {

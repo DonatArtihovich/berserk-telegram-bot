@@ -8,10 +8,18 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
+        assetModuleFilename: pathData => {
+            const filepath = path.dirname(pathData.filename).split('/').slice(1).join('/');
+            return `${filepath}/[name][ext]`;
+        },
     },
     module: {
         rules: [
-            { test: /\.ts$/i, use: 'ts-loader' }
+            { test: /\.ts$/i, use: 'ts-loader' },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif|ogg|mp3|wav)$/i,
+                type: 'asset/resource',
+            },
         ],
     },
     resolve: {
